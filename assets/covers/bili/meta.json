@@ -1,0 +1,199 @@
+{
+  "videos": [
+    {
+      "bv": "BV1GM411P7dm",
+      "label": "校内大型活动 01",
+      "title": "【神寂动漫社】这么可爱真是抱歉！情人节快乐~੭ ᐕ)੭*⁾⁾",
+      "duration": 222,
+      "view": 1668,
+      "danmaku": 4,
+      "owner": "南财神寂动漫社",
+      "cover": "assets/covers/bili/BV1GM411P7dm.jpg",
+      "pubdate": 1676356554
+    },
+    {
+      "bv": "BV1gP4y1r7j9",
+      "label": "校内大型活动 02",
+      "title": "【神寂动漫社】2022百团大战！",
+      "duration": 395,
+      "view": 1648,
+      "danmaku": 3,
+      "owner": "南财神寂动漫社",
+      "cover": "assets/covers/bili/BV1gP4y1r7j9.jpg",
+      "pubdate": 1674047870
+    },
+    {
+      "bv": "BV1PW4y1y7QH",
+      "label": "校内大型活动 03",
+      "title": "【南京财经大学】心跳光谱光就在前方【BDF2022-南京】",
+      "duration": 407,
+      "view": 26969,
+      "danmaku": 139,
+      "owner": "南财神寂动漫社",
+      "cover": "assets/covers/bili/BV1PW4y1y7QH.jpg",
+      "pubdate": 1654486634
+    },
+    {
+      "bv": "BV1d3411G7x4",
+      "label": "校内大型活动 04",
+      "title": "【神寂动漫社】521宅舞专场♥一起在夏日的操场上跳舞吧~",
+      "duration": 2523,
+      "view": 2677,
+      "danmaku": 4,
+      "owner": "南财神寂动漫社",
+      "cover": "assets/covers/bili/BV1d3411G7x4.jpg",
+      "pubdate": 1653220848
+    },
+    {
+      "bv": "BV1zP411m7NN",
+      "label": "校内大型活动 05",
+      "title": "神寂动漫社2023国风纪",
+      "duration": 4657,
+      "view": 1734,
+      "danmaku": 0,
+      "owner": "南财神寂动漫社",
+      "cover": "assets/covers/bili/BV1zP411m7NN.jpg",
+      "pubdate": 1682161919
+    },
+    {
+      "bv": "BV11k4y1H7M7",
+      "label": "南京高校联盟 · cosplay 舞台剧比赛",
+      "title": "第十一届【神寂杯南京高校联盟COSPLAY舞台剧大赛】官方录制视频",
+      "duration": 6147,
+      "view": 2054,
+      "danmaku": 1,
+      "owner": "灯球DENG",
+      "cover": "assets/covers/bili/BV11k4y1H7M7.jpg",
+      "pubdate": 1686040817
+    },
+    {
+      "bv": "BV1YP411D7ed",
+      "label": "南京高校联盟 · 宅舞比赛",
+      "title": "第六届【神寂杯南京高校联盟宅舞大赛】官方录制视频",
+      "duration": 8291,
+      "view": 2892,
+      "danmaku": 1,
+      "owner": "吐司不吃吐司边",
+      "cover": "assets/covers/bili/BV1YP411D7ed.jpg",
+      "pubdate": 1686044065
+    }
+  ],
+  "owner": {
+    "mid": 17896679,
+    "name": "南财神寂动漫社",
+    "face": "http://i2.hdslb.com/bfs/face/3c55c6db438f32883f2378b88c2946732dde3dd7.jpg",
+    "face_local": "assets/covers/bili/avatar.jpg"
+  },
+  "space": {
+    "card": {
+      "mid": "29009400",
+      "name": "宸舟陌",
+      "approve": false,
+      "sex": "保密",
+      "rank": "10000",
+      "face": "https://i0.hdslb.com/bfs/face/21eee2515ed76ea73eabccfc318ed4951a0b1426.jpg",
+      "face_nft": 0,
+      "face_nft_type": 0,
+      "DisplayRank": "0",
+      "regtime": 0,
+      "spacesta": 0,
+      "birthday": "",
+      "place": "",
+      "description": "",
+      "article": 0,
+      "attentions": [],
+      "fans": 121,
+      "friend": 275,
+      "attention": 275,
+      "sign": "",
+      "level_info": {
+        "current_level": 6,
+        "current_min": 0,
+        "current_exp": 0,
+        "next_exp": 0
+      },
+      "pendant": {
+        "pid": 0,
+        "name": "",
+        "image": "",
+        "expire": 0,
+        "image_enhance": "",
+        "image_enhance_frame": "",
+        "n_pid": 0
+      },
+      "nameplate": {
+        "nid": 0,
+        "name": "",
+        "image": "",
+        "image_small": "",
+        "level": "",
+        "condition": ""
+      },
+      "Official": {
+        "role": 0,
+        "title": "",
+        "desc": "",
+        "type": -1
+      },
+      "official_verify": {
+        "type": -1,
+        "desc": ""
+      },
+      "vip": {
+        "type": 1,
+        "status": 0,
+        "due_date": 1645459200000,
+        "vip_pay_type": 0,
+        "theme_type": 0,
+        "label": {
+          "path": "",
+          "text": "",
+          "label_theme": "",
+          "text_color": "",
+          "bg_style": 0,
+          "bg_color": "",
+          "border_color": "",
+          "use_img_label": true,
+          "img_label_uri_hans": "",
+          "img_label_uri_hant": "",
+          "img_label_uri_hans_static": "https://i0.hdslb.com/bfs/vip/d7b702ef65a976b20ed854cbd04cb9e27341bb79.png",
+          "img_label_uri_hant_static": "https://i0.hdslb.com/bfs/activity-plat/static/20220614/e369244d0b14644f5e1a06431e22a4d5/KJunwh19T5.png",
+          "label_id": 0,
+          "label_goto": null,
+          "img_label_uri_i18n": "",
+          "img_label_uri_i18n_static": "",
+          "label_type": 0
+        },
+        "avatar_subscript": 0,
+        "nickname_color": "",
+        "role": 0,
+        "avatar_subscript_url": "",
+        "tv_vip_status": 0,
+        "tv_vip_pay_type": 0,
+        "tv_due_date": 0,
+        "avatar_icon": {
+          "icon_resource": {}
+        },
+        "ott_info": {
+          "vip_type": 0,
+          "pay_type": 0,
+          "pay_channel_id": "",
+          "status": 0,
+          "overdue_time": 0
+        },
+        "super_vip": {
+          "is_super_vip": false
+        },
+        "vipType": 1,
+        "vipStatus": 0
+      },
+      "is_senior_member": 0,
+      "name_render": null
+    },
+    "following": false,
+    "archive_count": 12,
+    "article_count": 0,
+    "follower": 121,
+    "like_num": 1033
+  }
+}

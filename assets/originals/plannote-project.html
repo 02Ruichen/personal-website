@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PlanNote · 项目说明</title>
+<style>
+:root{--bg:#F5F3F7;--ink:#2B2A33;--ink2:#5B5766;--pink:#FBE3EA;--mint:#DFF0EA;--lilac:#E9E4F5;--line:#E7E2EC}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(160deg,#FBF0F3 0%,var(--bg) 42%,#EDF5F1 100%);color:var(--ink);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:64px 28px 88px}
+.kicker{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#8A8494;margin:0 0 14px}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,6vw,52px);font-weight:600;letter-spacing:-.02em;margin:0 0 14px}
+.sub{font-size:17px;color:var(--ink2);margin:0 0 40px;line-height:1.8}
+.card{background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:20px;padding:28px 30px;margin:0 0 18px;backdrop-filter:blur(14px);box-shadow:0 8px 30px rgba(60,48,72,.06)}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:21px;font-weight:600;margin:0 0 14px;letter-spacing:.01em}
+p{margin:0 0 12px;font-size:15px;color:var(--ink2)}p:last-child{margin-bottom:0}
+strong{color:var(--ink);font-weight:600}
+ul{margin:0;padding-left:20px}li{font-size:15px;color:var(--ink2);margin-bottom:9px}
+.hero-img{width:100%;border:1px solid var(--line);border-radius:16px;display:block;margin:0 0 30px;background:#F7F5F9}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 18px}
+.fact{background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:16px;padding:20px 18px;text-align:center}
+.fact b{display:block;font-family:Georgia,serif;font-size:28px;font-weight:600;margin-bottom:6px}
+.fact span{font-size:12px;color:#8A8494;letter-spacing:.06em}
+.links{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.links a{display:inline-flex;align-items:center;gap:6px;padding:11px 18px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;transition:transform .25s,box-shadow .25s}
+.links a:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(60,48,72,.12)}
+.foot{margin-top:34px;font-size:12px;color:#8A8494;text-align:center}
+@media(max-width:620px){.wrap{padding:40px 18px 60px}.card{padding:22px 20px}.facts{grid-template-columns:1fr}}
+</style></head><body><div class="wrap">
+<p class="kicker">Selected work 04 / PlanNote</p>
+<h1>PlanNote</h1>
+<p class="sub">一个自己写给自己用的计划本，后来重做成能装进手机的网页应用。每天随手记一句，周五按设定的格式自动出周报。</p>
+<img class="hero-img" src="../covers/plannote/01-day.jpg" alt="PlanNote 日视图界面">
+
+<div class="card"><h2>为什么做</h2>
+<p>最早那版是 Python 写的桌面程序，自己用没问题，但只能在装了 Python 的那台电脑上打开。想发给别人得打包成 exe，Windows 会弹安全警告，界面也是系统默认控件的观感。要把它放进作品集，得先解决别人点开就能用这件事。</p>
+<p>于是把它重写成纯前端网页应用，做成以后目标很明确，自己也能继续用，面试官打开链接就能看到完整产品。</p></div>
+
+<div class="facts">
+<div class="fact"><b>45 / 45</b><span>端到端断言全通过</span></div>
+<div class="fact"><b>10 / 10</b><span>线上验收全通过</span></div>
+<div class="fact"><b>MIT</b><span>开源协议 · 已上线</span></div>
+</div>
+
+<div class="card"><h2>几个刻意的选择</h2>
+<ul>
+<li><strong>不设账号，也不做云同步。</strong>计划数据很私人，存在浏览器本地就够，省掉服务器和信任成本。</li>
+<li><strong>纯前端 PWA。</strong>没有构建、没有依赖、没有框架，浏览器直接跑；可安装到桌面和手机，断网也能用。双击文件打开时自动降级到 localStorage，保证点开就能用。</li>
+<li><strong>周报规则放在提示词最前。</strong>用分隔符把用户写的模板包起来，并写明与默认要求冲突时以规则为准。实测模型会照自定义标题、小节和落款输出，也不会混入范围外的记录。</li>
+<li><strong>按项目出周报。</strong>周报原本只按日期取数，补上范围限定后，可以只统计某一个模块，切换范围不会冲掉已生成的内容。</li>
+<li><strong>先打样再重写。</strong>先做一块配色样张定下阴影、圆角、字号和侧栏底色，确认视觉规则后才整站重写，这份打样原件也留在站里。</li>
+</ul></div>
+
+<div class="card"><h2>做了哪些验证</h2>
+<p>自写了一套无头浏览器的端到端测试，覆盖起点、自定义项目、按项目出周报、规则是否真生效、真实模型调用和配置保全，45 项断言全部通过。线上另跑了 10 项验收，检查介绍页渲染、5 张配图、安装配置、离线缓存、跳转和新访客空数据状态。</p>
+<p>测试也抓出过真实问题，比如周报选了模块却仍发出全部记录、连续生成时提示条堆叠压住正文，都已修掉。整个过程在一次性浏览器环境里跑，不碰日常数据。</p></div>
+
+<div class="card"><h2>现在的状态</h2>
+<p>线上地址已经能直接打开，日、周、月、统计、自定义模块、AI 周报、备份与深色模式都可用，桌面和手机端都验证过。代码以 MIT 协议开源，项目说明、视觉打样和五张真实界面截图都放在这个站里。</p>
+<div class="links">
+<a href="https://02ruichen.github.io/PlanNote/app.html" target="_blank" rel="noopener">打开线上应用 ↗</a>
+<a href="https://02ruichen.github.io/PlanNote/" target="_blank" rel="noopener">作品介绍页 ↗</a>
+<a href="https://github.com/02Ruichen/PlanNote" target="_blank" rel="noopener">GitHub 源码 ↗</a>
+</div></div>
+
+<p class="foot">KIANNA · PORTFOLIO　/　本页只讲项目经过与成果，不含本地路径、密钥或个人数据</p>
+</div></body></html>

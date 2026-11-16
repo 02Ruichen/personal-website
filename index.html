@@ -1,730 +1,1602 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<!-- build:1787900882.2052174 -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>刘芮辰的简历</title>
-	<script src="vendor/html2canvas.min.js"></script>
-	<script src="vendor/jspdf.umd.min.js"></script>
+<script>document.documentElement.classList.add('has-js')</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KIANNA · 刘芮辰的作品集</title>
+<meta name="description" content="刘芮辰（Kianna）的个人作品集：AI 产品运营与项目运营管理，作品、PPT 产出、社团统筹与科研概要。">
 <style>
-
-    /* ========== 🎨 互联网/AI 主题（默认） ========== */
-    :root {
-      --page-bg: #faf8f5;
-      --page-bg-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(180,170,150,0.03) 2px, rgba(180,170,150,0.03) 4px), radial-gradient(circle, rgba(180,170,150,0.08) 1px, transparent 1px);
-      --page-bg-size: 100% 4px, 16px 16px;
-
-      --page-shadow: 0 1px 3px rgba(0,0,0,.06), 0 8px 32px rgba(0,0,0,.10);
-      --page-deco-line: linear-gradient(90deg, transparent, #e0d8cc, transparent);
-
-      --page-texture-1: radial-gradient(ellipse at 15% 5%, rgba(252,228,236,0.22) 0%, transparent 55%);
-      --page-texture-2: radial-gradient(ellipse at 85% 92%, rgba(227,242,253,0.22) 0%, transparent 55%);
-      --page-texture-3: radial-gradient(ellipse at 50% 50%, rgba(232,245,233,0.12) 0%, transparent 70%);
-
-      --header-gradient: linear-gradient(135deg, #fce4ec, #e3f2fd);
-      --header-diamond-alpha: 0.18;
-      --header-text-dark: #3d3d3d;
-      --header-text-mid: #6b6b6b;
-      --header-underline-color: #fff;
-      --header-underline-shadow: 0 2px 0 rgba(255,255,255,0.4);
-
-      --photo-border: 2px solid #fff;
-      --photo-shadow: 0 2px 8px rgba(0,0,0,.08);
-
-      --tag-bg: rgba(252,228,236,0.35);
-      --tag-border: rgba(248,213,224,0.4);
-      --tag-text: #6b6b6b;
-
-      --section-bg: #fff;
-      --section-sep-border: 1.5px solid #fff;
-      --section-sep-shadow: 0 -1px 3px rgba(0,0,0,0.04);
-
-      --h2-gradient: linear-gradient(135deg, #fce4ec, #e3f2fd);
-      --h2-text: #3d3d3d;
-
-      --edu-gradient: linear-gradient(180deg, rgba(252,228,236,0.12) 0%, rgba(227,242,253,0.08) 40%, #fff 100%);
-      --intern-bg: transparent;
-      --campus-bg: transparent;
-
-      --bl-1: #f8d5e0;
-      --bl-2: #fef3c7;
-      --bl-3: #d4edda;
-      --bl-4: #bbdefb;
-
-      --exp-bar-bg: #fafaf9;
-      --exp-bar-hover: #f5f2ed;
-      --exp-dot: #c5bfb2;
-
-      --kw-bg: rgba(252,228,236,0.25);
-      --kw-color: #9B8EA9;
-
-      --skills-gradient: linear-gradient(135deg, #E0F7FA, #F8BBD0);
-      --skills-overlay: #FFFFFF;
-
-      --text-dark: #3d3d3d;
-      --text-mid: #6b6b6b;
-      --text-light: #999;
-
-      --accent-line: #e0d8cc;
-      --footer-border: #e0d8cc;
-      --footer-text: #ccc;
-
-      --toolbar-btn-bg: #fff;
-      --toolbar-btn-border: #ddd;
-      --toolbar-btn-hover-border: #bbb;
-
-      --unlock-bg: #faf8f5;
-      --unlock-border: #d0c8b8;
-      --unlock-text: #8b7e6a;
-
-      --save-bg: #6b8e7b;
-      --save-text: #fff;
-
-      --back-btn-bg: #f5f2ed;
-      --back-btn-border: #e5ded0;
-      --back-btn-hover: #ede6d8;
-
-      --modal-confirm: linear-gradient(135deg, #fce4ec, #f8d5e0);
-
-      --skills-h2-text: #3d3d3d;
-
-      --theme-active-bg: #fce4ec;
-      --theme-active-text: #3d3d3d;
-      --theme-active-border: #f8d5e0;
-    }
-
-    /* ========== 🏛️ 国企/央企主题 ========== */
-    body.gov {
-      --page-bg: #f4f5f7;
-      --page-bg-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.015) 2px, rgba(0,0,0,0.015) 4px), radial-gradient(circle, rgba(0,0,0,0.03) 1px, transparent 1px);
-      --page-bg-size: 100% 4px, 16px 16px;
-
-      --page-shadow: 0 1px 3px rgba(0,0,0,.08), 0 8px 32px rgba(0,0,0,.12);
-      --page-deco-line: linear-gradient(90deg, transparent, #c0c8d4, transparent);
-
-      --page-texture-1: radial-gradient(ellipse at 15% 5%, rgba(26,53,80,0.05) 0%, transparent 55%);
-      --page-texture-2: radial-gradient(ellipse at 85% 92%, rgba(45,90,128,0.05) 0%, transparent 55%);
-      --page-texture-3: radial-gradient(ellipse at 50% 50%, rgba(61,112,153,0.03) 0%, transparent 70%);
-
-      --header-gradient: linear-gradient(135deg, #1a3550, #2d5a80);
-      --header-diamond-alpha: 0.06;
-      --header-text-dark: #ffffff;
-      --header-text-mid: rgba(255,255,255,0.85);
-      --header-underline-color: rgba(255,255,255,0.25);
-      --header-underline-shadow: 0 2px 0 rgba(255,255,255,0.12);
-
-      --photo-border: 2px solid #1a3550;
-      --photo-shadow: 0 2px 8px rgba(0,0,0,.15);
-
-      --tag-bg: #e8ecf1;
-      --tag-border: #d0d5dd;
-      --tag-text: #4a5568;
-
-      --section-bg: #fff;
-      --section-sep-border: 1.5px solid #e8ecf1;
-      --section-sep-shadow: 0 -1px 3px rgba(0,0,0,0.03);
-
-      --h2-gradient: #1a3550;
-      --h2-text: #ffffff;
-
-      --edu-gradient: linear-gradient(180deg, #e6ecf3 0%, #eef2f7 35%, #fff 100%);
-      --intern-bg: #f2f4f8;
-      --campus-bg: #f7f8fa;
-
-      --bl-1: #1a3550;
-      --bl-2: #2d5a80;
-      --bl-3: #3d7099;
-      --bl-4: #4a85b0;
-
-      --exp-bar-bg: #f8f9fb;
-      --exp-bar-hover: #edf0f5;
-      --exp-dot: #8a94a6;
-
-      --kw-bg: #edf0f5;
-      --kw-color: #2d5a80;
-
-      --skills-gradient: linear-gradient(135deg, #e8ecf1, #f0f2f5);
-      --skills-overlay: #FFFFFF;
-
-      --text-dark: #1a202c;
-      --text-mid: #4a5568;
-      --text-light: #8a94a6;
-
-      --accent-line: #c0c8d4;
-      --footer-border: #c0c8d4;
-      --footer-text: #b0b8c4;
-
-      --toolbar-btn-bg: #fff;
-      --toolbar-btn-border: #d0d5dd;
-      --toolbar-btn-hover-border: #8a94a6;
-
-      --unlock-bg: #f4f5f7;
-      --unlock-border: #c0c8d4;
-      --unlock-text: #4a5568;
-
-      --save-bg: #2d5a80;
-      --save-text: #fff;
-
-      --back-btn-bg: #edf0f5;
-      --back-btn-border: #d0d5dd;
-      --back-btn-hover: #dde2ea;
-
-      --modal-confirm: linear-gradient(135deg, #1a3550, #2d5a80);
-
-      --skills-h2-text: #1a3550;
-
-      --theme-active-bg: #1a3550;
-      --theme-active-text: #ffffff;
-      --theme-active-border: #2d5a80;
-    }
-
-
-    * { margin:0; padding:0; box-sizing:border-box; }
-
-    /* ===== 全局字体基准 ===== */
-    html { font-size: 16px; }
-    body {
-      font-family:"Microsoft YaHei","PingFang SC",sans-serif;
-      font-size: 16px;
-      background: var(--page-bg);
-      background-image: var(--page-bg-image);
-      background-size: var(--page-bg-size);
-      padding:14px;
-      transition: background .4s;
-    }
-
-    /* ===== 工具栏 ===== */
-    .toolbar { width:210mm; margin:0 auto 8px; display:flex; gap:6px; justify-content:flex-end; align-items:center; flex-wrap:wrap; }
-    .toolbar button {
-      padding:6px 14px; border-radius:20px; border:1px solid var(--toolbar-btn-border);
-      cursor:pointer; font-size:12px; font-family:inherit;
-      background: var(--toolbar-btn-bg); color: var(--text-mid); transition:all .2s;
-      white-space:nowrap;
-    }
-    .toolbar button:hover { border-color: var(--toolbar-btn-hover-border); color: var(--text-dark); }
-
-    /* 主题切换按钮 */
-    .theme-btn { opacity:0.65; }
-    .theme-btn.active {
-      opacity:1;
-      background: var(--theme-active-bg) !important;
-      color: var(--theme-active-text) !important;
-      border-color: var(--theme-active-border) !important;
-      font-weight:600;
-    }
-
-    .toolbar button.unlock { background: var(--unlock-bg); border:1px solid var(--unlock-border); color: var(--unlock-text); }
-    .toolbar button.save { background: var(--save-bg); color: var(--save-text); border-color:transparent; display:none; }
-    .toolbar button.cancel { display:none; }
-
-    /* ===== A4 页面主体 ===== */
-    .page {
-      width:210mm; min-height:297mm;
-      background: #fff;
-      margin:0 auto;
-      box-shadow: var(--page-shadow);
-      border-radius:2px;
-      overflow:hidden;
-      background-image: var(--page-texture-1), var(--page-texture-2), var(--page-texture-3);
-      background-attachment:local;
-      position:relative;
-      transition: box-shadow .4s;
-    }
-
-    /* ===== 页面上方装饰细线 ===== */
-    .page::before {
-      content:'';
-      position:absolute; top:0; left:12mm; right:12mm; height:1px;
-      background: var(--page-deco-line);
-      z-index:5; opacity:0.6;
-    }
-
-    /* ===== 头部 ===== */
-    .header {
-      background:
-        repeating-linear-gradient(45deg, transparent, transparent 14px, rgba(255,255,255,var(--header-diamond-alpha)) 14px, rgba(255,255,255,var(--header-diamond-alpha)) 15px),
-        repeating-linear-gradient(-45deg, transparent, transparent 14px, rgba(255,255,255,var(--header-diamond-alpha)) 14px, rgba(255,255,255,var(--header-diamond-alpha)) 15px),
-        var(--header-gradient);
-      padding:14px 20px 12px 20px;
-      display:flex; align-items:center; gap:16px;
-      position:relative;
-      transition: background .4s;
-    }
-    .header::after {
-      content:'';
-      position:absolute; bottom:0; left:20px; right:20px;
-      height:1px;
-      background: var(--header-underline-color);
-      box-shadow: var(--header-underline-shadow);
-      opacity:0.9;
-    }
-    .header .photo { width:60px; height:80px; border-radius:4px; object-fit:cover; flex-shrink:0; border: var(--photo-border); box-shadow: var(--photo-shadow); transition: border .4s, box-shadow .4s; }
-    .name { font-size:1.4rem; font-weight:700; color: var(--header-text-dark); letter-spacing:1px; transition: color .4s; }
-    .title { font-size:.78rem; color: var(--header-text-mid); margin-top:2px; transition: color .4s; }
-    .tags { display:flex; flex-wrap:wrap; gap:5px; margin-top:5px; }
-    .tag {
-      background: var(--tag-bg);
-      padding:2px 10px; border-radius:12px; font-size:.62rem;
-      color: var(--tag-text); border:1px solid var(--tag-border);
-      transition: background .4s, color .4s, border .4s;
-    }
-
-    /* ===== 分区容器 ===== */
-    .section { padding:6px 18px; background: var(--section-bg); position:relative; transition: background .4s; }
-    .section.edu { padding-bottom:0; background: var(--edu-gradient); }
-    .section.intern { padding-bottom:0; background: var(--intern-bg); transition: background .4s; }
-    .section.campus { padding-bottom:0; background: var(--campus-bg); transition: background .4s; }
-    .section + .section { border-top: var(--section-sep-border); box-shadow: var(--section-sep-shadow); }
-
-    /* ===== 分区标题 ===== */
-    .section h2 {
-      font-size:.82rem; margin:-6px -16px 3px -16px; padding:6px 16px;
-      display:block; color: var(--h2-text); font-weight:600;
-      background: var(--h2-gradient);
-      transition: background .4s, color .4s;
-    }
-
-    /* ===== 教育背景 ===== */
-    .edu-row { margin-bottom:2px; }
-    .edu-head { font-size:.74rem; line-height:1.5; }
-    .edu-head em { font-size:.64rem; color: var(--text-light); margin-left:4px; }
-    .edu-detail {
-      font-size:.72rem; color: var(--text-mid); padding:2px 0 2px 10px;
-      border-left:2px solid var(--accent-line); margin-top:2px; line-height:1.5;
-      transition: color .4s, border-color .4s;
-    }
-
-    /* ===== 经历条目 ===== */
-    .exp-item { margin-bottom:2px; }
-    .exp-bar {
-      display:flex; align-items:center; gap:8px;
-      padding:4px 10px; border-radius:3px;
-      background: var(--exp-bar-bg); cursor:pointer;
-      border-left:3px solid transparent;
-      transition:background .15s;
-    }
-    .exp-bar:hover { background: var(--exp-bar-hover); }
-    .exp-item:nth-child(4n+1) .exp-bar { border-left-color: var(--bl-1); }
-    .exp-item:nth-child(4n+2) .exp-bar { border-left-color: var(--bl-2); }
-    .exp-item:nth-child(4n+3) .exp-bar { border-left-color: var(--bl-3); }
-    .exp-item:nth-child(4n+4) .exp-bar { border-left-color: var(--bl-4); }
-
-    .exp-dot { width:5px; height:5px; border-radius:50%; background: var(--exp-dot); flex-shrink:0; transition: background .4s; }
-    .exp-title { font-size:.72rem; font-weight:600; color: var(--text-dark); flex-shrink:0; }
-    .exp-sub { font-size:.62rem; color: var(--text-light); flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-    .exp-arrow { font-size:.5rem; color:#ccc; flex-shrink:0; transition:transform .2s; }
-    .exp-item.open .exp-arrow { transform:rotate(90deg); }
-
-    .exp-brief { font-size:.66rem; color: var(--text-mid); padding:3px 6px 0 12px; line-height:1.45; text-align:left; }
-    .exp-item.open .exp-brief { display:none; }
-
-    .exp-full { display:none; }
-    .exp-item.open .exp-full { display:block; }
-
-    .exp-detail { font-size:.66rem; color: var(--text-mid); padding:3px 6px 0 12px; line-height:1.45; text-align:left; }
-    .back-btn {
-      background: var(--back-btn-bg); border:1px solid var(--back-btn-border); padding:4px 12px;
-      border-radius:4px; cursor:pointer; font-size:.62rem; margin:4px 0 6px 0;
-      font-family:inherit; color: var(--text-mid); transition:background .15s;
-    }
-    .back-btn:hover { background: var(--back-btn-hover); }
-
-    /* 关键词行 */
-    .kw-line {
-      font-size:.6rem; color: var(--kw-color); font-weight:bold; margin-top:6px;
-      padding:3px 8px; background: var(--kw-bg);
-      border-radius:3px; display:block;
-      transition: background .4s, color .4s;
-    }
-
-    /* ===== 技能与评价 ===== */
-    .section.skills {
-      background: var(--skills-gradient);
-      padding:8px 26px 14px 26px;
-      position: relative;
-      transition: background .4s;
-    }
-    .section.skills::before {
-      content: '';
-      position: absolute;
-      top: 8mm; bottom: 6px;
-      left: 3mm; right: 3mm;
-      background: var(--skills-overlay);
-      opacity: 0.7;
-      z-index: 0;
-      border-radius: 3px;
-    }
-    .section.skills h2 {
-      background: transparent; color: var(--skills-h2-text);
-      position: relative; z-index: 1;
-    }
-
-    .skill-block { margin-bottom:4px; position: relative; z-index: 1; }
-    .skill-block h4 { margin-bottom:1px;
-      font-size:.68rem; color:#333;
-      padding-left:8px; font-weight:600;
-      background: none;
-    }
-    .skill-text {
-      font-size:.66rem; color:#333; line-height:1.3;
-      padding-left:8px; text-align:left;
-    }
-
-    /* ===== 页脚 ===== */
-    .footer { padding:6px;
-      text-align:center; font-size:.6rem; color: var(--footer-text);
-      border-top:1px dotted var(--footer-border);
-      margin-top:2px;
-      transition: color .4s, border-color .4s;
-    }
-
-    /* ===== 编辑模式 ===== */
-    body.editing [contenteditable] { background:rgba(255,255,200,.3); outline:1px dashed #ccc; cursor:text; }
-    body.editing [contenteditable]:focus { outline:2px solid #a18cd1; background:rgba(255,255,230,.5); }
-    body.editing .toolbar .save, body.editing .toolbar .cancel { display:inline-block; }
-    body.editing .toolbar .unlock, body.editing .toolbar .theme-btn { display:none; }
-
-    /* ===== 密码弹窗 ===== */
-    .modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,.35); z-index:99; justify-content:center; align-items:center; }
-    .modal.show { display:flex; }
-    .modal-box {
-      background:#fff; padding:28px 36px; border-radius:12px;
-      text-align:center; box-shadow:0 12px 40px rgba(0,0,0,.15);
-    }
-    .modal-box input {
-      padding:8px 14px; border:1px solid #ddd; border-radius:6px;
-      font-size:14px; width:200px; margin:10px 0;
-    }
-    .modal-box button {
-      padding:8px 20px; border-radius:6px; border:none;
-      cursor:pointer; font-size:13px; transition:opacity .15s;
-    }
-    .modal-box button:hover { opacity:.85; }
-    .modal-box .confirm { background: var(--modal-confirm); color: var(--h2-text); }
-    .modal-box .close { background:#eee; margin-left:8px; }
-
-    /* ===== 打印样式（浏览器原生打印 → 矢量文字 PDF） ===== */
-    @media print {
-      @page {{ size: A4; margin: 0; }}
-      html, body {{
-        background: #fff !important;
-        background-image: none !important;
-        padding: 0; margin: 0;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }}
-      .toolbar, .modal {{ display: none !important; }}
-      .page {{
-        box-shadow: none; margin: 0; border-radius: 0;
-        width: 210mm; min-height: 297mm;
-      }}
-    }}
-
+/* ============ Design tokens ============ */
+:root{
+  --bg:#F5F3F7;
+  --surface:#FFFFFF;
+  --glass:rgba(255,255,255,.60);
+  --glass-strong:rgba(255,255,255,.78);
+  --glass-line:rgba(255,255,255,.85);
+  --ink:#2B2A33;
+  --ink-2:#5C5966;
+  --ink-3:#8E8A99;
+  --line:rgba(43,42,51,.11);
+  --pink:#FBE3EA;
+  --pink-deep:#E58BA6;
+  --mint:#DFF0EA;
+  --lilac:#E9E4F5;
+  --peach:#FDECE2;
+  --bili:#FB7299;
+  --shadow-glass:0 16px 48px rgba(78,66,104,.10);
+  --shadow-soft:0 8px 28px rgba(78,66,104,.07);
+  --shadow-lift:0 22px 60px rgba(78,66,104,.16);
+  --r-card:22px;
+  --r-sm:12px;
+  --r-pill:999px;
+  --sp-1:8px; --sp-2:16px; --sp-3:24px; --sp-4:40px; --sp-5:64px; --sp-6:96px; --sp-7:144px;
+  --font-serif:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong","SimSun",Georgia,serif;
+  --font-sans:"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  --font-mono:"JetBrains Mono","SFMono-Regular",Consolas,ui-monospace,monospace;
+  /* Unified type scale：英数用等宽、中文回退无衬线，避免中文被等宽字体拉散 */
+  --font-ui:"Inter","PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+  --font-label:"Inter","SFMono-Regular",Consolas,"PingFang SC","Microsoft YaHei",ui-monospace,monospace;
+  --fs-nano:10.5px;
+  --fs-micro:11px;
+  --fs-label:12px;
+  --fs-cap:12.5px;
+  --fs-small:13px;
+  --fs-ui:14px;
+  --track-label:.16em;
+  --track-caps:.22em;
+  --ease:cubic-bezier(.22,.68,0,1);
+  /* Motion scale：微交互 / 过渡 / 入场 / 图片缩放共用同一组时长与缓动 */
+  --dur-micro:.18s;
+  --dur-trans:.28s;
+  --dur-enter:.5s;
+  --dur-zoom:.6s;
+  --ease-in:cubic-bezier(.4,0,1,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--font-sans);font-size:16px;line-height:1.75;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--pink-deep);outline-offset:3px;border-radius:6px}
+::selection{background:var(--pink);color:var(--ink)}
+
+/* ============ Ambient light ============ */
+.ambient{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.ambient i{position:absolute;display:block;border-radius:50%;filter:blur(90px);opacity:.62}
+.ambient i:nth-child(1){width:620px;height:620px;background:var(--pink);top:-160px;left:-120px}
+.ambient i:nth-child(2){width:560px;height:560px;background:var(--mint);top:34%;right:-180px}
+.ambient i:nth-child(3){width:520px;height:520px;background:var(--lilac);bottom:-180px;left:24%}
+
+/* ============ Layout ============ */
+.wrap{width:min(1180px,calc(100% - 48px));margin:0 auto;position:relative;z-index:1}
+main{position:relative;z-index:1}
+
+/* ============ Nav ============ */
+.nav{
+  position:sticky;top:0;z-index:60;
+  background:rgba(245,243,247,.72);backdrop-filter:blur(18px) saturate(1.5);
+  -webkit-backdrop-filter:blur(18px) saturate(1.5);
+  border-bottom:1px solid var(--line);
+}
+.nav-in{width:min(1180px,calc(100% - 48px));margin:0 auto;height:66px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{font-family:var(--font-label);font-size:var(--fs-ui);letter-spacing:var(--track-caps);font-weight:600;white-space:nowrap}
+.brand span{color:var(--pink-deep)}
+.nav-links{display:flex;gap:6px;align-items:center;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{
+  font-family:var(--font-ui);font-size:var(--fs-cap);color:var(--ink-2);padding:8px 14px;border-radius:var(--r-pill);
+  white-space:nowrap;transition:background var(--dur-trans) var(--ease),color var(--dur-trans) var(--ease);
+}
+.nav-links a:hover,.nav-links a.is-active{background:var(--surface);color:var(--ink);box-shadow:var(--shadow-soft)}
+
+/* ============ Section head ============ */
+section{padding:var(--sp-7) 0 0;scroll-margin-top:80px}
+.sec-head{margin-bottom:var(--sp-5)}
+.eyebrow{font-family:var(--font-label);font-size:var(--fs-label);letter-spacing:var(--track-caps);color:var(--pink-deep);text-transform:uppercase;margin:0 0 14px}
+.sec-head h2{font-family:var(--font-serif);font-weight:600;font-size:clamp(32px,4vw,52px);line-height:1.25;letter-spacing:.01em;margin:0 0 14px;text-wrap:pretty}
+.sec-head p{margin:0;max-width:720px;color:var(--ink-2);font-size:16px;text-wrap:pretty}
+.rule{height:1px;background:var(--line);margin-top:var(--sp-4)}
+
+/* ============ Hero ============ */
+.hero{padding:0;min-height:calc(100vh - 66px);display:flex;align-items:center}
+.hero-in{width:min(1180px,calc(100% - 48px));margin:0 auto;display:grid;grid-template-columns:1.02fr .98fr;gap:var(--sp-5);align-items:center;padding:var(--sp-5) 0 var(--sp-6)}
+.glass{
+  background:var(--glass);backdrop-filter:blur(22px) saturate(1.55);
+  -webkit-backdrop-filter:blur(22px) saturate(1.55);
+  border:1px solid var(--glass-line);box-shadow:var(--shadow-glass);
+}
+.hero-card{border-radius:var(--r-card);padding:clamp(30px,3.6vw,52px);position:relative;overflow:hidden;animation:rise .9s var(--ease) both}
+.hero-card::after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:var(--pink);filter:blur(70px);opacity:.5;top:-110px;right:-90px;pointer-events:none}
+.hero-kicker{font-family:var(--font-label);font-size:var(--fs-micro);letter-spacing:var(--track-caps);color:var(--ink-3);margin:0 0 20px}
+.hero h1{font-family:var(--font-serif);font-weight:600;font-size:clamp(38px,5vw,68px);line-height:1.16;letter-spacing:.005em;margin:0 0 8px;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--pink-deep)}
+/* 弯撇号：字号收小、基线微抬，避开直引号那种机械的 AI 感 */
+.hero h1 .apos{
+  font-family:Georgia,"Times New Roman",var(--font-serif);
+  font-weight:400;font-size:.78em;line-height:0;
+  vertical-align:.09em;margin:0 -.035em;color:inherit;
+}
+.hero-sub{font-family:var(--font-serif);font-size:clamp(19px,2vw,25px);line-height:1.6;margin:0 0 18px;color:var(--ink);text-wrap:pretty}
+.hero-meta{font-size:var(--fs-ui);color:var(--ink-2);margin:0 0 26px}
+.hero-meta b{font-weight:600;color:var(--ink)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.tags span{
+  font-family:var(--font-ui);font-size:var(--fs-label);font-weight:500;letter-spacing:.01em;
+  color:var(--ink-2);background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.9);
+  padding:6px 12px;border-radius:var(--r-pill);white-space:nowrap;
+}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;
+  padding:14px 24px;border-radius:var(--r-pill);
+  font-family:var(--font-ui);font-size:var(--fs-small);font-weight:500;letter-spacing:.01em;
+  transition:transform var(--dur-trans) var(--ease),box-shadow var(--dur-trans) var(--ease);
+}
+.hero-cta:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
+.hero-cta svg{transition:transform var(--dur-trans) var(--ease)}
+.hero-cta:hover svg{transform:translateX(4px)}
+
+/* ============ IP stage：分层 3D 转身 ============ */
+.ip-col{position:relative;display:flex;flex-direction:column;align-items:center;animation:rise .9s var(--ease) .12s both}
+.ip-scene{position:relative;width:min(100%,440px);aspect-ratio:1024/1424;perspective:1400px;isolation:isolate}
+.ip-glow{
+  position:absolute;inset:10% -10% -4%;border-radius:50%;z-index:0;
+  background:linear-gradient(140deg,var(--pink),var(--lilac),var(--mint));
+  filter:blur(60px);opacity:.5;animation:glowBreathe 7s ease-in-out infinite;
+}
+@keyframes glowBreathe{0%,100%{transform:scale(1) translateY(0);opacity:.44}50%{transform:scale(1.09) translateY(-14px);opacity:.62}}
+.ip-orbit{position:absolute;border:1px solid rgba(255,255,255,.55);border-radius:50%;pointer-events:none;z-index:0}
+.ip-orbit-a{inset:-4% -9% 6%;animation:orbitDrift 12s ease-in-out infinite}
+.ip-orbit-b{inset:8% -14% -2%;border-color:rgba(229,139,166,.34);animation:orbitDrift 16s ease-in-out infinite reverse}
+@keyframes orbitDrift{0%,100%{transform:rotate(-4deg) scale(1)}50%{transform:rotate(5deg) scale(1.04)}}
+.ip-stage{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
+.ip-turn{
+  position:absolute;inset:0;transform-style:preserve-3d;
+  transform:rotateY(0deg);
+  animation:turnCycle 10s cubic-bezier(.62,.02,.28,1) infinite;
+}
+@keyframes turnCycle{
+  0%,36%{transform:rotateY(0deg) translateZ(0) scale(1)}
+  44%{transform:rotateY(-90deg) translateZ(26px) scale(.965)}
+  50%,86%{transform:rotateY(-180deg) translateZ(0) scale(1)}
+  92%{transform:rotateY(-270deg) translateZ(26px) scale(.965)}
+  100%{transform:rotateY(-360deg) translateZ(0) scale(1)}
+}
+.ip-frame{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  border-radius:180px 180px 24px 24px;box-shadow:0 30px 70px rgba(78,66,104,.20);
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+}
+.frame-front{transform:rotateY(0deg)}
+.frame-typing{transform:rotateY(180deg);animation:typeBob 1.1s ease-in-out infinite}
+@keyframes typeBob{0%,100%{translate:0 0}50%{translate:0 -3px}}
+.ip-scene.manual-front .ip-turn{animation:none;transform:rotateY(0deg)}
+.ip-scene.manual-front .frame-typing{animation:none}
+.ip-scene.manual-typing .ip-turn{animation:none;transform:rotateY(-180deg)}
+.ip-scene.manual-typing .frame-typing{animation:typeBob 1.1s ease-in-out infinite}
+.ip-scene.is-paused .ip-turn,.ip-scene.is-paused .ip-glow,.ip-scene.is-paused .ip-orbit{animation-play-state:paused}
+.ip-turn{transition:transform 1s var(--ease)}
+.ip-spark{position:absolute;z-index:3;width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 14px 4px rgba(255,255,255,.9);pointer-events:none;animation:sparkFloat 5s ease-in-out infinite}
+.ip-spark.s1{top:16%;right:8%;animation-delay:0s}
+.ip-spark.s2{top:34%;left:-4%;width:6px;height:6px;animation-delay:1.4s}
+.ip-spark.s3{bottom:24%;right:-3%;width:5px;height:5px;animation-delay:2.8s}
+@keyframes sparkFloat{0%,100%{opacity:.2;transform:translateY(0) scale(.8)}50%{opacity:1;transform:translateY(-16px) scale(1.25)}}
+.ip-float{
+  position:absolute;z-index:4;transform:translateZ(60px);
+  background:rgba(255,255,255,.74);backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border:1px solid var(--glass-line);border-radius:var(--r-pill);
+  padding:7px 13px;font-family:var(--font-label);font-size:var(--fs-micro);
+  letter-spacing:.06em;color:var(--ink-2);box-shadow:var(--shadow-soft);
+  white-space:nowrap;pointer-events:none;animation:floatBob 6s ease-in-out infinite;
+}
+.ip-float.f1{top:12%;left:-12%;animation-delay:.6s}
+.ip-float.f2{bottom:16%;right:-14%;animation-delay:2.2s}
+@keyframes floatBob{0%,100%{transform:translateZ(60px) translateY(0)}50%{transform:translateZ(60px) translateY(-12px)}}
+.frame-switch{display:flex;align-items:center;gap:10px;margin-top:22px;font-family:var(--font-label);font-size:var(--fs-micro);color:var(--ink-3);letter-spacing:.08em}
+.frame-switch button{width:9px;height:9px;border-radius:50%;background:rgba(43,42,51,.20);padding:0;transition:background var(--dur-trans),transform var(--dur-trans)}
+.frame-switch button:hover{transform:scale(1.4)}
+.frame-switch button.on{background:var(--pink-deep)}
+.frame-switch .fs-label{margin-left:6px}
+.ip-progress{width:64px;height:2px;border-radius:2px;background:rgba(43,42,51,.14);overflow:hidden;margin-left:6px}
+.ip-progress i{display:block;height:100%;width:0;background:var(--pink-deep);animation:ipProgress 10s linear infinite}
+.ip-scene.manual-front~.frame-switch .ip-progress i,.ip-scene.manual-typing~.frame-switch .ip-progress i{animation:none;width:100%}
+@keyframes ipProgress{from{width:0}to{width:100%}}
+/* 首屏 IP 悬停播放：静态首帧 → 只播一次 → 末帧高清定格。三层与视频同为 1440:1920，不裁切不拉伸 */
+.ip-scene.ip-hover-video{aspect-ratio:1440/1920;perspective:none}
+.ip-scene.ip-hover-video .ip-stage{transform-style:flat;will-change:auto}
+.ip-scene.ip-hover-video .ip-turn{animation:none!important;transform:none!important;transform-style:flat;transition:none}
+.ip-hover-layer{
+  position:absolute;inset:0;display:block;width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  border-radius:180px 180px 24px 24px;box-shadow:0 30px 70px rgba(78,66,104,.20);
+  pointer-events:none;user-select:none;-webkit-user-select:none;
+  backface-visibility:visible;-webkit-backface-visibility:visible;
+}
+#ipStill{z-index:3;opacity:1;transition:opacity var(--dur-micro) var(--ease)}
+#ipVideo{z-index:2;opacity:1}
+#ipFreeze{z-index:4;opacity:0;transition:opacity var(--dur-micro) var(--ease)}
+.ip-scene.ip-hover-video.is-playing #ipStill{opacity:0}
+.ip-scene.ip-hover-video.is-frozen #ipFreeze{opacity:1}
+.ip-scene.ip-hover-video~.frame-switch{display:none}
+/* 声音开关：仅在视频开始播放后出现，不打扰首屏静态画面 */
+.ip-sound{
+  position:absolute;right:16px;bottom:16px;z-index:6;display:none;
+  align-items:center;gap:7px;padding:8px 13px;border-radius:var(--r-pill);
+  border:1px solid rgba(255,255,255,.78);background:rgba(255,255,255,.84);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  box-shadow:0 8px 22px rgba(78,66,104,.20);
+  color:var(--ink-2);font-family:var(--font-label);font-size:var(--fs-micro);
+  letter-spacing:.06em;white-space:nowrap;cursor:pointer;pointer-events:auto;
+  transition:transform .2s var(--ease),background var(--dur-micro) var(--ease);
+}
+.ip-scene.ip-hover-video.is-playing .ip-sound,
+.ip-scene.ip-hover-video.is-frozen .ip-sound{display:inline-flex}
+.ip-sound:hover{transform:translateY(-2px);background:#fff}
+.ip-sound:focus-visible{outline:2px solid var(--pink-deep);outline-offset:3px}
+.ip-sound svg{width:14px;height:14px;flex:none}
+.ip-sound .ico-on{display:none}
+.ip-sound[data-sound="on"] .ico-on{display:block}
+.ip-sound[data-sound="on"] .ico-off{display:none}
+@media (max-width:560px){.ip-sound{right:12px;bottom:12px;padding:7px 11px}}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+
+/* ============ Works ============ */
+.works{display:grid;gap:var(--sp-4)}
+/* PlanNote 界面图组 */
+.pn-gallery{margin-top:var(--sp-5);padding:26px 28px 24px;border:1px solid var(--line);border-radius:var(--r-card);background:var(--surface);box-shadow:var(--shadow-soft)}
+.pn-gallery-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.pn-gallery h3{font-family:var(--font-serif);font-size:22px;font-weight:600;margin:0}
+.pn-gallery-head span{font-family:var(--font-label);font-size:var(--fs-micro);letter-spacing:var(--track-label);color:var(--ink-3);text-transform:uppercase}
+.pn-gallery-note{font-family:var(--font-ui);font-size:var(--fs-cap);color:var(--ink-2);line-height:1.8;margin:10px 0 20px;text-wrap:pretty}
+.pn-shots{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--sp-2)}
+.pn-shots button{display:flex;flex-direction:column;gap:8px;padding:0;text-align:left;background:none}
+.pn-shots .pn-frame{position:relative;aspect-ratio:16/10;border:1px solid var(--line);border-radius:var(--r-sm);background:#F7F5F9;overflow:hidden;transition:transform var(--dur-trans) var(--ease),box-shadow var(--dur-trans),border-color var(--dur-trans)}
+.pn-shots button:hover .pn-frame{transform:translateY(-4px);box-shadow:var(--shadow-lift);border-color:rgba(229,139,166,.5)}
+.pn-shots img{position:absolute;top:7px;left:7px;width:calc(100% - 14px);height:calc(100% - 14px);object-fit:contain;display:block}
+.pn-shots small{font-family:var(--font-label);font-size:var(--fs-micro);letter-spacing:.06em;color:var(--ink-3)}
+.pn-gallery-foot{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.pn-gallery-foot a{font-family:var(--font-ui);font-size:var(--fs-small);font-weight:600;color:var(--ink);padding:9px 15px;border:1px solid var(--line);border-radius:var(--r-pill);transition:background var(--dur-trans),border-color var(--dur-trans),transform var(--dur-trans) var(--ease)}
+.pn-gallery-foot a:hover{background:var(--pink);border-color:rgba(229,139,166,.6);transform:translateY(-2px)}
+.work-card{
+  border-radius:var(--r-card);overflow:hidden;display:grid;grid-template-columns:44% 1fr;
+  transition:transform var(--dur-trans) var(--ease),box-shadow var(--dur-trans) var(--ease);
+}
+.work-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift)}
+.work-media{position:relative;display:block;width:100%;aspect-ratio:16/11;overflow:hidden;background:var(--lilac);padding:0;text-align:left}
+.work-media img{width:100%;height:100%;object-fit:cover;transition:transform var(--dur-zoom) var(--ease)}
+.work-media:hover img{transform:scale(1.045)}
+.work-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(30,26,40,.30));pointer-events:none}
+.work-media.is-pending::after{display:none}
+.media-hint{position:absolute;left:18px;bottom:16px;z-index:2;color:#fff;font-family:var(--font-label);font-size:var(--fs-label);letter-spacing:.08em;display:flex;align-items:center;gap:8px;text-shadow:0 1px 8px rgba(0,0,0,.35)}
+.play-badge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.82);backdrop-filter:blur(10px);display:grid;place-items:center;box-shadow:0 10px 30px rgba(30,26,40,.22);transition:transform var(--dur-trans) var(--ease),background var(--dur-trans)}
+.work-media:hover .play-badge{transform:translate(-50%,-50%) scale(1.1);background:#fff}
+.play-badge svg{margin-left:3px}
+.work-body{padding:clamp(24px,2.6vw,38px);display:flex;flex-direction:column;justify-content:center}
+.work-num{font-family:var(--font-label);font-size:var(--fs-label);letter-spacing:var(--track-label);color:var(--pink-deep);margin:0 0 10px}
+.work-body h3{font-family:var(--font-serif);font-size:clamp(22px,2.2vw,30px);font-weight:600;line-height:1.3;margin:0 0 12px;text-wrap:pretty}
+.work-summary{font-size:15px;color:var(--ink-2);margin:0 0 20px;text-wrap:pretty}
+.work-facts{margin:0 0 24px;display:grid;gap:8px}
+.work-facts div{display:grid;grid-template-columns:56px 1fr;gap:12px;font-size:var(--fs-small);align-items:start}
+.work-facts dt{color:var(--ink-3);font-family:var(--font-label);font-size:var(--fs-micro);letter-spacing:.06em;padding-top:3px}
+.work-facts dd{margin:0;color:var(--ink);font-family:var(--font-ui);font-size:var(--fs-small);line-height:1.6}
+.work-actions{display:flex;flex-wrap:wrap;gap:10px}
+#processNarrative .nlab{display:block;font-family:var(--font-label);font-size:var(--fs-nano);letter-spacing:var(--track-label);color:var(--pink-deep);font-weight:600;margin-bottom:7px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:var(--r-pill);
+  font-family:var(--font-ui);font-size:var(--fs-small);font-weight:500;letter-spacing:.01em;
+  border:1px solid var(--line);background:rgba(255,255,255,.7);
+  transition:transform var(--dur-trans) var(--ease),background var(--dur-trans) var(--ease),box-shadow var(--dur-trans) var(--ease);
+}
+.btn:hover{transform:translateY(-2px);background:#fff;box-shadow:var(--shadow-soft)}
+.btn-primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn-primary:hover{background:#3D3B48}
+.btn svg{opacity:.8}
+
+/* ============ PPT 产出 ============ */
+.ppt-group{margin-bottom:var(--sp-5)}
+.group-title{display:flex;align-items:baseline;gap:14px;margin:0 0 22px}
+.group-title h3{font-family:var(--font-serif);font-size:22px;font-weight:600;margin:0}
+.group-title span{font-family:var(--font-label);font-size:var(--fs-label);color:var(--ink-3);letter-spacing:.08em}
+.ppt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-3)}
+.ppt-grid.four{grid-template-columns:repeat(4,1fr);gap:var(--sp-2)}
+.ppt-grid.two{grid-template-columns:repeat(2,1fr);gap:var(--sp-3)}
+.ppt-grid.single{grid-template-columns:1fr}
+.ppt-grid.single .deck{flex-direction:row}
+.ppt-grid.single .deck-cover{width:44%;flex:none;aspect-ratio:auto}
+.ppt-grid.single .deck-info{flex:1;justify-content:center;padding:28px 34px}
+.ppt-grid.single .deck-info h4{font-size:20px}
+.ppt-grid.single .deck-info p{font-size:var(--fs-ui);flex:none}
+.ppt-grid.single .thumbs{max-width:330px}
+.ppt-grid.single .deck-cta{margin-top:24px;align-self:flex-start}
+.deck{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden;
+  box-shadow:var(--shadow-soft);text-align:left;padding:0;display:flex;flex-direction:column;
+  transition:transform var(--dur-trans) var(--ease),box-shadow var(--dur-trans) var(--ease);
+}
+.deck:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift)}
+.deck-cover{position:relative;aspect-ratio:16/9;overflow:hidden;background:#EFECF3}
+.deck-cover img{width:100%;height:100%;object-fit:cover;transition:transform var(--dur-zoom) var(--ease)}
+.deck:hover .deck-cover img{transform:scale(1.04)}
+.deck-cover .count{position:absolute;right:10px;top:10px;background:rgba(43,42,51,.78);color:#fff;font-family:var(--font-label);font-size:var(--fs-micro);letter-spacing:.04em;padding:4px 9px;border-radius:var(--r-pill);backdrop-filter:blur(6px)}
+.deck-cover .open-badge{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.9);color:var(--ink);font-family:var(--font-label);font-size:var(--fs-nano);letter-spacing:.06em;padding:4px 9px;border-radius:var(--r-pill)}
+.deck-info{padding:18px 20px 20px;flex:1;display:flex;flex-direction:column}
+.deck-info h4{font-family:var(--font-ui);font-size:15px;font-weight:600;line-height:1.45;margin:0 0 7px;text-wrap:pretty}
+.deck-info p{font-family:var(--font-ui);font-size:var(--fs-cap);color:var(--ink-3);margin:0 0 14px;line-height:1.6;flex:1;text-wrap:pretty}
+.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.thumbs img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:5px;border:1px solid var(--line)}
+.ppt-grid.four .deck-info{padding:14px 15px 16px}
+.ppt-grid.four .deck-info h4{font-size:var(--fs-small)}
+.ppt-grid.four .deck-info p{font-size:var(--fs-label);margin-bottom:10px}
+.small-note{font-family:var(--font-ui);font-size:var(--fs-small);color:var(--ink-3);border-top:1px solid var(--line);padding-top:20px;margin:0}
+.small-note a{color:var(--pink-deep);border-bottom:1px solid var(--pink-deep)}
+
+/* ============ 自制 Skill · 分组模块 ============ */
+.skill-group{margin-bottom:var(--sp-5)}
+.skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-3)}
+.skill-card{
+  position:relative;display:flex;flex-direction:column;gap:11px;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);
+  padding:24px 26px 26px;box-shadow:var(--shadow-soft);
+  transition:transform var(--dur-trans) var(--ease),box-shadow var(--dur-trans) var(--ease);
+}
+.skill-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
+.skill-no{position:absolute;right:24px;top:24px;font-family:var(--font-label);font-size:var(--fs-nano);letter-spacing:.12em;color:var(--pink-deep)}
+.skill-card h4{font-family:var(--font-label);font-size:14px;font-weight:600;color:var(--ink);margin:0;line-height:1.5;word-break:break-word;padding-right:34px}
+.skill-card p{font-family:var(--font-ui);font-size:var(--fs-small);color:var(--ink-2);line-height:1.75;margin:0;text-wrap:pretty}
+
+/* ============ Club · B 站预览卡 ============ */
+.club-box{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:clamp(26px,3vw,44px);box-shadow:var(--shadow-soft)}
+.club-box>p{font-size:16px;color:var(--ink-2);margin:0 0 8px;max-width:820px;text-wrap:pretty}
+.club-stats{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 34px}
+.club-stats span{font-family:var(--font-label);font-size:var(--fs-small);background:var(--pink);color:var(--ink);padding:8px 15px;border-radius:var(--r-pill)}
+.club-group-head{display:flex;align-items:baseline;gap:12px;margin:0 0 18px}
+.club-group-head h4{font-family:var(--font-ui);font-size:var(--fs-small);font-weight:600;letter-spacing:.02em;margin:0}
+.club-group-head span{font-family:var(--font-label);font-size:var(--fs-micro);letter-spacing:var(--track-label);color:var(--ink-3);text-transform:uppercase}
+.bili-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-2);margin-bottom:var(--sp-4)}
+.bili-grid.bili-lead{grid-template-columns:repeat(2,1fr);gap:var(--sp-3);margin-bottom:var(--sp-5)}
+.bili-lead .bili-cover{aspect-ratio:16/8}
+.bili-lead .bili-info{padding:18px 20px 20px;gap:10px}
+.bili-lead .bili-info h4{font-size:16px;flex:none}
+.bili-lead .bili-play{width:56px;height:56px}
+.bili-cover img.is-broken{opacity:0}
+.bili-grid>.bili-card:nth-child(7){grid-column:1/-1;flex-direction:row;align-items:stretch}
+.bili-grid>.bili-card:nth-child(7) .bili-cover{width:44%;flex:none;aspect-ratio:auto}
+.bili-grid>.bili-card:nth-child(7) .bili-info{padding:22px 26px;justify-content:center;gap:12px}
+.bili-grid>.bili-card:nth-child(7) .bili-info h4{font-size:16px;flex:none}
+.bili-card{
+  display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r-sm);
+  overflow:hidden;background:#FCFBFD;transition:transform var(--dur-trans) var(--ease),box-shadow var(--dur-trans) var(--ease),border-color .35s;
+}
+.bili-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift);border-color:rgba(251,114,153,.42)}
+.bili-cover{position:relative;aspect-ratio:16/9;overflow:hidden;background:#EFECF3}
+.bili-cover img{width:100%;height:100%;object-fit:cover;transition:transform var(--dur-zoom) var(--ease)}
+.bili-card:hover .bili-cover img{transform:scale(1.06)}
+.bili-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(20,18,26,.55));pointer-events:none}
+.bili-play{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;
+  width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.9);
+  display:grid;place-items:center;box-shadow:0 8px 24px rgba(20,18,26,.3);
+  transition:transform var(--dur-trans) var(--ease),background .3s;
+}
+.bili-card:hover .bili-play{transform:translate(-50%,-50%) scale(1.12);background:#fff}
+.bili-play svg{margin-left:2px}
+.bili-dur,.bili-view{position:absolute;bottom:9px;z-index:2;color:#fff;font-family:var(--font-label);font-size:var(--fs-nano);letter-spacing:.04em;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.bili-dur{right:9px;background:rgba(20,18,26,.62);padding:2px 6px;border-radius:4px}
+.bili-view{left:9px}
+.bili-info{padding:14px 15px 15px;display:flex;flex-direction:column;flex:1;gap:8px}
+.bili-tag{font-family:var(--font-label);font-size:var(--fs-nano);letter-spacing:.08em;color:var(--bili)}
+.bili-info h4{font-family:var(--font-ui);font-size:var(--fs-small);font-weight:600;line-height:1.5;margin:0;flex:1;text-wrap:pretty}
+.bili-go{
+  display:inline-flex;align-items:center;gap:6px;align-self:flex-start;
+  font-family:var(--font-ui);font-size:var(--fs-label);font-weight:600;color:var(--bili);
+  border-bottom:1px solid rgba(251,114,153,.5);padding-bottom:2px;
+}
+.bili-go svg{width:12px;height:12px}
+.space-card{
+  display:grid;grid-template-columns:1fr auto;gap:0;overflow:hidden;
+  border:1px solid var(--line);border-radius:var(--r-card);background:#fff;
+  transition:transform var(--dur-trans) var(--ease),box-shadow var(--dur-trans) var(--ease),border-color .35s;
+}
+.space-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift);border-color:rgba(251,114,153,.42)}
+.space-banner{
+  position:relative;height:96px;
+  background:linear-gradient(115deg,#FFD3E0 0%,#FBC2D4 38%,#C9E7F2 100%);
+  overflow:hidden;
+}
+.space-banner::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 30%,rgba(255,255,255,.75),transparent 42%),radial-gradient(circle at 20% 120%,rgba(251,114,153,.3),transparent 55%)}
+.space-banner .bili-wordmark{position:absolute;left:20px;top:16px;font-family:var(--font-label);font-weight:700;font-size:19px;letter-spacing:-.06em;color:var(--bili)}
+.space-banner .bili-wordmark small{display:block;font-size:var(--fs-nano);letter-spacing:.18em;color:rgba(43,42,51,.5);font-weight:500;margin-top:2px}
+.space-banner .space-hint{position:absolute;right:20px;bottom:14px;font-family:var(--font-label);font-size:var(--fs-nano);letter-spacing:.1em;color:rgba(43,42,51,.55)}
+.space-body{grid-column:1/-1;display:flex;align-items:center;gap:16px;padding:20px 22px 22px;flex-wrap:wrap}
+.space-avatar{width:58px;height:58px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:var(--shadow-soft);margin-top:-34px;position:relative;z-index:2;flex:none}
+.space-id{flex:1;min-width:150px}
+.space-id b{display:block;font-family:var(--font-ui);font-size:16px;font-weight:600;line-height:1.4}
+.space-id small{display:block;font-family:var(--font-label);font-size:var(--fs-micro);color:var(--ink-3);letter-spacing:.06em;margin-top:2px}
+.space-stats{display:flex;gap:18px;font-family:var(--font-label);font-size:var(--fs-micro);color:var(--ink-2)}
+.space-stats b{display:block;font-size:15px;color:var(--ink);font-weight:600}
+.space-open{
+  display:inline-flex;align-items:center;gap:8px;background:var(--bili);color:#fff;
+  padding:11px 20px;border-radius:var(--r-pill);font-family:var(--font-ui);font-size:var(--fs-small);font-weight:600;
+  box-shadow:0 8px 22px rgba(251,114,153,.3);transition:transform var(--dur-trans) var(--ease),box-shadow .3s;
+}
+.space-card:hover .space-open{transform:translateX(3px);box-shadow:0 12px 28px rgba(251,114,153,.4)}
+
+/* ============ Materials：默认可见成绩卡 ============ */
+.mat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-2)}
+.mat{
+  border:1px solid var(--line);border-radius:var(--r-card);background:var(--surface);
+  box-shadow:var(--shadow-soft);padding:22px 20px;display:flex;flex-direction:column;gap:14px;
+}
+.mat-top{display:flex;align-items:center;gap:12px}
+.mat-ico{width:40px;height:40px;flex:none;border-radius:12px;display:grid;place-items:center;background:var(--pink)}
+.mat:nth-child(2) .mat-ico{background:var(--mint)}
+.mat:nth-child(3) .mat-ico{background:var(--lilac)}
+.mat:nth-child(4) .mat-ico{background:var(--peach)}
+.mat-top b{display:block;font-family:var(--font-ui);font-size:var(--fs-ui);font-weight:600;line-height:1.4}
+.mat-top small{display:block;font-family:var(--font-label);font-size:var(--fs-micro);color:var(--ink-3);letter-spacing:.06em;margin-top:2px}
+.mat-score{font-family:var(--font-serif);font-size:38px;font-weight:600;line-height:1;color:var(--ink);letter-spacing:-.02em}
+.mat-score small{font-family:var(--font-label);font-size:var(--fs-micro);color:var(--ink-3);letter-spacing:.06em;margin-left:6px}
+.mat-bars{display:grid;gap:7px}
+.mat-bar{display:grid;grid-template-columns:52px 1fr 26px;gap:8px;align-items:center;font-family:var(--font-label);font-size:var(--fs-nano);color:var(--ink-3)}
+.mat-bar i{display:block;height:5px;border-radius:3px;background:#F0EDF4;overflow:hidden}
+.mat-bar i b{display:block;height:100%;border-radius:3px;background:var(--pink-deep)}
+.mat:nth-child(2) .mat-bar i b{background:#8FC7B2}
+.mat:nth-child(3) .mat-bar i b{background:#A99AD0}
+.mat-bar em{font-style:normal;color:var(--ink);font-weight:600;text-align:right}
+.mat-detail{font-family:var(--font-ui);font-size:var(--fs-cap);color:var(--ink-2);line-height:1.75;margin:0;text-wrap:pretty}
+.mat-detail a{color:var(--pink-deep);border-bottom:1px solid var(--pink-deep);font-weight:500}
+.mat-foot{margin-top:auto;font-family:var(--font-label);font-size:var(--fs-nano);letter-spacing:.06em;color:var(--ink-3);border-top:1px solid var(--line);padding-top:12px}
+.privacy-note{font-family:var(--font-ui);font-size:var(--fs-cap);color:var(--ink-3);margin:18px 0 0}
+.mat-file{gap:18px;min-height:184px}
+.mat-brief{font-family:var(--font-ui);font-size:var(--fs-cap);color:var(--ink-2);line-height:1.8;margin:0;flex:1;text-wrap:pretty}
+.mat-open{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 15px;border:1px solid var(--line);border-radius:var(--r-sm);background:#FCFBFD;font-family:var(--font-ui);font-size:var(--fs-small);font-weight:600;color:var(--ink);transition:transform var(--dur-trans) var(--ease),box-shadow var(--dur-trans),border-color var(--dur-trans)}
+.mat-open svg{flex:none;color:var(--pink-deep)}
+.mat-open:hover{transform:translateY(-2px);box-shadow:var(--shadow-soft);border-color:rgba(229,139,166,.6)}
+
+/* ============ Photos · 自动轮播 ============ */
+.photos{margin-top:var(--sp-6)}
+.photos-head{display:flex;align-items:baseline;gap:16px;margin:0 0 20px;flex-wrap:wrap}
+.photos h3{font-family:var(--font-serif);font-size:24px;font-weight:600;margin:0}
+.photos-head span{font-family:var(--font-label);font-size:var(--fs-micro);letter-spacing:.08em;color:var(--ink-3)}
+.carousel{position:relative}
+.car-stage{
+  position:relative;width:100%;aspect-ratio:16/8;min-height:340px;
+  border-radius:var(--r-card);overflow:hidden;
+  background:linear-gradient(135deg,var(--pink) 0%,var(--lilac) 48%,var(--mint) 100%);
+  box-shadow:var(--shadow-glass);border:1px solid var(--glass-line);isolation:isolate;
+}
+.car-photos{position:absolute;inset:0}
+.car-photo{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transform:scale(1.03);transition:opacity var(--dur-enter) var(--ease);cursor:zoom-in;
+}
+.car-photo.on{opacity:1;animation:carKen 5.4s ease-out forwards}
+@keyframes carKen{from{transform:scale(1.03)}to{transform:scale(1)}}
+.car-shade{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(24,20,32,.30) 0%,transparent 34%,transparent 50%,rgba(24,20,32,.74) 100%)}
+.car-top{position:absolute;left:24px;right:24px;top:20px;z-index:4;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.car-group{font-family:var(--font-label);font-size:var(--fs-micro);letter-spacing:.12em;color:#fff;background:rgba(255,255,255,.20);border:1px solid rgba(255,255,255,.38);padding:6px 13px;border-radius:var(--r-pill);backdrop-filter:blur(10px)}
+.car-count{font-family:var(--font-label);font-size:var(--fs-micro);letter-spacing:.14em;color:rgba(255,255,255,.92);text-shadow:0 1px 8px rgba(0,0,0,.45)}
+.car-caption{position:absolute;left:26px;bottom:30px;right:120px;z-index:4}
+.car-cap{display:block;font-family:var(--font-serif);font-size:clamp(20px,2.4vw,30px);font-weight:600;color:#fff;line-height:1.35;text-shadow:0 2px 16px rgba(0,0,0,.5);text-wrap:pretty}
+.car-cap::before{content:"";display:block;width:26px;height:2px;background:var(--pink-deep);margin-bottom:12px;border-radius:2px}
+.car-nav{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:5;
+  width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.88);
+  display:grid;place-items:center;box-shadow:0 6px 22px rgba(20,18,26,.28);
+  backdrop-filter:blur(8px);transition:transform var(--dur-trans) var(--ease),background .3s;
+}
+.car-nav:hover{transform:translateY(-50%) scale(1.12);background:#fff}
+.car-nav.prev{left:18px}
+.car-nav.next{right:18px}
+.car-progress{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.30);z-index:5}
+.car-progress i{display:block;height:100%;width:100%;background:var(--pink-deep);box-shadow:0 0 12px rgba(229,139,166,.8);transform:scaleX(0);transform-origin:left center}
+.car-strip{display:flex;gap:8px;margin-top:14px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:thin}
+.car-strip button{flex:none;width:78px;height:54px;padding:0;border:2px solid transparent;border-radius:9px;overflow:hidden;opacity:.55;transition:opacity var(--dur-trans),transform var(--dur-trans) var(--ease),border-color .3s;background:#F0EDF4}
+.car-strip button img{width:100%;height:100%;object-fit:cover;display:block}
+.car-strip button:hover{opacity:.9;transform:translateY(-2px)}
+.car-strip button.on{opacity:1;border-color:var(--pink-deep);transform:translateY(-3px);box-shadow:0 6px 16px rgba(229,139,166,.35)}
+.car-tip{text-align:center;font-family:var(--font-label);font-size:var(--fs-micro);letter-spacing:.08em;color:var(--ink-3);margin:6px 0 0}
+
+/* ============ Research ============ */
+.papers{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-3);align-items:start}
+.paper{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:clamp(24px,2.6vw,36px);box-shadow:var(--shadow-soft)}
+.paper-tag{font-family:var(--font-label);font-size:var(--fs-micro);letter-spacing:.14em;color:var(--pink-deep);margin:0 0 14px}
+.paper h3{font-family:var(--font-serif);font-size:clamp(19px,1.8vw,24px);font-weight:600;line-height:1.45;margin:0 0 8px;text-wrap:pretty}
+.paper .paper-en{font-size:var(--fs-cap);color:var(--ink-3);line-height:1.6;margin:0 0 22px;text-wrap:pretty}
+.fields{margin:0;display:grid;gap:0}
+.fields>div{border-top:1px solid var(--line);padding:15px 0;display:grid;grid-template-columns:88px 1fr;gap:16px;align-items:start}
+.fields dt{font-family:var(--font-label);font-size:var(--fs-micro);letter-spacing:.06em;color:var(--ink-3);padding-top:3px}
+.fields dd{margin:0;font-size:var(--fs-small);line-height:1.85;color:var(--ink-2);text-wrap:pretty}
+.fields dd b{color:var(--ink);font-weight:600}
+.chips-inline{display:flex;flex-wrap:wrap;gap:6px}
+.chips-inline span{font-family:var(--font-label);font-size:var(--fs-micro);background:#F4F1F7;border:1px solid var(--line);padding:4px 9px;border-radius:var(--r-pill);color:var(--ink-2)}
+.fields>div.model-row{display:block}
+.fields>div.model-row dt{margin-bottom:10px}
+.model-fig{margin:0}
+.model-fig button{display:block;width:100%;padding:0;border-radius:var(--r-sm);overflow:hidden;border:1px solid var(--line);background:#fff;cursor:zoom-in;transition:box-shadow var(--dur-trans) var(--ease),transform var(--dur-trans) var(--ease)}
+.model-fig button:hover{box-shadow:var(--shadow-lift);transform:translateY(-2px)}
+.model-fig img{width:100%;display:block}
+.model-fig figcaption{font-family:var(--font-ui);font-size:var(--fs-micro);color:var(--ink-3);line-height:1.7;margin-top:9px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+.model-fig figcaption button{font-family:var(--font-ui);font-size:var(--fs-micro);color:var(--pink-deep);border-bottom:1px solid var(--pink-deep);padding:0;line-height:1.5}
+.research-note{font-family:var(--font-ui);font-size:var(--fs-cap);color:var(--ink-3);margin:22px 0 0}
+
+/* ============ Footer ============ */
+footer{margin-top:var(--sp-7);padding:var(--sp-5) 0 var(--sp-4);border-top:1px solid var(--line);position:relative;z-index:1}
+.foot-in{width:min(1180px,calc(100% - 48px));margin:0 auto;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.foot-name{font-family:var(--font-serif);font-size:clamp(28px,3.4vw,44px);font-weight:600;margin:0 0 6px}
+.foot-sub{font-size:var(--fs-small);color:var(--ink-3);margin:0}
+.to-top{font-family:var(--font-ui);font-size:var(--fs-small);color:var(--ink-2);display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid var(--line);border-radius:var(--r-pill);background:rgba(255,255,255,.6);transition:transform var(--dur-trans) var(--ease),background var(--dur-trans)}
+.to-top:hover{transform:translateY(-2px);background:#fff}
+
+/* ============ Modal ============ */
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:24px}
+.modal.open{display:flex}
+.modal-backdrop{position:absolute;inset:0;background:rgba(38,34,48,.52);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;transition:opacity var(--dur-trans) ease}
+.modal-panel{position:relative;z-index:2;background:var(--surface);border-radius:var(--r-card);box-shadow:0 30px 90px rgba(30,26,40,.30);max-height:calc(100vh - 48px);overflow:auto;width:min(860px,100%)}
+/* 三种弹层共用同一组进出场：遮罩淡入，面板轻微上浮；关闭时反向淡出 */
+.modal .modal-panel,.modal .viewer,.modal .media-modal{opacity:0;transform:translateY(16px) scale(.985);transition:opacity var(--dur-trans) var(--ease),transform var(--dur-trans) var(--ease)}
+.modal.is-in .modal-backdrop{opacity:1}
+.modal.is-in .modal-panel,.modal.is-in .viewer,.modal.is-in .media-modal{opacity:1;transform:none}
+.modal-close{position:absolute;right:16px;top:16px;z-index:4;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center;box-shadow:var(--shadow-soft);transition:transform var(--dur-trans) var(--ease)}
+.modal-close:hover{transform:rotate(90deg)}
+.process-head{padding:clamp(28px,3.4vw,44px) clamp(28px,3.4vw,44px) 24px;border-bottom:1px solid var(--line)}
+.process-head .work-num{margin-bottom:8px}
+.process-head h3{font-family:var(--font-serif);font-size:clamp(24px,2.8vw,34px);font-weight:600;margin:0 0 10px;text-wrap:pretty}
+.process-head p{font-size:var(--fs-ui);color:var(--ink-2);margin:0;text-wrap:pretty}
+.process-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.process-col{padding:clamp(24px,3vw,38px)}
+.process-col+.process-col{border-left:1px solid var(--line);background:#FCFBFD}
+.process-col h4{font-family:var(--font-label);font-size:var(--fs-micro);letter-spacing:.16em;color:var(--pink-deep);margin:0 0 18px;text-transform:uppercase}
+.process-col p{font-size:var(--fs-ui);color:var(--ink-2);line-height:1.9;margin:0 0 14px;text-wrap:pretty}
+.process-col p b{color:var(--ink);font-weight:600}
+.result-num{font-family:var(--font-mono);font-size:clamp(24px,2.6vw,34px);color:var(--ink);line-height:1.3;margin:0 0 6px;letter-spacing:-.02em}
+.result-cap{font-family:var(--font-ui);font-size:var(--fs-cap);color:var(--ink-3);margin:0 0 22px}
+.asset-links{display:grid;gap:8px}
+.asset-links a,.asset-links button{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
+  padding:13px 16px;border:1px solid var(--line);border-radius:var(--r-sm);background:#fff;
+  font-family:var(--font-ui);font-size:var(--fs-small);text-align:left;transition:transform var(--dur-trans) var(--ease),box-shadow var(--dur-trans) var(--ease);
+}
+.asset-links a:hover,.asset-links button:hover{transform:translateX(3px);box-shadow:var(--shadow-soft)}
+.asset-links small{font-family:var(--font-label);font-size:var(--fs-micro);color:var(--ink-3);white-space:nowrap}
+.pending{font-size:var(--fs-small);color:var(--ink-3);background:#F7F5F9;border:1px dashed var(--line);border-radius:var(--r-sm);padding:16px;line-height:1.8}
+
+/* PPT viewer */
+.viewer{position:relative;z-index:2;width:min(1180px,100%);background:#211E29;border-radius:var(--r-card);overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.4)}
+.viewer-top{display:flex;align-items:center;gap:16px;padding:14px 20px;color:#fff;border-bottom:1px solid rgba(255,255,255,.13)}
+.viewer-top h3{font-family:var(--font-ui);font-size:var(--fs-ui);font-weight:600;margin:0;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.viewer-top .vcount{font-family:var(--font-label);font-size:var(--fs-label);color:rgba(255,255,255,.65);white-space:nowrap}
+.viewer-top a{font-family:var(--font-ui);font-size:var(--fs-label);color:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.28);padding:6px 12px;border-radius:var(--r-pill);white-space:nowrap}
+.viewer-top a:hover{background:rgba(255,255,255,.12)}
+.viewer-stage{position:relative;background:#17141E;display:grid;place-items:center;min-height:260px}
+.viewer-stage img{width:100%;max-height:calc(100vh - 230px);object-fit:contain}
+.viewer-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;display:grid;place-items:center;backdrop-filter:blur(8px);transition:background var(--dur-trans)}
+.viewer-nav:hover{background:rgba(255,255,255,.3)}
+.viewer-nav.prev{left:16px}.viewer-nav.next{right:16px}
+.viewer-nav:disabled{opacity:.25;cursor:default}
+.viewer-bottom{display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 20px 16px;overflow-x:auto;scrollbar-width:none}
+.viewer-bottom::-webkit-scrollbar{display:none}
+.viewer-bottom button{font-family:var(--font-label);font-size:var(--fs-micro);color:rgba(255,255,255,.55);padding:5px 9px;border-radius:6px;flex:none}
+.viewer-bottom button.on{background:rgba(255,255,255,.2);color:#fff}
+.viewer-tip{text-align:center;color:rgba(255,255,255,.4);font-family:var(--font-label);font-size:var(--fs-micro);padding-bottom:12px}
+
+/* Video / photo modal */
+.media-modal{position:relative;z-index:2;width:min(1000px,100%);background:#1B1822;border-radius:var(--r-card);overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.4)}
+.media-modal video{width:100%;height:auto;aspect-ratio:16/9;display:block;object-fit:contain;max-height:calc(100vh - 120px);background:#000}
+.media-modal img{width:100%;max-height:calc(100vh - 120px);object-fit:contain;background:#fff}
+.media-cap{padding:14px 20px;color:rgba(255,255,255,.8);font-family:var(--font-ui);font-size:var(--fs-small);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.media-cap a{color:#fff;border-bottom:1px solid rgba(255,255,255,.5)}
+
+/* ============ Reveal ============ */
+.has-js .reveal{opacity:0;transform:translateY(22px);transition:opacity var(--dur-enter) var(--ease),transform var(--dur-enter) var(--ease)}
+.has-js .reveal.in{opacity:1;transform:none}
+
+/* 按压反馈：与 hover 同区定义，避免被 hover 覆盖 */
+.btn:active,.hero-cta:active,.to-top:active,.mat-open:active,.pn-gallery-foot a:active{transform:translateY(0)}
+.car-nav:active{transform:translateY(-50%) scale(1.04)}
+
+/* ============ Responsive ============ */
+@media (max-width:1020px){
+  .hero-in{grid-template-columns:1fr;gap:var(--sp-4);padding-top:var(--sp-5)}
+  .ip-col{order:-1}
+  .ip-scene{width:min(100%,330px)}
+  .work-card{grid-template-columns:1fr}
+  .pn-shots{grid-template-columns:repeat(3,1fr)}
+  .work-media{aspect-ratio:16/9}
+  .ppt-grid.four{grid-template-columns:repeat(2,1fr)}
+  .bili-grid{grid-template-columns:repeat(2,1fr)}
+  .bili-grid>.bili-card:nth-child(7){grid-column:auto;flex-direction:column}
+  .bili-grid>.bili-card:nth-child(7) .bili-cover{width:100%;aspect-ratio:16/9}
+  .bili-grid>.bili-card:nth-child(7) .bili-info{padding:14px 15px 15px}
+  .bili-grid>.bili-card:nth-child(7) .bili-info h4{font-size:var(--fs-small);flex:1}
+  .mat-grid{grid-template-columns:repeat(2,1fr)}
+  .papers{grid-template-columns:1fr}
+  .process-body{grid-template-columns:1fr}
+  .process-col+.process-col{border-left:0;border-top:1px solid var(--line)}
+  .car-stage{aspect-ratio:16/9}
+}
+@media (max-width:680px){
+  .wrap,.nav-in,.hero-in,.foot-in{width:min(100% - 32px,1180px)}
+  section{padding-top:var(--sp-6)}
+  .sec-head{margin-bottom:var(--sp-4)}
+  .nav-in{height:58px}
+  .brand{font-size:var(--fs-label);letter-spacing:.14em}
+  .nav-links a{padding:7px 10px;font-size:var(--fs-label)}
+  .hero{min-height:auto}
+  .ip-scene{width:min(100%,270px)}
+  .ip-float{display:none}
+  .ppt-grid,.ppt-grid.four,.ppt-grid.two{grid-template-columns:1fr}
+  .skill-grid{grid-template-columns:1fr}
+  .skill-card{padding:20px 20px 22px}
+  .skill-no{right:20px;top:20px}
+  .bili-grid{grid-template-columns:1fr}
+  .pn-shots{grid-template-columns:repeat(2,1fr)}
+  .pn-gallery{padding:20px 18px}
+  .mat-grid{grid-template-columns:1fr}
+  .fields>div{grid-template-columns:1fr;gap:6px}
+  .work-facts div{grid-template-columns:52px 1fr}
+  .modal{padding:12px}
+  .modal-panel{max-height:calc(100vh - 24px)}
+  .viewer-nav{width:36px;height:36px}
+  .viewer-stage{min-height:180px}
+  .car-stage{min-height:260px;aspect-ratio:4/3}
+  .car-nav{width:38px;height:38px}
+  .car-nav.prev{left:10px}.car-nav.next{right:10px}
+  .car-caption{left:16px;bottom:20px;right:70px}
+  .car-cap{font-size:20px}
+  .car-strip button{width:66px;height:46px}
+  .bili-grid.bili-lead{grid-template-columns:1fr}
+  .space-body{padding:16px}
+  .space-stats{gap:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .ip-turn{animation:none!important;transform:rotateY(0deg)!important}
+  .frame-typing{opacity:0}
+  .car-photo{animation:none!important}
+  .reveal{opacity:1;transform:none;transition-delay:0ms!important}
+  .ip-col{animation:none}
+}
 </style>
 </head>
 <body>
+<div class="ambient" aria-hidden="true"><i></i><i></i><i></i></div>
 
-<div class="toolbar">
-  <button class="theme-btn active" data-theme="internet" onclick="setTheme('internet')" title="互联网/AI行业风格">🎨 互联网</button>
-  <button class="theme-btn" data-theme="gov" onclick="setTheme('gov')" title="国企/央企稳重风格">🏛️ 国企</button>
-  <span style="flex:1;"></span>
-  <button class="unlock" onclick="showUnlock()">🔓 编辑模式</button>
-  <button class="save" onclick="saveAll()">💾 保存修改</button>
-  <button class="cancel" onclick="cancelEdit()">✕ 退出编辑</button>
-  <button onclick="exportPDF()">📄 导出PDF</button>
-</div>
-
-<div class="modal" id="pwModal">
-  <div class="modal-box">
-    <h3>输入编辑密码</h3>
-    <input type="password" id="pwInput" placeholder="请输入密码">
-    <div><button class="confirm" onclick="doUnlock()">确认</button><button class="close" onclick="hideModal()">取消</button></div>
+<header class="nav">
+  <div class="nav-in">
+    <div class="brand">KIANNA<span>.</span> PORTFOLIO</div>
+    <nav class="nav-links" aria-label="站内导航">
+      <a href="#home" class="is-active">首页</a>
+      <a href="#works">作品</a>
+      <a href="#ppts">PPT 产出</a>
+      <a href="#skills">自制 Skill</a>
+      <a href="#club">社团</a>
+      <a href="#materials">材料</a>
+      <a href="#research">科研</a>
+    </nav>
   </div>
-</div>
+</header>
 
-<div class="page page-internet" id="resume-internet">
-  <div class="header">
-    <img class="photo" src="photo.jpg" alt="照片">
+<main>
+  <!-- HERO -->
+  <section id="home" class="hero" style="padding:0">
+    <div class="hero-in">
+      <div class="hero-card glass">
+        <p class="hero-kicker">LIU RUICHEN / 2026</p>
+        <h1>HI, I<span class="apos">’</span>M <em>KIANNA</em></h1>
+        <p class="hero-sub">没有现成流程可抄的时候，我先用 AI 搭出一版能跑的，再慢慢改到能用。</p>
+        <p class="hero-meta"><b>AI 产品运营 · 项目运营管理</b>　/　澳门大学 国际关系与公共政策 硕士在读</p>
+        <div class="tags">
+          <span>数据结构化</span><span>0 到 1 落地</span><span>AI 自建技能</span><span>项目统筹</span>
+        </div>
+        <button class="hero-cta" id="heroCta">
+          看看我做过的事
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="ip-col">
+        <div class="ip-scene ip-hover-video" id="ipScene">
+          <div class="ip-glow" data-depth=".35"></div>
+          <div class="ip-orbit ip-orbit-a" data-depth=".7"></div>
+          <div class="ip-orbit ip-orbit-b" data-depth="1.1"></div>
+          <div class="ip-stage" id="ipStage">
+            <div class="ip-turn" id="ipTurn">
+              <video class="ip-hover-layer" id="ipVideo" src="assets/ip/hover.mp4" poster="assets/ip/hover-first.png" preload="auto" muted playsinline webkit-playsinline disablepictureinpicture aria-label="个人 IP 形象：从打招呼到转身打字，默认静音"></video>
+              <img class="ip-hover-layer" id="ipStill" src="assets/ip/hover-first.png" alt="Kianna 的个人 IP 插画：正面打招呼">
+              <img class="ip-hover-layer" id="ipFreeze" src="assets/ip/hover-last.png" alt="" aria-hidden="true">
+            </div>
+          </div>
+          <button type="button" class="ip-sound" id="ipSound" data-sound="off" aria-label="开启声音" aria-pressed="false">
+            <svg class="ico-off" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 6.2h2.4L8 3.2v9.6L4.4 9.8H2V6.2Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="m10.5 6.2 3.1 3.6m0-3.6-3.1 3.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            <svg class="ico-on" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 6.2h2.4L8 3.2v9.6L4.4 9.8H2V6.2Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M10.5 6a2.8 2.8 0 0 1 0 4M12.4 4.3a5.4 5.4 0 0 1 0 7.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            <span class="ip-sound-txt">开启声音</span>
+          </button>
+          <span class="ip-spark s1"></span><span class="ip-spark s2"></span><span class="ip-spark s3"></span>
+          <span class="ip-float f1" data-depth="1.8">AI · 0 → 1</span>
+          <span class="ip-float f2" data-depth="2.4">KIANNA / 2026</span>
+        </div>
+        <div class="frame-switch" role="group" aria-label="切换形象">
+          <button type="button" data-frame="front" class="on" aria-label="正面形象"></button>
+          <button type="button" data-frame="typing" aria-label="打字形象"></button>
+          <span class="fs-label" id="fsLabel">正在打招呼</span>
+          <span class="ip-progress" aria-hidden="true"><i></i></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKS -->
+  <section id="works">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">01 / Selected work</p>
+        <h2>做过的事</h2>
+        <p>这四件事开始的时候都没有现成做法可循，过程写在卡片里，成果在图片和链接后面。</p>
+        <div class="rule"></div>
+      </div>
+      <div class="works" id="worksGrid"></div>
+
+      <div class="pn-gallery reveal">
+        <div class="pn-gallery-head"><h3>PlanNote · 界面一览</h3><span>05 SCREENS · 默认可见</span></div>
+        <p class="pn-gallery-note">日视图、周视图、周报规则、AI 周报和手机端，都是线上跑起来那版里截的，点开能放大看细节。</p>
+        <div class="pn-shots" id="pnShots"></div>
+        <div class="pn-gallery-foot">
+          <a href="https://02ruichen.github.io/PlanNote/app.html" target="_blank" rel="noopener">打开线上应用 ↗</a>
+          <a href="assets/originals/plannote-project.html" target="_blank" rel="noopener">读项目说明 ↗</a>
+          <a href="https://github.com/02Ruichen/PlanNote" target="_blank" rel="noopener">看源码 ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PPT 产出 -->
+  <section id="ppts">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">02 / Presentations</p>
+        <h2>PPT 产出</h2>
+        <p>比赛路演稿、开营结营的合并节选和四份课程 Pre 都在这里，默认就能看到。站内可以逐页翻，课程 Pre 还能下载原件。</p>
+        <div class="rule"></div>
+      </div>
+
+      <div class="ppt-group reveal">
+        <div class="group-title"><h3>比赛路演</h3><span>01 DECK / DEFAULT VISIBLE</span></div>
+        <div class="ppt-grid single" id="deckGridExtra"></div>
+      </div>
+      <div class="ppt-group reveal">
+        <div class="group-title"><h3>仪式统筹 · 开营 / 结营（合并主题）</h3><span>01 DECK / 03 SLIDES · 原件节选</span></div>
+        <div class="ppt-grid single" id="deckGridA"></div>
+      </div>
+      <div class="ppt-group reveal">
+        <div class="group-title"><h3>课程与科研 Pre</h3><span>04 DECKS / 27 SLIDES</span></div>
+        <div class="ppt-grid four" id="deckGridB"></div>
+      </div>
+      <p class="small-note reveal">共 6 份。开营和结营合成一个主题，只从原件里挑了 3 页不含人名和名单的，其余带人员信息的页面没有进站。</p>
+    </div>
+  </section>
+
+  <!-- 自制 Skill -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">03 / Skills I built</p>
+        <h2>自制 Skill</h2>
+        <p>实习和做项目时反复碰到的表、通知、名单，我陆续写成了能重复用的小技能。下面按用途分成三组，每组挑几条，写清各自管哪件事。</p>
+        <div class="rule"></div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="group-title"><h3>Excel 制表相关技能</h3><span>04 SKILLS · 节选</span></div>
+        <div class="skill-grid">
+          <article class="skill-card">
+            <span class="skill-no">01</span>
+            <h4>intern-onboarding-checklist</h4>
+            <p>按录取名单生成一页纸的入职资料核查表，纸质版和电子版两列留空，交给现场逐人勾选。</p>
+          </article>
+          <article class="skill-card">
+            <span class="skill-no">02</span>
+            <h4>attendance-table-builder</h4>
+            <p>从名单生成各单位的考勤空表，也能把上月的表滚到下月，只换日期区间和星期。</p>
+          </article>
+          <article class="skill-card">
+            <span class="skill-no">03</span>
+            <h4>attendance-unregistered-leave</h4>
+            <p>回收考勤表后找出请假未登记的人和具体日期，输出汇总表，标出需要人工复核的行。</p>
+          </article>
+          <article class="skill-card">
+            <span class="skill-no">04</span>
+            <h4>intern-salary-audit</h4>
+            <p>把缺勤填进补贴明细、算出实发，再配到银行报盘，最后抽查核对。</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="group-title"><h3>文档与写作</h3><span>03 SKILLS · 节选</span></div>
+        <div class="skill-grid">
+          <article class="skill-card">
+            <span class="skill-no">01</span>
+            <h4>office-docs</h4>
+            <p>生成通知、主持稿、新闻稿和开营结营 PPT，按公文格式排版，出稿后再渲染校验一遍。</p>
+          </article>
+          <article class="skill-card">
+            <span class="skill-no">02</span>
+            <h4>news-docx</h4>
+            <p>只管新闻稿的 Word 排版，标题、字体和段落格式定下来，不用每次重调。</p>
+          </article>
+          <article class="skill-card">
+            <span class="skill-no">03</span>
+            <h4>liu-ruichen-writing-style</h4>
+            <p>把本人随笔的语料习惯写成规则，让生成的中文少一点 AI 腔，句子更像自己写的。</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="group-title"><h3>批量处理与归档</h3><span>03 SKILLS · 节选</span></div>
+        <div class="skill-grid">
+          <article class="skill-card">
+            <span class="skill-no">01</span>
+            <h4>layered-folders</h4>
+            <p>按名单生成两层目录，上层是带序号的公司名，下层是姓名，只新增不删改，先打印清单再执行。</p>
+          </article>
+          <article class="skill-card">
+            <span class="skill-no">02</span>
+            <h4>batch-folders</h4>
+            <p>项目里用的批量建目录版本，按公司名建文件夹和简历子目录，执行前先列清单。</p>
+          </article>
+          <article class="skill-card">
+            <span class="skill-no">03</span>
+            <h4>excel-batch</h4>
+            <p>批量读、拆、去重、排序、填报和汇总 xlsx，统一用内置 Python 跑，中文不乱码。</p>
+          </article>
+        </div>
+      </div>
+
+      <p class="small-note reveal">每组只放了几条代表。制表那条线的 6 条技能和 3 个项目级脚本，参数、硬规则和踩过的坑都写在总览里，<a href="assets/originals/skills-overview.html" target="_blank" rel="noopener">查看完整说明 ↗</a></p>
+    </div>
+  </section>
+
+  <!-- CLUB -->
+  <section id="club">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">04 / Beyond work</p>
+        <h2>社团与现场</h2>
+        <p>疫情停摆的那几年，这场跨校比赛一直没人接着办，后来是我把它重新办了起来。</p>
+        <div class="rule"></div>
+      </div>
+      <div class="club-box reveal">
+        <p>本科时我是南京财经大学神寂动漫社的社长。南京高校联盟的舞台剧和宅舞大赛停了几年，没留下能照着走的流程，策划、招商、报名、嘉宾接待、彩排、当天中控和善后都是我一个人盯下来的。</p>
+        <div class="club-stats"><span>22+ 高校社团</span><span>300+ 参与者</span><span>0 → 1 全流程</span></div>
+
+        <div class="club-group-head"><h4>南京高校联盟 · 比赛现场</h4><span>02 clips · bilibili</span></div>
+        <div class="bili-grid bili-lead" id="biliLead"></div>
+
+        <p>校内的五场大型活动也是我排的，节目审核、上场顺序和彩排确认都在我手上。下面每张封面都截自对应的视频页面，点「点击观看」直接去 B 站。</p>
+        <div class="club-group-head"><h4>校内活动 · 现场记录</h4><span>04 clips · bilibili</span></div>
+        <div class="bili-grid" id="biliGrid"></div>
+
+        <div class="club-group-head"><h4>个人 · B 站主页</h4><span>profile</span></div>
+        <a class="space-card" href="https://space.bilibili.com/29009400" target="_blank" rel="noopener" aria-label="打开 B 站个人主页 宸舟陌">
+          <div class="space-banner">
+            <span class="bili-wordmark">bilibili<small>SPACE / 个人空间</small></span>
+            <span class="space-hint">点击整张卡片打开主页 ↗</span>
+          </div>
+          <div class="space-body">
+            <img class="space-avatar" src="assets/covers/bili/avatar.jpg" alt="B 站个人主页头像" loading="eager">
+            <div class="space-id"><b>宸舟陌</b><small>LV6 · UID 29009400 · 含策划 / 剪辑 / 出演作品</small></div>
+            <div class="space-stats"><span><b>13</b>投稿</span><span><b>121</b>粉丝</span><span><b>1033</b>获赞</span></div>
+            <span class="space-open">打开主页
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 10L10 4M5.5 4H10v4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MATERIALS -->
+  <section id="materials">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">05 / Credentials</p>
+        <h2>证书与材料</h2>
+        <p>雅思、六级、计算机二级和简历都在这儿，点开能看原件。成绩单上有证件号，所以只在点开之后才显示。</p>
+        <div class="rule"></div>
+      </div>
+      <div class="mat-grid reveal">
+        <article class="mat mat-file">
+          <div class="mat-top"><span class="mat-ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7.5" stroke="#2B2A33" stroke-width="1.3"/><path d="M2.5 10h15M10 2.5c2.2 2.1 3.3 4.6 3.3 7.5S12.2 15.4 10 17.5C7.8 15.4 6.7 12.9 6.7 10S7.8 4.6 10 2.5z" stroke="#2B2A33" stroke-width="1.3"/></svg></span><span><b>IELTS 雅思</b><small>ACADEMIC / 2024.10</small></span></div>
+          <p class="mat-brief">总分 6.5，成绩单原件可以打开核对。</p>
+          <a class="mat-open" href="assets/originals/ielts.jpg" target="_blank" rel="noopener">查看成绩单原件 <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M3 12L12 3M5.5 3H12v6.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </article>
+        <article class="mat mat-file">
+          <div class="mat-top"><span class="mat-ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="3.5" width="15" height="11" rx="1.6" stroke="#2B2A33" stroke-width="1.3"/><path d="M7 17h6M10 14.5V17M6 8h8M6 10.5h5" stroke="#2B2A33" stroke-width="1.3" stroke-linecap="round"/></svg></span><span><b>国家计算机二级</b><small>NCRE / 2024.03</small></span></div>
+          <p class="mat-brief">二级合格，考的是 MS Office 高级应用与设计。</p>
+          <a class="mat-open" href="assets/originals/ncre.pdf" target="_blank" rel="noopener">查看成绩单原件 <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M3 12L12 3M5.5 3H12v6.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </article>
+        <article class="mat mat-file">
+          <div class="mat-top"><span class="mat-ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 2.5h9l3 3v12H4z" stroke="#2B2A33" stroke-width="1.3" stroke-linejoin="round"/><path d="M13 2.5v3h3M7 9h6M7 12h6M7 15h4" stroke="#2B2A33" stroke-width="1.3" stroke-linecap="round"/></svg></span><span><b>CET-6 大学英语六级</b><small>2023.12</small></span></div>
+          <p class="mat-brief">总分 467，成绩单原件可以打开核对。</p>
+          <a class="mat-open" href="assets/originals/cet6.pdf" target="_blank" rel="noopener">查看成绩单原件 <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M3 12L12 3M5.5 3H12v6.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </article>
+        <article class="mat mat-file">
+          <div class="mat-top"><span class="mat-ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3.5" y="2.5" width="13" height="15" rx="1.8" stroke="#2B2A33" stroke-width="1.3"/><circle cx="10" cy="8" r="2.4" stroke="#2B2A33" stroke-width="1.3"/><path d="M6.2 14.2c.7-1.7 2-2.5 3.8-2.5s3.1.8 3.8 2.5" stroke="#2B2A33" stroke-width="1.3" stroke-linecap="round"/></svg></span><span><b>个人简历</b><small>v11.10 / 已备</small></span></div>
+          <p class="mat-brief">最新版 11.10，投的是 AI 产品运营和项目运营管理。</p>
+          <a class="mat-open" href="assets/originals/resume.pdf" target="_blank" rel="noopener">查看简历 PDF <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M3 12L12 3M5.5 3H12v6.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </article>
+        </div>
+        <p class="privacy-note reveal">身份证和本科成绩单没有放进来，其余原件点开才显示。</p>
+
+      <div class="photos reveal">
+        <div class="photos-head"><h3>本人照片</h3><span>16 张 · 实习 / 本科 / 社团 · 自动轮播</span></div>
+        <div class="carousel" id="carousel">
+          <div class="car-stage" id="carStage">
+            <div class="car-photos">
+              <img class="car-photo" id="carPhotoA" src="" alt="">
+              <img class="car-photo" id="carPhotoB" src="" alt="">
+            </div>
+            <div class="car-shade"></div>
+            <div class="car-top"><span class="car-group" id="carGroup"></span><span class="car-count" id="carCount"></span></div>
+            <div class="car-caption"><span class="car-cap" id="carCap"></span></div>
+            <div class="car-progress"><i id="carBar"></i></div>
+            <button class="car-nav prev" id="carPrev" aria-label="上一张"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11 3l-6 6 6 6" stroke="#2B2A33" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="car-nav next" id="carNext" aria-label="下一张"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M7 3l6 6-6 6" stroke="#2B2A33" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <div class="car-strip" id="carStrip"></div>
+          <p class="car-tip">自动播放 · 悬停暂停 · 点击大图放大 · 下方缩略图可跳转</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">06 / Research</p>
+        <h2>科研概要</h2>
+        <p>两份研究只放题目、摘要、关键词、核心模型、研究问题和假设，全文没有放上来。</p>
+        <div class="rule"></div>
+      </div>
+      <div class="papers">
+        <article class="paper reveal">
+          <p class="paper-tag">本科毕业论文 · 2024.05 · 校级优秀</p>
+          <h3>贫困群体内生动力激发的双轮驱动模型之构建与分析</h3>
+          <p class="paper-en">南京财经大学 公共事业管理</p>
+          <dl class="fields">
+            <div><dt>摘要</dt><dd>从行为公共管理的视角出发，先归纳脱贫内生动力相关理论，再以多案例分析法剖析各地实践，从 <b>41 个初选案例筛选至 20 个</b>，提取文本信息并统计参与主体与策略功能，归纳影响贫困群体内生动力的因素与激发措施，最终形成一套指向可持续脱贫与政策认同的激发机制。</dd></div>
+            <div><dt>关键词</dt><dd><div class="chips-inline"><span>贫困群体</span><span>内生动力</span><span>行为公共管理</span><span>双轮驱动模型</span><span>公民反馈</span></div></dd></div>
+            <div class="model-row"><dt>核心模型</dt><dd>
+              <figure class="model-fig">
+                <button type="button" data-photo="assets/research/model-3.png" data-cap="图 3 「扶贫政策——公民体验」双轮模型图（论文原图）" aria-label="放大查看双轮模型图">
+                  <img src="assets/research/model-3.png" alt="双轮驱动模型图：政府与公民两个轮子，通过双向互动、反馈与输出连接" loading="lazy">
+                </button>
+                <figcaption><span>图 3　「扶贫政策 — 公民体验」双轮模型图 · 论文原图，点击放大</span><button type="button" data-photo="assets/research/model-2.png" data-cap="图 2 「政府决策——公民体验」双轮驱动模型（理论原型）">查看理论原型 图 2 ↗</button></figcaption>
+              </figure>
+            </dd></div>
+            <div><dt>研究问题</dt><dd>贫困群体内生动力受哪些因素影响；政府政策与公民体验分别扮演什么角色；二者如何共同形成可复用的激发机制。</dd></div>
+            <div><dt>研究假设</dt><dd>本研究为质性案例建构，<b>未设可检验的量化假设</b>。核心命题是政策供给与公民体验需双向互动，才能支撑可持续脱贫；验证方式为案例文本提取与主体策略分析，而非假设检验。</dd></div>
+          </dl>
+        </article>
+        <article class="paper reveal">
+          <p class="paper-tag">硕士研究计划 · 在研 · 英文写作</p>
+          <h3>同一片区域，不同的公平感</h3>
+          <p class="paper-en">One Territory, Divergent Fairness: Why Entitlement Design Is Judged Differently by Three Groups of Workers in Hengqin</p>
+          <dl class="fields">
+            <div><dt>摘要</dt><dd>横琴粤澳深度合作区内，澳门居民、本地户籍居民与外来务工者在同一空间工作，却适用不同的税务、社保与就业支持规则。研究以一项真实就业补贴为锚点，用约 <b>260 份配额问卷</b>、12 次半结构访谈与有序回归，检验「资格归属」与「待遇可携带性」两项设计特征如何关联分配公平与程序公平判断，并考察归因倾向、制度身份的调节作用，以及公平判断与制度信任、定居意愿的关联。属观察性设计，只识别稳健关联，不作因果推断；分析计划已在 OSF 预注册。</dd></div>
+            <div><dt>关键词</dt><dd><div class="chips-inline"><span>感知公平</span><span>分配正义</span><span>制度身份</span><span>权益设计</span><span>比较问卷</span><span>福利可携带性</span></div></dd></div>
+            <div><dt>核心模型</dt><dd>「设计特征 → 公平判断 → 下游态度」的分析链。<b>资格归属</b>映射分配公平，<b>待遇可携带性</b>映射程序公平；归因倾向与制度身份作为调节变量，用有序回归与交互项估计。</dd></div>
+            <div><dt>研究问题</dt><dd>RQ1 两项设计特征的感知与公平判断如何关联；RQ2 关联如何随归因倾向与制度身份变化；RQ3 公平判断与制度信任、定居意愿如何关联。</dd></div>
+            <div><dt>研究假设</dt><dd>H1 专属感越强，公平评价越低；H2 待遇携带越困难，公平评价越低；H3 归因于系统的倾向会放大上述负向关联；H4 关联强度随制度身份变化；H5 公平判断与制度信任、定居意愿正相关。</dd></div>
+          </dl>
+        </article>
+      </div>
+      <p class="research-note reveal">全文没放，怕被直接引用，概要也够看出研究做了什么。模型图是论文里的原图。</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-in">
     <div>
-      <div class="name">刘芮辰</div>
-      <div class="title">意向岗位：AI产品 / 数字化项目管理 / AI运营 / 项目运营</div>
-      <div class="tags"><span class="tag">15318036172</span> <span class="tag">liuruichen02@qq.com</span> <span class="tag">山东</span> <span class="tag">24岁</span> <span class="tag">中共党员</span></div>
+      <p class="foot-name">KIANNA · 刘芮辰</p>
+      <p class="foot-sub">谢谢看到这里。</p>
     </div>
+    <button type="button" class="to-top" id="toTop">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 11V3M3.5 6.5L7 3l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      回到顶部
+    </button>
   </div>
+</footer>
 
-  <div class="section edu">
-    <h2>🎓 教育背景</h2>
-    <div class="edu-row">
-  <div class="edu-head"><b>澳门大学</b> <span>国际关系与公共政策（硕士）</span> <em>2025-08 ~ 至今</em></div>
-  <div class="edu-detail" contenteditable="false">专业成绩：<b>GPA 3.41</b> | 专业排名：前<b>20%（全英文授课）</b><br>主修课程：<b>国际关系理论</b>、国际组织与全球治理、亚太国际关系、<b>社会科学研究设计</b>、<b>国际关系与数据科学、中国与葡语国家的关系</b>等</div>
-</div><div class="edu-row">
-  <div class="edu-head"><b>南京财经大学</b> <span>公共事业管理（学士）</span> <em>2020-09 ~ 2024-06</em></div>
-  <div class="edu-detail" contenteditable="false">专业成绩：<b>GPA 3.54</b> | 专业排名：前<b>10%</b><br>主修课程：公共政策学、公共管理学、<b>定量研究方法与Stata应用</b>、公共经济学、<b>公共管理研究方法</b>、高等数学等<br>荣誉奖项：连续获得五次<b>校级学习优秀奖学金</b>、两次<b>素质拓展奖学金</b>；获<b>优秀大学生</b>、<b>优秀学生干部</b>、<b>优秀毕业论文</b>等称号</div>
+<!-- Process modal -->
+<div class="modal" id="processModal" role="dialog" aria-modal="true" aria-labelledby="processTitle">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel">
+    <button class="modal-close" data-close aria-label="关闭"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="#2B2A33" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+    <div class="process-head">
+      <p class="work-num" id="processNum"></p>
+      <h3 id="processTitle"></h3>
+      <p id="processLead"></p>
+    </div>
+    <div class="process-body">
+      <div class="process-col">
+        <h4>叙述概括</h4>
+        <div id="processNarrative"></div>
+      </div>
+      <div class="process-col">
+        <h4>成果展示</h4>
+        <p class="result-num" id="processResultNum"></p>
+        <p class="result-cap" id="processResultCap"></p>
+        <div class="asset-links" id="processAssets"></div>
+      </div>
+    </div>
+  </div>
 </div>
-  </div>
-  <div class="section intern">
-    <h2>💼 实习经历</h2>
-    <div class="exp-item" id="i_intern_0">
-      <div class="exp-bar" onclick="expandExp('i_intern_0')"><span class="exp-dot"></span><span class="exp-title">横琴人才集团有限公司（横琴粤澳深度合作区属国企·央地合作）</span><span class="exp-sub">项目实习生 | 2026.05 ~ 至今</span><span class="exp-arrow">▶</span></div>
-      <div class="exp-brief"><b>AI增效赋能</b>：基于<b>Claude Code</b>搭建智能体工作流，打通<b>MS 365 API</b>实现报名信息批量核验与入职档案体系自动化；独立设计数据台账模板与共享登记机制，沉淀<b>Prompt模板</b>与SOP，将3人日工作量压至2-3小时，显著提升多专项并行运营效能。<br><b>项目统筹落地</b>：主导开营仪式全流程筹划，涵盖主持稿撰写打磨、PPT制作美化、暖场音乐剪辑、现场中控调度与嘉宾接待；统筹参访带队、物料盘点及付款采购<b>OA全流程闭环</b>，在高压并发场景下展现敏捷<b>沟通与应变力</b>，多线程统筹全程零失误获领导认可。<div class="kw-line">🔑 核心能力体现：AI增效赋能、项目统筹落地、标准化流程建设、跨部门协同</div></div>
-      <div class="exp-full">
-        <button class="back-btn" onclick="event.stopPropagation();collapseExp('i_intern_0')">← 返回列表</button>
-        <div class="exp-detail"><b>AI增效赋能</b>：基于<b>Claude Code</b>搭建智能体工作流，打通<b>MS 365 API</b>实现报名信息批量核验与入职档案体系自动化；独立设计数据台账模板与共享登记机制，沉淀<b>Prompt模板</b>与SOP，将3人日工作量压至2-3小时，显著提升多专项并行运营效能。<br><b>项目统筹落地</b>：主导开营仪式全流程筹划，涵盖主持稿撰写打磨、PPT制作美化、暖场音乐剪辑、现场中控调度与嘉宾接待；统筹参访带队、物料盘点及付款采购<b>OA全流程闭环</b>，在高压并发场景下展现敏捷<b>沟通与应变力</b>，多线程统筹全程零失误获领导认可。<div class="kw-line">🔑 核心能力体现：AI增效赋能、项目统筹落地、标准化流程建设、跨部门协同</div></div>
-      </div>
-    </div><div class="exp-item" id="i_intern_1">
-      <div class="exp-bar" onclick="expandExp('i_intern_1')"><span class="exp-dot"></span><span class="exp-title">中国新闻发展公司江苏分公司（新华社）</span><span class="exp-sub">政务新媒体部实习生 | 2022.06 ~ 2022.10</span><span class="exp-arrow">▶</span></div>
-      <div class="exp-brief"><b>信息监测与提炼</b>：每日监测省内<b>财经动态</b>与政策风向，从海量信息中精准筛选高价值新闻并撰写200字核心摘要；严控时效性与合规性，贴合<b>新媒体传播范式</b>，累计产出高质量简报百余篇，保障信息对决策的参考价值。<br><b>内容运营支持</b>：深度参与中小企业<b>惠税政策宣贯</b>全流程，独立撰写<b>新闻通稿</b>并美化制作汇报PPT；全程跟会梳理企业核心诉求，沉淀为标准化清单与跟踪台账，以清晰严谨文风辅助政策落地与政企精准对接。<br><b>流程优化治理</b>：依托采购平台独立审核申报材料，依据<b>SOP</b>精准驳回不合规申请并出具规范指引与整改说明；熟悉<b>OA报批全流程</b>与公文规范，在批量审核中锤炼出扎实的流程把控与风险甄别意识。<div class="kw-line">🔑 核心能力体现：内容运营、公文规范把控、跨部门协同、SOP标准化建设</div></div>
-      <div class="exp-full">
-        <button class="back-btn" onclick="event.stopPropagation();collapseExp('i_intern_1')">← 返回列表</button>
-        <div class="exp-detail"><b>信息监测与提炼</b>：每日监测省内<b>财经动态</b>与政策风向，从海量信息中精准筛选高价值新闻并撰写200字核心摘要；严控时效性与合规性，贴合<b>新媒体传播范式</b>，累计产出高质量简报百余篇，保障信息对决策的参考价值。<br><b>内容运营支持</b>：深度参与中小企业<b>惠税政策宣贯</b>全流程，独立撰写<b>新闻通稿</b>并美化制作汇报PPT；全程跟会梳理企业核心诉求，沉淀为标准化清单与跟踪台账，以清晰严谨文风辅助政策落地与政企精准对接。<br><b>流程优化治理</b>：依托采购平台独立审核申报材料，依据<b>SOP</b>精准驳回不合规申请并出具规范指引与整改说明；熟悉<b>OA报批全流程</b>与公文规范，在批量审核中锤炼出扎实的流程把控与风险甄别意识。<div class="kw-line">🔑 核心能力体现：内容运营、公文规范把控、跨部门协同、SOP标准化建设</div></div>
-      </div>
-    </div><div class="exp-item" id="i_intern_2">
-      <div class="exp-bar" onclick="expandExp('i_intern_2')"><span class="exp-dot"></span><span class="exp-title">山东省枣庄市薛城区财政局</span><span class="exp-sub">行政助理 | 2024.06 ~ 2024.10</span><span class="exp-arrow">▶</span></div>
-      <div class="exp-brief"><b>数据资产治理</b>：运用<b>Excel高阶函数</b>与VBA宏从零构建自动化文档索引体系，推动海量非结构化档案标准化归档与电子化转型；独立沉淀<b>数据清洗SOP</b>与多级分类规范，显著提升调阅效率与数据资产管理水平，相关方法论获科室高度认可并跨部门推广复用。<br><b>合规运营</b>：独立起草格式化公文与政务通知，精通文书规范与<b>Word排版SOP</b>；深谙公文语体风格与<b>行文规范</b>，熟练掌握OA审批全流程，在大量公文起草与审核中锤炼出扎实的<b>办公流合规</b>意识、严谨文字把控力与零差错工作作风，获领导信任承担更多核心公文起草任务。<div class="kw-line">🔑 核心能力体现：数据资产治理、合规运营、文字表达、SOP标准化建设</div></div>
-      <div class="exp-full">
-        <button class="back-btn" onclick="event.stopPropagation();collapseExp('i_intern_2')">← 返回列表</button>
-        <div class="exp-detail"><b>数据资产治理</b>：运用<b>Excel高阶函数</b>与VBA宏从零构建自动化文档索引体系，推动海量非结构化档案标准化归档与电子化转型；独立沉淀<b>数据清洗SOP</b>与多级分类规范，显著提升调阅效率与数据资产管理水平，相关方法论获科室高度认可并跨部门推广复用。<br><b>合规运营</b>：独立起草格式化公文与政务通知，精通文书规范与<b>Word排版SOP</b>；深谙公文语体风格与<b>行文规范</b>，熟练掌握OA审批全流程，在大量公文起草与审核中锤炼出扎实的<b>办公流合规</b>意识、严谨文字把控力与零差错工作作风，获领导信任承担更多核心公文起草任务。<div class="kw-line">🔑 核心能力体现：数据资产治理、合规运营、文字表达、SOP标准化建设</div></div>
-      </div>
-    </div>
-  </div>
-  <div class="section campus">
-    <h2>🏫 校园经历</h2>
-    <div class="exp-item" id="i_campus_0">
-      <div class="exp-bar" onclick="expandExp('i_campus_0')"><span class="exp-dot"></span><span class="exp-title">南京财经大学神寂动漫社</span><span class="exp-sub">社长 | 2022.06 ~ 2023.06</span><span class="exp-arrow">▶</span></div>
-      <div class="exp-brief"><b>项目统筹落地</b>：从0策划并执行<b>南京高校联盟</b>舞台剧暨宅舞大赛，统筹22+社团及300+参加者，独立完成场地对接、赛程编排、物料筹备与现场总控，通过精细化预算管控与SOP执行，获评<b>十佳社团活动</b>与最佳组织奖。<br><b>跨团队管理与增长</b>：主导社团日常运营与招新全流程，任期内带领团队获评校<b>五星级社团</b>；独立运营<b>B站及QQ空间</b>，策划高质量内容实现单条播放量达2.7万，成功打造社团品牌IP，实现跨校影响力破圈与联动。<div class="kw-line">🔑 核心能力体现：项目全生命周期管理、跨部门资源整合、数据驱动运营</div></div>
-      <div class="exp-full">
-        <button class="back-btn" onclick="event.stopPropagation();collapseExp('i_campus_0')">← 返回列表</button>
-        <div class="exp-detail"><b>项目统筹落地</b>：从0策划并执行<b>南京高校联盟</b>舞台剧暨宅舞大赛，统筹22+社团及300+参加者，独立完成场地对接、赛程编排、物料筹备与现场总控，通过精细化预算管控与SOP执行，获评<b>十佳社团活动</b>与最佳组织奖。<br><b>跨团队管理与增长</b>：主导社团日常运营与招新全流程，任期内带领团队获评校<b>五星级社团</b>；独立运营<b>B站及QQ空间</b>，策划高质量内容实现单条播放量达2.7万，成功打造社团品牌IP，实现跨校影响力破圈与联动。<div class="kw-line">🔑 核心能力体现：项目全生命周期管理、跨部门资源整合、数据驱动运营</div></div>
-      </div>
-    </div><div class="exp-item" id="i_campus_1">
-      <div class="exp-bar" onclick="expandExp('i_campus_1')"><span class="exp-dot"></span><span class="exp-title">逃离福利陷阱：激励政策如何重塑低收入群体的经济自主性</span><span class="exp-sub">独立研究员 | 2025.10 ~ 至今</span><span class="exp-arrow">▶</span></div>
-      <div class="exp-brief"><b>政策数据建模</b>：研读<b>CFPS与CHFS</b>微观数据文档，系统梳理变量定义与清洗逻辑，独立搭建政策评估研究的底层数据框架。<br><b>AI科研增效</b>：运用<b>Claude Code</b>辅助中英文文献研读与Stata脚本调试，实现研究方法论的快速迭代与验证；系统沉淀<b>Prompt模板</b>与数据校验SOP，有效提升非结构化数据处理的规范性与效率，形成可复用的AI辅助科研工具与方法论。<div class="kw-line">🔑 核心能力体现：政策数据建模、AI科研增效、SOP标准化建设</div></div>
-      <div class="exp-full">
-        <button class="back-btn" onclick="event.stopPropagation();collapseExp('i_campus_1')">← 返回列表</button>
-        <div class="exp-detail"><b>政策数据建模</b>：研读<b>CFPS与CHFS</b>微观数据文档，系统梳理变量定义与清洗逻辑，独立搭建政策评估研究的底层数据框架。<br><b>AI科研增效</b>：运用<b>Claude Code</b>辅助中英文文献研读与Stata脚本调试，实现研究方法论的快速迭代与验证；系统沉淀<b>Prompt模板</b>与数据校验SOP，有效提升非结构化数据处理的规范性与效率，形成可复用的AI辅助科研工具与方法论。<div class="kw-line">🔑 核心能力体现：政策数据建模、AI科研增效、SOP标准化建设</div></div>
-      </div>
-    </div><div class="exp-item" id="i_campus_2">
-      <div class="exp-bar" onclick="expandExp('i_campus_2')"><span class="exp-dot"></span><span class="exp-title">贫困群体内生动力双驱动模型构建</span><span class="exp-sub">研究员 | 2023.12 ~ 2024.05</span><span class="exp-arrow">▶</span></div>
-      <div class="exp-brief"><b>理论建模</b>：基于<b>行为公共管理</b>视角，创新构建「政策供给-个体响应」互动机制框架，通过20个典型案例的系统比较分析与多轮编码，精准提炼关键变量与内生动力生成路径，为贫困治理政策优化设计提供理论参考。<br><b>结构化论证</b>：通过编码进行定性资料分析，拆解复杂社会现象为可分析逻辑单元，锤炼严谨学术逻辑与数据治理素养，获校级<b>优秀毕业论文</b>。<div class="kw-line">🔑 核心能力体现：理论建模能力、严谨学术论证、数据治理素养</div></div>
-      <div class="exp-full">
-        <button class="back-btn" onclick="event.stopPropagation();collapseExp('i_campus_2')">← 返回列表</button>
-        <div class="exp-detail"><b>理论建模</b>：基于<b>行为公共管理</b>视角，创新构建「政策供给-个体响应」互动机制框架，通过20个典型案例的系统比较分析与多轮编码，精准提炼关键变量与内生动力生成路径，为贫困治理政策优化设计提供理论参考。<br><b>结构化论证</b>：通过编码进行定性资料分析，拆解复杂社会现象为可分析逻辑单元，锤炼严谨学术逻辑与数据治理素养，获校级<b>优秀毕业论文</b>。<div class="kw-line">🔑 核心能力体现：理论建模能力、严谨学术论证、数据治理素养</div></div>
-      </div>
-    </div>
-  </div>
-  <div class="section skills">
-    <h2>⭐ 技能与评价</h2>
-    <div class="skill-block">
-      <h4>大模型工程化应用</h4>
-      <div class="skill-text" contenteditable="false">具备<b>Claude Code本地化部署</b>能力，可独立完成<b>环境配置与运维</b>；熟练整合<b>MCP协议与Agent工具链</b>，搭建<b>AI智能办公工具</b>（如简历优化Web应用），实现大模型→前端部署全链路闭环，善用AI智能体辅助完成复杂数据处理与自动化任务。</div>
-    </div><div class="skill-block">
-      <h4>数据治理与AI辅助分析</h4>
-      <div class="skill-text" contenteditable="false">掌握<b>Stata、R语言</b>及<b>Excel高阶函数</b>，具备<b>CFPS/CHFS</b>等微观面板数据处理经验；擅长利用<b>AI辅助生成Python代码</b>，解决数据清洗、格式校验等非结构化数据处理难题，提升数据资产标准化程度。</div>
-    </div><div class="skill-block">
-      <h4>流程优化与自动化运营</h4>
-      <div class="skill-text" contenteditable="false">熟悉公文写作规范与Word排版SOP，具备扎实文字表达力；精通OA审批逻辑与采购审核流程，能敏锐识别流程风险，适应高标准化、强流程化的办公环境。</div>
-    </div><div class="skill-block">
-      <h4>核心软实力</h4>
-      <div class="skill-text" contenteditable="false">英语可作为工作语言（<b>雅思6.5</b>，<b>全英文硕士授课</b>），无障碍阅读英文文献及行业报告；<b>中共党员</b>，大局观与执行力强；拥有<b>300+人次大型活动统筹</b>经验，擅长跨部门资源协调与多线程任务管理。</div>
-    </div>
-  </div>
-  <div class="footer">© 2025 刘芮辰 | 感谢阅读</div>
-</div>
-<div class="page page-gov" id="resume-gov" style="display:none">
-  <div class="header">
-    <img class="photo" src="photo.jpg" alt="照片">
-    <div>
-      <div class="name">刘芮辰</div>
-      <div class="title">意向岗位：AI产品运营 / 策略运营 / 数字化项目运营 / AI训练与管理 / 政企合作运营</div>
-      <div class="tags"><span class="tag">15318036172</span> <span class="tag">liuruichen02@qq.com</span> <span class="tag">山东</span> <span class="tag">24岁</span> <span class="tag">中共党员</span></div>
-    </div>
-  </div>
 
-  <div class="section edu">
-    <h2>🎓 教育背景</h2>
-    <div class="edu-row">
-  <div class="edu-head"><b>澳门大学</b> <span>国际关系与公共政策（硕士）</span> <em>2025-08 ~ 至今</em></div>
-  <div class="edu-detail" contenteditable="false">专业成绩：<b>GPA 3.41</b> | 专业排名：前<b>20%（全英文授课）</b><br>主修课程：<b>国际关系理论</b>、国际组织与全球治理、亚太国际关系、<b>社会科学研究设计</b>、<b>国际关系与数据科学、中国与葡语国家的关系</b>等</div>
-</div><div class="edu-row">
-  <div class="edu-head"><b>南京财经大学</b> <span>公共事业管理（学士）</span> <em>2020-09 ~ 2024-06</em></div>
-  <div class="edu-detail" contenteditable="false">专业成绩：<b>GPA 3.54</b> | 专业排名：前<b>10%</b><br>主修课程：公共政策学、公共管理学、<b>定量研究方法与Stata应用</b>、公共经济学、<b>公共管理研究方法</b>、高等数学等<br>荣誉奖项：连续获得五次<b>校级学习优秀奖学金</b>、两次<b>素质拓展奖学金</b>；获<b>优秀大学生</b>、<b>优秀学生干部</b>、<b>优秀毕业论文</b>等称号</div>
+<!-- PPT viewer -->
+<div class="modal" id="viewerModal" role="dialog" aria-modal="true" aria-label="演示稿翻页">
+  <div class="modal-backdrop" data-close></div>
+  <div class="viewer">
+    <div class="viewer-top">
+      <h3 id="viewerTitle"></h3>
+      <span class="vcount" id="viewerCount"></span>
+      <a id="viewerDownload" href="#" download>下载原文件 ↗</a>
+      <button class="modal-close" data-close aria-label="关闭" style="position:static;width:30px;height:30px;flex:none"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="#2B2A33" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+    </div>
+    <div class="viewer-stage">
+      <img id="viewerImg" src="" alt="">
+      <button class="viewer-nav prev" id="viewerPrev" aria-label="上一页"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11 3l-6 6 6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="viewer-nav next" id="viewerNext" aria-label="下一页"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M7 3l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+    <div class="viewer-bottom" id="viewerDots"></div>
+    <div class="viewer-tip">← → 翻页 · Esc 关闭</div>
+  </div>
 </div>
+
+<!-- Video / photo modal -->
+<div class="modal" id="mediaModal" role="dialog" aria-modal="true" aria-label="媒体查看">
+  <div class="modal-backdrop" data-close></div>
+  <div class="media-modal">
+    <button class="modal-close" data-close aria-label="关闭" style="right:14px;top:14px"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="#2B2A33" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+    <div id="mediaBody"></div>
+    <div class="media-cap"><span id="mediaCap"></span><a id="mediaOpen" href="#" target="_blank" rel="noopener">在新窗口打开原件 ↗</a></div>
   </div>
-  <div class="section intern">
-    <h2>💼 实习经历</h2>
-    <div class="exp-item" id="g_intern_0">
-      <div class="exp-bar" onclick="expandExp('g_intern_0')"><span class="exp-dot"></span><span class="exp-title">横琴人才集团有限公司（横琴粤澳深度合作区属国企·央地合作）</span><span class="exp-sub">项目实习生 | 2026.05 ~ 至今</span><span class="exp-arrow">▶</span></div>
-      <div class="exp-brief"><b>多专项统筹</b>：跟进<b>澳门青年实习计划</b>等多个专项，独立完成多批实习生信息核验、考勤统计与档案归档体系建设；运用<b>大模型API</b>辅助数据清洗与交叉校验，以严谨细致确保零差错，沉淀标准化数据台账与SOP，提升多专项并行运营效能。<br><b>活动统筹执行</b>：主导<b>开营仪式</b>全流程落地，涵盖主持稿撰写打磨、PPT制作美化、现场中控调度、嘉宾接待及参访带队；推进付款采购OA等行政流程，统筹物料盘点、住宿协调与参访保障，在高并发场景下保持<b>沉稳心态</b>与<b>敏捷应变</b>，全程零失误。<div class="kw-line">🔑 核心能力体现：多专项统筹、数据治理、沉稳应变、严谨执行</div></div>
-      <div class="exp-full">
-        <button class="back-btn" onclick="event.stopPropagation();collapseExp('g_intern_0')">← 返回列表</button>
-        <div class="exp-detail"><b>多专项统筹</b>：跟进<b>澳门青年实习计划</b>等多个专项，独立完成多批实习生信息核验、考勤统计与档案归档体系建设；运用<b>大模型API</b>辅助数据清洗与交叉校验，以严谨细致确保零差错，沉淀标准化数据台账与SOP，提升多专项并行运营效能。<br><b>活动统筹执行</b>：主导<b>开营仪式</b>全流程落地，涵盖主持稿撰写打磨、PPT制作美化、现场中控调度、嘉宾接待及参访带队；推进付款采购OA等行政流程，统筹物料盘点、住宿协调与参访保障，在高并发场景下保持<b>沉稳心态</b>与<b>敏捷应变</b>，全程零失误。<div class="kw-line">🔑 核心能力体现：多专项统筹、数据治理、沉稳应变、严谨执行</div></div>
-      </div>
-    </div><div class="exp-item" id="g_intern_1">
-      <div class="exp-bar" onclick="expandExp('g_intern_1')"><span class="exp-dot"></span><span class="exp-title">中国新闻发展公司江苏分公司（新华社）</span><span class="exp-sub">政务新媒体部实习生 | 2022.06 ~ 2022.10</span><span class="exp-arrow">▶</span></div>
-      <div class="exp-brief"><b>政务信息提炼</b>：监测省内<b>财经动态</b>，精准筛选高价值政务新闻并撰写200字核心摘要；严控内容合规性，贴合<b>政务内参写作范式</b>，保障信息对决策的参考价值。<br><b>政企运营支持</b>：参与中小企业<b>惠税政策宣贯</b>，独立撰写新闻稿及美化汇报PPT；全流程跟会梳理企业诉求，沉淀为标准化清单呈报，以严谨文风辅助政策宣传。<br><b>OA流程治理</b>：依托采购平台审核申报材料，依据<b>SOP</b>驳回不合规申请并出具指引；熟悉<b>政务OA报批逻辑</b>与公文规范，有扎实的流程把控能力与风险意识。<div class="kw-line">🔑 核心能力体现：政务内容运营、公文规范把控、跨部门协同、SOP标准化建设</div></div>
-      <div class="exp-full">
-        <button class="back-btn" onclick="event.stopPropagation();collapseExp('g_intern_1')">← 返回列表</button>
-        <div class="exp-detail"><b>政务信息提炼</b>：监测省内<b>财经动态</b>，精准筛选高价值政务新闻并撰写200字核心摘要；严控内容合规性，贴合<b>政务内参写作范式</b>，保障信息对决策的参考价值。<br><b>政企运营支持</b>：参与中小企业<b>惠税政策宣贯</b>，独立撰写新闻稿及美化汇报PPT；全流程跟会梳理企业诉求，沉淀为标准化清单呈报，以严谨文风辅助政策宣传。<br><b>OA流程治理</b>：依托采购平台审核申报材料，依据<b>SOP</b>驳回不合规申请并出具指引；熟悉<b>政务OA报批逻辑</b>与公文规范，有扎实的流程把控能力与风险意识。<div class="kw-line">🔑 核心能力体现：政务内容运营、公文规范把控、跨部门协同、SOP标准化建设</div></div>
-      </div>
-    </div><div class="exp-item" id="g_intern_2">
-      <div class="exp-bar" onclick="expandExp('g_intern_2')"><span class="exp-dot"></span><span class="exp-title">山东省枣庄市薛城区财政局</span><span class="exp-sub">行政助理 | 2024.06 ~ 2024.10</span><span class="exp-arrow">▶</span></div>
-      <div class="exp-brief"><b>数据资产治理</b>：运用<b>Excel高阶函数</b>构建文档索引体系，推动非结构化档案标准化归档；沉淀<b>数据清洗SOP</b>与分类规范，显著提升调阅效率与数据管理严谨性。<br><b>政企合规运营</b>：起草格式化公文，精通政务文书规范与<b>Word排版SOP</b>；深谙公文语体风格与<b>行文规范</b>，具备扎实的<b>办公流合规</b>意识与严谨的文字把控力。<div class="kw-line">🔑 核心能力体现：数据资产治理、政企合规认知、严谨文字表达、SOP标准化建设</div></div>
-      <div class="exp-full">
-        <button class="back-btn" onclick="event.stopPropagation();collapseExp('g_intern_2')">← 返回列表</button>
-        <div class="exp-detail"><b>数据资产治理</b>：运用<b>Excel高阶函数</b>构建文档索引体系，推动非结构化档案标准化归档；沉淀<b>数据清洗SOP</b>与分类规范，显著提升调阅效率与数据管理严谨性。<br><b>政企合规运营</b>：起草格式化公文，精通政务文书规范与<b>Word排版SOP</b>；深谙公文语体风格与<b>行文规范</b>，具备扎实的<b>办公流合规</b>意识与严谨的文字把控力。<div class="kw-line">🔑 核心能力体现：数据资产治理、政企合规认知、严谨文字表达、SOP标准化建设</div></div>
-      </div>
-    </div>
-  </div>
-  <div class="section campus">
-    <h2>🏫 校园经历</h2>
-    <div class="exp-item" id="g_campus_0">
-      <div class="exp-bar" onclick="expandExp('g_campus_0')"><span class="exp-dot"></span><span class="exp-title">南京财经大学神寂动漫社</span><span class="exp-sub">社长 | 2022.06 ~ 2023.06</span><span class="exp-arrow">▶</span></div>
-      <div class="exp-brief"><b>项目统筹</b>：从零策划执行<b>南京高校联盟</b>舞台剧暨宅舞大赛，统筹22+社团及300+参加者，独立完成场地对接、赛程编排与现场总控，获评<b>十佳社团活动</b>。<br><b>团队运营</b>：主导社团日常运营与招新全流程，带领团队获评校<b>五星级社团</b>；独立运营<b>B站及QQ空间</b>，内容单条播放量达2.7万，打造社团品牌IP实现跨校影响力破圈。<div class="kw-line">🔑 核心能力体现：项目全生命周期管理、跨部门资源整合、数据驱动运营</div></div>
-      <div class="exp-full">
-        <button class="back-btn" onclick="event.stopPropagation();collapseExp('g_campus_0')">← 返回列表</button>
-        <div class="exp-detail"><b>项目统筹</b>：从零策划执行<b>南京高校联盟</b>舞台剧暨宅舞大赛，统筹22+社团及300+参加者，独立完成场地对接、赛程编排与现场总控，获评<b>十佳社团活动</b>。<br><b>团队运营</b>：主导社团日常运营与招新全流程，带领团队获评校<b>五星级社团</b>；独立运营<b>B站及QQ空间</b>，内容单条播放量达2.7万，打造社团品牌IP实现跨校影响力破圈。<div class="kw-line">🔑 核心能力体现：项目全生命周期管理、跨部门资源整合、数据驱动运营</div></div>
-      </div>
-    </div><div class="exp-item" id="g_campus_1">
-      <div class="exp-bar" onclick="expandExp('g_campus_1')"><span class="exp-dot"></span><span class="exp-title">逃离福利陷阱：激励政策如何重塑低收入群体的经济自主性</span><span class="exp-sub">独立研究员 | 2025.10 ~ 至今</span><span class="exp-arrow">▶</span></div>
-      <div class="exp-brief"><b>政策数据建模</b>：研读<b>CFPS与CHFS</b>微观数据文档，系统梳理变量定义与清洗逻辑，独立搭建政策评估研究的底层数据框架。<br><b>AI科研增效</b>：运用<b>大模型API与智能体工具</b>辅助文献研读与Stata脚本调试；沉淀<b>Prompt模板</b>与数据校验SOP，提升非结构化数据处理的规范性与效率。<div class="kw-line">🔑 核心能力体现：政策数据建模、AI科研增效、SOP标准化建设</div></div>
-      <div class="exp-full">
-        <button class="back-btn" onclick="event.stopPropagation();collapseExp('g_campus_1')">← 返回列表</button>
-        <div class="exp-detail"><b>政策数据建模</b>：研读<b>CFPS与CHFS</b>微观数据文档，系统梳理变量定义与清洗逻辑，独立搭建政策评估研究的底层数据框架。<br><b>AI科研增效</b>：运用<b>大模型API与智能体工具</b>辅助文献研读与Stata脚本调试；沉淀<b>Prompt模板</b>与数据校验SOP，提升非结构化数据处理的规范性与效率。<div class="kw-line">🔑 核心能力体现：政策数据建模、AI科研增效、SOP标准化建设</div></div>
-      </div>
-    </div><div class="exp-item" id="g_campus_2">
-      <div class="exp-bar" onclick="expandExp('g_campus_2')"><span class="exp-dot"></span><span class="exp-title">贫困群体内生动力双驱动模型构建</span><span class="exp-sub">研究员 | 2023.12 ~ 2024.05</span><span class="exp-arrow">▶</span></div>
-      <div class="exp-brief"><b>理论建模</b>：基于<b>行为公共管理</b>视角，构建「政策供给-个体响应」互动机制框架，通过20个典型案例比较分析与编码，提炼关键变量与内生动力路径，为贫困治理政策优化提供理论参考。<br><b>结构化论证</b>：通过编码进行定性资料分析，拆解复杂社会现象为可分析逻辑单元，锤炼严谨学术逻辑与数据治理素养，获校级<b>优秀毕业论文</b>。<div class="kw-line">🔑 核心能力体现：理论建模能力、严谨学术论证、数据治理素养</div></div>
-      <div class="exp-full">
-        <button class="back-btn" onclick="event.stopPropagation();collapseExp('g_campus_2')">← 返回列表</button>
-        <div class="exp-detail"><b>理论建模</b>：基于<b>行为公共管理</b>视角，构建「政策供给-个体响应」互动机制框架，通过20个典型案例比较分析与编码，提炼关键变量与内生动力路径，为贫困治理政策优化提供理论参考。<br><b>结构化论证</b>：通过编码进行定性资料分析，拆解复杂社会现象为可分析逻辑单元，锤炼严谨学术逻辑与数据治理素养，获校级<b>优秀毕业论文</b>。<div class="kw-line">🔑 核心能力体现：理论建模能力、严谨学术论证、数据治理素养</div></div>
-      </div>
-    </div>
-  </div>
-  <div class="section skills">
-    <h2>⭐ 技能与评价</h2>
-    <div class="skill-block">
-      <h4>大模型应用与智能体开发</h4>
-      <div class="skill-text" contenteditable="false">具备<b>大模型API接入与智能体编排</b>能力，可独立完成<b>本地化部署与运维</b>；熟练整合<b>MCP协议与Agent工具链</b>，搭建<b>AI智能办公工具</b>（如简历优化Web应用），实现大模型API→前端部署全链路闭环，善用AI智能体辅助完成复杂数据处理与自动化任务。</div>
-    </div><div class="skill-block">
-      <h4>数据治理与AI辅助分析</h4>
-      <div class="skill-text" contenteditable="false">掌握<b>Stata、R语言</b>及<b>Excel高阶函数</b>，具备<b>CFPS/CHFS</b>等微观面板数据处理经验；擅长利用<b>AI辅助生成Python代码</b>，解决数据清洗、格式校验等非结构化数据处理难题，提升数据资产标准化程度。</div>
-    </div><div class="skill-block">
-      <h4>政企办公流与合规认知</h4>
-      <div class="skill-text" contenteditable="false">深度熟悉<b>政务公文写作范式</b>与<b>Word排版SOP</b>，具备扎实的公文语体敏感度与<b>严谨文字表达力</b>；精通<b>政务OA报批逻辑</b>与<b>采购审核流程</b>，能敏锐识别合规风险，适应高严谨度、强流程化的政企办公环境。</div>
-    </div><div class="skill-block">
-      <h4>核心软实力</h4>
-      <div class="skill-text" contenteditable="false">英语可作为工作语言（<b>雅思6.5</b>，<b>全英文硕士授课</b>），无障碍阅读英文文献及行业报告；<b>中共党员</b>，大局观与执行力强；具备<b>严谨的文字表达</b>与公文写作功底；拥有<b>300+人次大型活动统筹</b>经验，擅长跨部门资源协调与多线程任务管理。</div>
-    </div>
-  </div>
-  <div class="footer">© 2025 刘芮辰 | 感谢阅读</div>
 </div>
 
 <script>
-var PASSWORD = 'Lrc020930.';
-var currentExpanded = null;
+/* ============ Data ============ */
+const A='assets/originals/';
+/* 首屏 IP：视频、首帧静态图、末帧定格图都在 assets/ip/，首次悬停只播一次 */
+const WORKS=[
+ {
+  n:'01',id:'aoqing',title:'澳青职验站 · Career Lab',
+  img:'assets/covers/aoqing-p1.jpg',hint:'查看成果原件',
+  sum:'办公室里没人做过产品原型，我一个人用 AI 把「六站式职业体验」做成了能点的 demo。',
+  role:'横琴人才集团 · 项目运营实习 · 独立负责',
+  result:'80 条功能 / 17 条核心 · 定制 48 · 改造 24 · 复用 4',
+  lead:'实习办公室里没有人会做 demo，也没有现成的产品原型。',
+  narrative:['<b class="nlab">起点</b>澳青实习计划需要一个能对外演示的青年职业体验平台，团队里没人会做原型，实习生津贴核算、考勤、入职核查也全靠手工。',
+             '<b class="nlab">做法</b>先把业务流程拆成功能清单，再用 AI 一个人搭出机会广场、三端注册、职业匹配与六站式旅程的可交互页面；同时把入职核查、银行卡收集、分层建文件夹、考勤表、请假未登记、薪资核算等重复制表封装成自制技能包。',
+             '<b class="nlab">结果</b>可交互原型与 41 页原型演示同时交付，津贴核算一个人很快就能算完，整个过程没有额外人力。'],
+  resultNum:'80 / 17',resultCap:'条功能 / 条核心功能，另有 41 页原型演示',
+  assets:[['可交互原型（全功能版）','HTML',A+'aoqing-prototype.html'],
+          ['41 页原型演示 PDF','PDF',A+'aoqing-prototype.pdf']]
+ },
+ {
+  n:'02',id:'yuanqi',title:'元气洞察引擎',
+  img:'assets/covers/yuanqi-data.jpg',hint:'查看成果原件',
+  sum:'让 AI 读完 30,814 条消费者声音，把口味趋势落成 3 套系 15 款能直接生产的新品。',
+  role:'飞书 AI 先锋人才大赛 · 队长',
+  result:'30,814 → 7,840 条有效信号 → 3 套系 15 款',
+  lead:'口味趋势抓不住，研发验证周期又长，营销素材还得一条条手写。',
+  narrative:['<b class="nlab">起点</b>汇集小红书 331 篇笔记、20,484 条评论与全网 9,999 条品牌声量，合计 30,814 条原始声音，人工读完要几周。',
+             '<b class="nlab">做法</b>用四维情绪打标 Agent 从口感、健康、颜值、营销四个维度逐条判读，留下 7,840 条有效信号；再把「苹果、茉莉呼声高」这类信号组合成能生产的产品，过价格、配方、风味三道品质关，并同步生成概念描述与多平台文案，写作方法封装成可复用 skill。',
+             '<b class="nlab">结果</b>一次产出茶、奶、气泡 3 个套系共 15 款新品，从洞察到产品定义再到营销素材，三步能当场跑一遍，晋级优秀战队（全国 300 强）。'],
+  resultNum:'3 / 15',resultCap:'套系 / 款新品，来自 7,840 条有效信号',
+  assets:[['在线 Demo 体验入口','外部链接','https://02ruichen.github.io/yuanqi-insight-engine/'],
+          ['完整参赛方案','HTML',A+'yuanqi-plan.html'],
+          ['飞书方案文档','外部链接','https://larkcommunity.feishu.cn/docx/OcmJdRZuRoCTGJxRL6gckx6Gn2f']]
+ },
+ {
+  n:'03',id:'macau',title:'澳门物语',video:true,
+  img:'assets/covers/macau-video-cover.jpg',hint:'点击播放成片',
+  sum:'用 AI 生成像素风镜头，把澳门的一日行程拍成能照着玩的短片。',
+  role:'万事屋团队 · 选题灵感落地 / 数据爬取与分析 / 分镜生成 / 路演内容',
+  result:'AI 视频赛道第三名 · 38 条攻略 / 358 条评论 / 30 个分镜',
+  lead:'平台上的澳门宣传片拍得都不差，可是换掉片名就分不清是哪座城市。',
+  narrative:['<b class="nlab">起点</b>翻遍抖音和小红书的澳门宣传视频，发现航拍、霓虹、宏大旁白的模板把老街石板路和茶餐厅烟火气磨平了，讲法和年轻人不在一个频道。',
+             '<b class="nlab">做法</b>爬取 38 条攻略与 358 条评论做依据，借《星露谷物语》的像素风与拼豆热度，按脚本 → 分镜 → AI 视频生成 → 人工精修的流程产出 30 个分镜，把大三巴、玫瑰圣母堂、新葡京、官也街串成游戏人物的一日打卡路线；把方法拆成三个 skill 做成插件，也把路演内容一起写了。',
+             '<b class="nlab">结果</b>成片既是宣传片也是能照着玩的攻略，在阿里云湾区 AI 未来青年创造营获 AI 视频赛道第三名。'],
+  resultNum:'03',resultCap:'名 · AI 视频赛道，成片与路演稿同期交付',
+  assets:[['播放《澳门物语》成片','VIDEO','VIDEO'],
+          ['项目介绍页','HTML',A+'macau-intro.html'],
+          ['路演 PPT · 6 页（在 PPT 产出板块）','HTML',A+'macau-pitch.html'],
+          ['下载成片 · 第一段','MP4',A+'macau-story-01.mp4'],
+          ['下载成片 · 第二段','MP4',A+'macau-story-02.mp4']]
+ },
+ {
+  n:'04',id:'plannote',title:'PlanNote',
+  img:'assets/covers/plannote/01-day.jpg',hint:'打开线上应用',
+  sum:'把只能在自己电脑上跑的计划本，重做成能装进手机的网页应用，周五按我定的格式自动出周报。',
+  role:'独立设计开发 · 产品 / 视觉 / 前端 / 测试',
+  result:'45 项端到端测试全通过 · 线上验收 10 / 10 · 已上线可用',
+  lead:'起点是一个 Python 桌面程序，换台电脑就打不开，也不太好意思发给别人。',
+  narrative:['<b class="nlab">起点</b>最早那版是我自己用的 Python 桌面程序，能跑，但只能在装了 Python 的那台电脑上开。想发给别人要打包成 exe，Windows 还会弹安全警告，界面是系统默认控件的样子。',
+             '<b class="nlab">做法</b>先做一块配色样张把视觉规则定下来，阴影从纯黑换成暖灰，圆角、字号层级和侧栏底色一起调，确认后再整站重写。技术走纯前端 PWA，数据存在浏览器本地，不设账号也不做云同步，双击文件也能打开。AI 周报真接模型，把用户写的规则放在提示词最前并声明冲突时以规则为准，周报还能只按某一个项目出。',
+             '<b class="nlab">结果</b>线上地址已经能直接打开，可装到桌面和手机，断网也能用。写了 45 项端到端断言和 10 项线上验收，全部通过，代码以 MIT 协议开源。'],
+  resultNum:'45 项',resultCap:'端到端断言全通过，另有 10 项线上验收',
+  assets:[['打开线上应用（可直接使用）','外部链接','https://02ruichen.github.io/PlanNote/app.html'],
+          ['作品介绍页','外部链接','https://02ruichen.github.io/PlanNote/'],
+          ['GitHub 源码 · MIT','外部链接','https://github.com/02Ruichen/PlanNote'],
+          ['项目说明（面向访客版）','HTML',A+'plannote-project.html'],
+          ['莫兰迪视觉打样原件','HTML',A+'plannote-swatches.html'],
+          ['项目 README','HTML',A+'plannote-readme.html']]
+ }
+];
+const DECKS_A=[
+ {id:'ceremony',name:'开营 / 结营仪式 · 合并主题（原件节选）',desc:'从两场仪式的原件里挑了 3 页，按开营、过程、结营排成一条线。挑的都是没有人名、名单和真人肖像的页面。',pages:3,group:'仪式统筹',dl:A+'ceremony.pdf',dlName:'开营结营-原件节选.pdf'}
+];
+const DECKS_B=[
+ {id:'course-rdd',name:'Data Science · RDD 因果推断',desc:'课程 pre，讲断点回归设计的理论框架和有效性检验。',pages:5,group:'课程与科研 Pre'},
+ {id:'course-lit',name:'Group 7 · 文献综述',desc:'小组文献综述汇报，梳理了这个领域的脉络和几处关键争论。',pages:9,group:'课程与科研 Pre'},
+ {id:'course-gov',name:'全球治理 · Part D',desc:'全球治理课的专题汇报，中文英文混排的。',pages:9,group:'课程与科研 Pre'},
+ {id:'course-sec',name:'数字主权安全 · Part 2',desc:'AI 安全化的专题，讨论威胁是怎么被说成威胁的。',pages:4,group:'课程与科研 Pre'}
+];
+/* 比赛路演稿：与作品卡里的成片同期交付，单独提出、默认可见 */
+const DECKS_EXTRA=[
+ {id:'pitch-macau',name:'澳门物语 · 比赛路演稿',desc:'6 页，自带翻页和计时，和成片一起交的，点开就能完整看一遍。',cover:'assets/covers/pitch-cover.jpg',badge:'6 页',kind:'HTML',url:A+'macau-pitch.html'}
+];
+/* B 站真实封面 / 标题 / 时长 / 播放量 */
+const BILI_LEAD=[
+ {bv:'BV11k4y1H7M7',title:'第十一届 神寂杯南京高校联盟 COSPLAY 舞台剧大赛 · 官方录制',dur:6147,view:2054,tag:'南京高校联盟 · 舞台剧比赛'},
+ {bv:'BV1YP411D7ed',title:'第六届 神寂杯南京高校联盟宅舞大赛 · 官方录制',dur:8291,view:2892,tag:'南京高校联盟 · 宅舞比赛'}
+];
+const BILI=[
+ {bv:'BV1gP4y1r7j9',title:'【神寂动漫社】2022 百团大战！',dur:395,view:1648,tag:'校内大型活动 02'},
+ {bv:'BV1PW4y1y7QH',title:'【南京财经大学】心跳光谱 光就在前方 · BDF2022 南京',dur:407,view:26969,tag:'校内大型活动 03'},
+ {bv:'BV1d3411G7x4',title:'【神寂动漫社】521 宅舞专场 · 一起在夏日操场上跳舞吧',dur:2523,view:2677,tag:'校内大型活动 04'},
+ {bv:'BV1zP411m7NN',title:'神寂动漫社 2023 国风纪',dur:4657,view:1734,tag:'校内大型活动 05'}
+];
+/* 本人照片：按活动分类，文件名即说明 */
+const PHOTOS=[
+ ['assets/photos/p01.jpg','执委会结营仪式','实习 · 横琴'],
+ ['assets/photos/p02.jpg','结营仪式 2','实习 · 横琴'],
+ ['assets/photos/p03.jpg','分团委','本科 · 校园'],
+ ['assets/photos/p04.jpg','团支书','本科 · 校园'],
+ ['assets/photos/p05.jpg','演讲比赛','本科 · 校园'],
+ ['assets/photos/p06.jpg','演讲比赛 2','本科 · 校园'],
+ ['assets/photos/p07.jpg','520 草坪专场','社团 · 现场'],
+ ['assets/photos/p08.jpg','五星社团答辩','社团 · 现场'],
+ ['assets/photos/p09.jpg','优秀社团答辩','社团 · 现场'],
+ ['assets/photos/p10.jpg','国风晚会','社团 · 现场'],
+ ['assets/photos/p11.jpg','换届大会','社团 · 现场'],
+ ['assets/photos/p12.jpg','明月天涯企划','社团 · 现场'],
+ ['assets/photos/p13.jpg','百团大战','社团 · 现场'],
+ ['assets/photos/p14.jpg','南京高校联盟 1','社团 · 现场'],
+ ['assets/photos/p15.jpg','南京高校联盟 2','社团 · 现场'],
+ ['assets/photos/p16.jpg','南京高校联盟 3','社团 · 现场']
+];
+/* PlanNote 线上真实界面截图 */
+const PLAN_SHOTS=[
+ ['assets/covers/plannote/01-day.jpg','01 · 日视图'],
+ ['assets/covers/plannote/02-week.jpg','02 · 周视图'],
+ ['assets/covers/plannote/03-rule.jpg','03 · 周报规则'],
+ ['assets/covers/plannote/04-report.jpg','04 · AI 周报'],
+ ['assets/covers/plannote/05-mobile.jpg','05 · 手机端']
+];
+document.getElementById('pnShots').innerHTML=PLAN_SHOTS.map(([src,cap])=>
+ `<button type="button" data-photo="${src}" data-cap="PlanNote ${cap}（线上真实界面）" aria-label="放大查看 ${cap}"><span class="pn-frame"><img src="${src}" alt="PlanNote ${cap}" loading="lazy"></span><small>${cap}</small></button>`).join('');
 
-// ===== DOM 管理：只有一个 page 留在文档里 =====
-var pageInternet = document.getElementById('resume-internet');
-var pageGov = document.getElementById('resume-gov');
-var activePage = pageInternet;  // 当前显示的那个
-// 把 gov 页面从 DOM 里移走（缓存起来，切换时再用）
-if (pageGov) pageGov.remove();
+const EXT_ICON='<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 10L10 4M5.5 4H10v4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const ARROW='<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8.5 3.5L12 7l-3.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const PLAY='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5l11 6.5-11 6.5z" fill="#2B2A33"/></svg>';
+const TRI='<svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M6 3.5l9 5.5-9 5.5z" fill="#FB7299"/></svg>';
 
-// ===== 主题切换（CSS变量 + 替换页面DOM） =====
-var THEME_KEY = 'resume-theme';
-function setTheme(theme) {
-  var target = (theme === 'gov') ? pageGov : pageInternet;
-  if (target !== activePage) {
-    // 把当前页面从 DOM 移除
-    if (activePage && activePage.parentNode) activePage.remove();
-    // 确保目标页面可见，再插入到 script 标签之前
-    target.style.display = 'block';
-    document.body.appendChild(target);
-    activePage = target;
-    currentExpanded = null;  // 重置展开状态
+/* ============ Helpers ============ */
+const page=n=>String(n).padStart(2,'0');
+const deckPath=(id,n)=>'assets/ppt/'+id+'/'+page(n)+'.png';
+const fmtDur=s=>{const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return (h?h+':'+String(m).padStart(2,'0'):m)+':'+String(x).padStart(2,'0')};
+const fmtView=n=>n>=10000?(n/10000).toFixed(1)+' 万':String(n);
+
+/* ============ Render ============ */
+document.getElementById('worksGrid').innerHTML=WORKS.map(w=>`
+ <article class="work-card glass reveal">
+  <button class="work-media${w.pending?' is-pending':''}" data-asset="${w.id}" aria-label="${w.hint}">
+    <img src="${w.img}" alt="${w.title} 成果图" loading="lazy">
+    ${w.video?'<span class="play-badge" aria-hidden="true">'+PLAY+'</span>':''}
+    ${w.pending?'':'<span class="media-hint">'+w.hint+' '+ARROW+'</span>'}
+  </button>
+  <div class="work-body">
+    <p class="work-num">${w.n} / WORK ${w.pending?'· 展示位已预留':''}</p>
+    <h3>${w.title}</h3>
+    <p class="work-summary">${w.sum}</p>
+    <dl class="work-facts">
+      <div><dt>我的角色</dt><dd>${w.role}</dd></div>
+      <div><dt>成果</dt><dd>${w.result}</dd></div>
+    </dl>
+    <div class="work-actions">
+      <button class="btn btn-primary" data-process="${w.id}">读过程 ${ARROW}</button>
+      <button class="btn" data-asset="${w.id}">看成果 ${ARROW}</button>
+    </div>
+  </div>
+ </article>`).join('');
+
+function deckCard(d){
+  const ns=[2,3,4].filter(n=>n<=d.pages);
+  const thumbs=ns.map(n=>`<img src="${deckPath(d.id,n)}" alt="内页 ${n}" loading="lazy">`).join('');
+  const extra=Array.from({length:3-ns.length},()=>'<img src="'+deckPath(d.id,1)+'" alt="封面" loading="lazy">').join('');
+  return `<button class="deck" data-deck="${d.id}" aria-label="打开 ${d.name}，共 ${d.pages} 页">
+    <div class="deck-cover"><img src="${deckPath(d.id,1)}" alt="${d.name} 封面" loading="lazy"><span class="count">${d.pages} 页</span></div>
+    <div class="deck-info"><h4>${d.name}</h4><p>${d.desc}</p><div class="thumbs">${thumbs}${extra}</div></div>
+  </button>`;
+}
+document.getElementById('deckGridA').innerHTML=DECKS_A.map(deckCard).join('');
+document.getElementById('deckGridB').innerHTML=DECKS_B.map(deckCard).join('');
+document.getElementById('deckGridExtra').innerHTML=DECKS_EXTRA.map(d=>`
+ <button class="deck" data-extra="${d.url}" aria-label="打开 ${d.name}">
+   <div class="deck-cover">
+     <img src="${d.cover}" alt="${d.name} 封面" loading="lazy">
+     <span class="count">${d.badge}</span>
+     <span class="open-badge">点开完整演示 ↗</span>
+   </div>
+   <div class="deck-info"><h4>${d.name}</h4><p>${d.desc}</p><span class="btn btn-primary deck-cta">打开完整演示 ${EXT_ICON}</span></div>
+ </button>`).join('');
+
+const biliCard=(v,eager)=>`
+ <a class="bili-card" href="https://www.bilibili.com/video/${v.bv}/" target="_blank" rel="noopener" aria-label="点击观看：${v.title}">
+   <div class="bili-cover">
+     <img src="assets/covers/bili/${v.bv}.jpg" alt="${v.title} 视频封面" loading="${eager?'eager':'lazy'}" decoding="async" onerror="this.classList.add('is-broken')">
+     <span class="bili-play" aria-hidden="true">${TRI}</span>
+     <span class="bili-view">▶ ${fmtView(v.view)} 播放</span>
+     <span class="bili-dur">${fmtDur(v.dur)}</span>
+   </div>
+   <div class="bili-info">
+     <span class="bili-tag">${v.tag}</span>
+     <h4>${v.title}</h4>
+     <span class="bili-go">点击观看 ${EXT_ICON}</span>
+   </div>
+ </a>`;
+document.getElementById('biliLead').innerHTML=BILI_LEAD.map(v=>biliCard(v,true)).join('');
+document.getElementById('biliGrid').innerHTML=BILI.map(v=>biliCard(v,false)).join('');
+
+/* ============ Modals ============ */
+const modals=['processModal','viewerModal','mediaModal'];
+let modalCloseTimer=null,pendingClose=[];
+function openModal(id){
+  /* 若上一个弹层还在退场等待中，直接收尾，避免透明遮罩残留 */
+  if(modalCloseTimer){clearTimeout(modalCloseTimer);modalCloseTimer=null;pendingClose.forEach(m=>m.classList.remove('open'));pendingClose=[]}
+  const m=document.getElementById(id);
+  m.classList.add('open');document.body.style.overflow='hidden';
+  /* 等 display 生效后再加 is-in，进出场过渡才会真正播放 */
+  requestAnimationFrame(()=>requestAnimationFrame(()=>m.classList.add('is-in')));
+}
+function closeModal(){
+  const openOnes=modals.map(id=>document.getElementById(id)).filter(m=>m.classList.contains('open'));
+  if(!openOnes.length)return;
+  openOnes.forEach(m=>m.classList.remove('is-in'));
+  document.body.style.overflow='';
+  const v=document.getElementById('mediaBody');
+  if(v){const vid=v.querySelector('video');if(vid)vid.pause()}
+  pendingClose=openOnes;
+  if(modalCloseTimer)clearTimeout(modalCloseTimer);
+  modalCloseTimer=setTimeout(()=>{
+    pendingClose.forEach(m=>m.classList.remove('open'));pendingClose=[];
+    if(v)v.innerHTML='';modalCloseTimer=null;
+  },reduce?0:220);
+}
+document.addEventListener('click',e=>{
+  if(e.target.closest('[data-close]')){closeModal();return}
+  const jump=e.target.closest('[data-jump]');
+  if(jump){e.preventDefault();const el=document.getElementById(jump.dataset.jump);if(el)window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-72,behavior:'smooth'});return}
+  const proc=e.target.closest('[data-process]');
+  if(proc){openProcess(proc.dataset.process);return}
+  const extra=e.target.closest('[data-extra]');
+  if(extra){window.open(extra.dataset.extra,'_blank','noopener');return}
+  const body=e.target.closest('.work-body');
+  if(body&&!e.target.closest('.btn')){const card=body.closest('.work-card');if(card)openProcess(card.querySelector('[data-process]').dataset.process);return}
+  const asset=e.target.closest('[data-asset]');
+  if(asset){openAsset(asset.dataset.asset);return}
+  const deck=e.target.closest('[data-deck]');
+  if(deck){openViewer(deck.dataset.deck);return}
+  const photo=e.target.closest('[data-photo]');
+  if(photo){e.preventDefault();openMedia('<img src="'+photo.dataset.photo+'" alt="'+photo.dataset.cap+'">',photo.dataset.cap,photo.dataset.photo);return}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeModal();return}
+  if(document.getElementById('viewerModal').classList.contains('open')){
+    if(e.key==='ArrowRight')stepViewer(1);
+    if(e.key==='ArrowLeft')stepViewer(-1);
   }
-  if (theme === 'gov') {
-    document.body.classList.add('gov');
-  } else {
-    document.body.classList.remove('gov');
-  }
-  try { localStorage.setItem(THEME_KEY, theme); } catch(e) {}
-  document.querySelectorAll('.theme-btn').forEach(function(b) {
-    b.classList.toggle('active', b.dataset.theme === theme);
+});
+
+/* Process */
+function openProcess(id){
+  const w=WORKS.find(x=>x.id===id);if(!w)return;
+  document.getElementById('processNum').textContent=w.n+' / SELECTED WORK';
+  document.getElementById('processTitle').textContent=w.title;
+  document.getElementById('processLead').textContent=w.lead;
+  document.getElementById('processNarrative').innerHTML=w.narrative.map(p=>'<p>'+p+'</p>').join('');
+  document.getElementById('processResultNum').textContent=w.resultNum;
+  document.getElementById('processResultCap').textContent=w.resultCap;
+  document.getElementById('processAssets').innerHTML=(w.pending?'<div class="pending">成果图与演示素材还在整理，展示位已预留。下面先看已有的项目资料。</div>':'')+
+    w.assets.map(([label,kind,url])=>
+      `<button type="button" data-inner-asset="${url}" data-kind="${kind}"><span>${label}</span><small>${kind} ↗</small></button>`).join('');
+  openModal('processModal');
+}
+
+function openAsset(id){
+  const w=WORKS.find(x=>x.id===id);if(!w)return;
+  const first=w.assets[0];
+  if(w.video){openVideo();return}
+  if(first&&first[2])window.open(first[2],'_blank','noopener');
+}
+function openInner(url,kind){
+  if(kind==='VIDEO'){openVideo();return}
+  if(url&&!url.startsWith('VIDEO'))window.open(url,'_blank','noopener');
+}
+function openVideo(){
+  const p1=A+'macau-story-01.mp4',p2=A+'macau-story-02.mp4';
+  const title='《澳门物语》· AI 像素风文旅短片';
+  openMedia('<video id="macauA" controls autoplay playsinline preload="auto" poster="assets/covers/macau-video-cover.jpg"><source src="'+p1+'" type="video/mp4">浏览器不支持视频播放。</video>'+
+    '<video id="macauB" controls playsinline preload="none" style="display:none"><source src="'+p2+'" type="video/mp4">浏览器不支持视频播放。</video>',
+    title,p1);
+  const a=document.getElementById('macauA');
+  const b=document.getElementById('macauB');
+  const cap=document.getElementById('mediaCap');
+  const ext=document.getElementById('mediaOpen');
+  cap.textContent=title+'（1 / 2）';
+  let warm=false;
+  a.addEventListener('timeupdate',()=>{
+    if(warm||!a.duration||a.duration-a.currentTime>20)return;
+    warm=true;b.preload='auto';b.load();
+  });
+  a.addEventListener('ended',()=>{
+    a.style.display='none';
+    b.style.display='block';
+    ext.href=p2;
+    cap.textContent=title+'（2 / 2）';
+    const q=b.play();if(q&&q.catch)q.catch(()=>{});
   });
 }
-// 页面加载时恢复主题
-(function() {
-  var saved = 'internet';
-  try { saved = localStorage.getItem(THEME_KEY) || 'internet'; } catch(e) {}
-  setTheme(saved);
-})();
+function openMedia(html,cap,href){
+  document.getElementById('mediaBody').innerHTML=html;
+  document.getElementById('mediaCap').textContent=cap;
+  document.getElementById('mediaOpen').href=href||'#';
+  openModal('mediaModal');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-inner-asset]');
+  if(b){openInner(b.dataset.innerAsset,b.dataset.kind)}
+});
 
-// ===== 经历展开/折叠 =====
-function expandExp(id) {
-  if (currentExpanded) document.getElementById(currentExpanded).classList.remove('open');
-  var el = document.getElementById(id);
-  if (currentExpanded === id) { currentExpanded = null; return; }
-  el.classList.add('open'); currentExpanded = id;
+/* PPT viewer */
+let curDeck=null,curPage=1;
+function openViewer(id){
+  const d=[...DECKS_A,...DECKS_B].find(x=>x.id===id);if(!d)return;
+  curDeck=d;curPage=1;
+  document.getElementById('viewerTitle').textContent=d.name;
+  const dl=document.getElementById('viewerDownload');
+  dl.href=d.dl||(A+id+'.pptx');
+  dl.setAttribute('download',d.dlName||(d.name+'.pptx'));
+  dl.textContent=d.dl?'下载原件节选 ↗':'下载原文件 ↗';
+  document.getElementById('viewerDots').innerHTML=Array.from({length:d.pages},(_,i)=>`<button type="button" data-page="${i+1}">${page(i+1)}</button>`).join('');
+  renderViewer();openModal('viewerModal');
 }
-function collapseExp(id) {
-  document.getElementById(id).classList.remove('open');
-  if (currentExpanded === id) currentExpanded = null;
+function renderViewer(){
+  const d=curDeck;
+  document.getElementById('viewerImg').src=deckPath(d.id,curPage);
+  document.getElementById('viewerImg').alt=d.name+' 第 '+curPage+' 页';
+  document.getElementById('viewerCount').textContent=page(curPage)+' / '+page(d.pages);
+  document.getElementById('viewerPrev').disabled=curPage===1;
+  document.getElementById('viewerNext').disabled=curPage===d.pages;
+  document.querySelectorAll('#viewerDots button').forEach(b=>b.classList.toggle('on',Number(b.dataset.page)===curPage));
+}
+function stepViewer(n){if(!curDeck)return;curPage=Math.min(curDeck.pages,Math.max(1,curPage+n));renderViewer()}
+document.getElementById('viewerPrev').addEventListener('click',()=>stepViewer(1*-1));
+document.getElementById('viewerNext').addEventListener('click',()=>stepViewer(1));
+document.getElementById('viewerDots').addEventListener('click',e=>{
+  const b=e.target.closest('[data-page]');if(b){curPage=Number(b.dataset.page);renderViewer()}
+});
+
+/* ============ Hero IP：分层转身 + 视差 ============ */
+const scene=document.getElementById('ipScene');
+const stage=document.getElementById('ipStage');
+const dots=document.querySelectorAll('.frame-switch button');
+const fsLabel=document.getElementById('fsLabel');
+const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* 首次悬停：静态首帧 → 静音只播一次 → 末帧高清定格。默认绝不出声，声音只由用户点按钮主动开启 */
+const heroVideo=document.getElementById('ipVideo');
+if(heroVideo){
+  heroVideo.muted=true;heroVideo.loop=false;heroVideo.playsInline=true;heroVideo.volume=1;
+  const soundBtn=document.getElementById('ipSound');
+  const soundTxt=soundBtn.querySelector('.ip-sound-txt');
+  const setSound=on=>{
+    heroVideo.muted=!on;
+    soundBtn.dataset.sound=on?'on':'off';
+    soundBtn.setAttribute('aria-pressed',on?'true':'false');
+    soundBtn.setAttribute('aria-label',on?'关闭声音':'开启声音');
+    soundTxt.textContent=on?'关闭声音':'开启声音';
+  };
+  const fallback=()=>{scene.classList.remove('is-playing');scene.classList.add('is-frozen')};
+  let fired=false;
+  const start=()=>{
+    if(fired)return;fired=true;
+    stage.removeEventListener('pointerenter',start);
+    stage.removeEventListener('pointerover',start);
+    stage.removeEventListener('pointerdown',start);
+    scene.classList.add('is-playing');
+    const p=heroVideo.play();
+    if(p&&p.catch)p.catch(fallback);
+  };
+  stage.addEventListener('pointerenter',start,{once:true});
+  stage.addEventListener('pointerover',start,{once:true});
+  stage.addEventListener('pointerdown',start,{once:true});
+  soundBtn.addEventListener('click',e=>{
+    e.stopPropagation();
+    const on=soundBtn.dataset.sound!=='on';
+    setSound(on);
+    /* 已经定格或没播成才点开声音，是主动想听，从头带声播一次，结束后仍回到末帧定格 */
+    if(on&&heroVideo.paused){
+      scene.classList.remove('is-frozen');scene.classList.add('is-playing');
+      heroVideo.currentTime=0;
+      const p=heroVideo.play();
+      if(p&&p.catch)p.catch(()=>{setSound(false);fallback()});
+    }
+  });
+  heroVideo.addEventListener('ended',()=>scene.classList.add('is-frozen'));
+  heroVideo.addEventListener('error',fallback);
+  heroVideo.load();
 }
 
-// ===== 编辑模式 =====
-function showUnlock() { document.getElementById('pwModal').classList.add('show'); document.getElementById('pwInput').focus(); }
-function hideModal() { document.getElementById('pwModal').classList.remove('show'); }
-function doUnlock() {
-  if (document.getElementById('pwInput').value === PASSWORD) {
-    document.body.classList.add('editing');
-    document.querySelectorAll('[contenteditable]').forEach(function(el) { el.contentEditable = 'true'; });
-    document.querySelector('.save').style.display = 'inline-block';
-    document.querySelector('.cancel').style.display = 'inline-block';
-    hideModal();
-  } else { alert('密码错误'); }
+function setFrame(name){
+  if(scene.classList.contains('ip-hover-video'))return;
+  scene.classList.remove('is-paused','manual-front','manual-typing');
+  scene.classList.add(name==='front'?'manual-front':'manual-typing');
+  dots.forEach(b=>b.classList.toggle('on',b.dataset.frame===name));
+  fsLabel.textContent=name==='front'?'正在打招呼':'正在工作';
 }
-function cancelEdit() {
-  if (confirm('放弃修改？未保存的更改将丢失。')) location.reload();
-}
-function saveAll() {
-  var html = document.documentElement.outerHTML;
-  document.body.classList.remove('editing');
-  document.querySelectorAll('[contenteditable]').forEach(function(el) { el.contentEditable = 'false'; });
-  document.querySelector('.save').style.display = 'none';
-  document.querySelector('.cancel').style.display = 'none';
-  var blob = new Blob(['<!DOCTYPE html>\n' + html], {type:'text/html'});
-  var a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = '刘芮辰的简历_修改版.html';
-  a.click();
-  alert('已下载修改后的简历！把文件发给我，我帮你更新到网站上。');
-}
-var pwInput = document.getElementById('pwInput');
-if (pwInput) pwInput.addEventListener('keydown', function(e) { if(e.key==='Enter') doUnlock(); });
+dots.forEach(b=>b.addEventListener('click',()=>setFrame(b.dataset.frame)));
+if(!reduce&&!scene.classList.contains('ip-hover-video')){
+  setInterval(()=>{
+    if(scene.classList.contains('manual-front')||scene.classList.contains('manual-typing'))return;
+    const t=(Date.now()%10000)/1000;
+    fsLabel.textContent=t<4.2?'正在打招呼':'正在工作';
+  },400);
+}else if(reduce){setFrame('front')}
 
-// ===== 导出PDF（h2c scale:8 高清位图 → 等效 ~768 DPI） =====
-		function exportPDF() {
-		  if (typeof html2canvas === 'undefined') { alert('组件加载中，请刷新后重试'); return; }
-		  if (typeof jspdf === 'undefined') { alert('组件加载中，请刷新后重试'); return; }
-		  if (!activePage) { alert('导出失败：页面未找到'); return; }
-		  html2canvas(activePage, { scale: 8, useCORS: true, logging: false }).then(function(canvas) {
-		    var imgData = canvas.toDataURL('image/jpeg', 0.95);
-		    var imgWidthMm = 210;
-		    var imgHeightMm = imgWidthMm * (canvas.height / canvas.width);
-		    var pdf = new jspdf.jsPDF('p', 'mm', [imgWidthMm, imgHeightMm]);
-		    pdf.addImage(imgData, 'JPEG', 0, 0, imgWidthMm, imgHeightMm);
-		    var now = new Date();
-		    var ds = String(now.getMonth()+1).padStart(2,'0') + String(now.getDate()).padStart(2,'0');
-		    var isGov = document.body.classList.contains('gov');
-		    var verLabel = isGov ? '政企版' : '互联网';
-		    pdf.save(ds + '-' + verLabel + '-' + '刘芮辰.pdf');
-		  }).catch(function(err) {
-		    console.error('PDF导出失败:', err);
-		    alert('导出失败：' + (err.message || '未知错误'));
-		  });
-		}
-				</script>
-	</body>
-	</html>
+/* 分层视差：光晕 / 轨道 / 前景卡片按不同速率响应鼠标。rAF 节流，仅精确指针且首屏在视口内时计算 */
+const layers=[...scene.querySelectorAll('[data-depth]')];
+const finePointer=window.matchMedia('(pointer:fine)').matches;
+if(!reduce&&finePointer&&layers.length){
+  let px=0,py=0,queued=false,heroInView=true;
+  const hero=document.querySelector('.hero');
+  if('IntersectionObserver' in window&&hero){
+    new IntersectionObserver(es=>{heroInView=es[0].isIntersecting},{threshold:0}).observe(hero);
+  }
+  const applyParallax=()=>{
+    queued=false;
+    layers.forEach(el=>{
+      const k=Number(el.dataset.depth)||1;
+      el.style.setProperty('--px',(px*16*k).toFixed(1)+'px');
+      el.style.setProperty('--py',(py*12*k).toFixed(1)+'px');
+      el.style.translate=(px*16*k).toFixed(1)+'px '+(py*12*k).toFixed(1)+'px';
+    });
+    if(!scene.classList.contains('ip-hover-video'))stage.style.translate=(px*9).toFixed(1)+'px '+(py*7).toFixed(1)+'px';
+  };
+  document.addEventListener('mousemove',e=>{
+    if(!heroInView||document.hidden)return;
+    px=e.clientX/window.innerWidth-.5;py=e.clientY/window.innerHeight-.5;
+    if(!queued){queued=true;requestAnimationFrame(applyParallax)}
+  },{passive:true});
+}
+document.getElementById('heroCta').addEventListener('click',()=>{
+  setFrame('typing');
+  const el=document.getElementById('works');
+  window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-72,behavior:'smooth'});
+});
+document.getElementById('toTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+/* ============ 本人照片轮播 ============ */
+const CAR_MS=4600;
+const carousel=document.getElementById('carousel');
+const carPhotos=[document.getElementById('carPhotoA'),document.getElementById('carPhotoB')];
+const carGroup=document.getElementById('carGroup');
+const carCap=document.getElementById('carCap');
+const carCount=document.getElementById('carCount');
+const carBar=document.getElementById('carBar');
+const carStrip=document.getElementById('carStrip');
+let carIdx=0,carLayer=0,carElapsed=0,carPaused=false,carInView=true;
+/* 滚出视口后不再推进轮播，也不写进度条 */
+if('IntersectionObserver' in window){
+  new IntersectionObserver(es=>{carInView=es[0].isIntersecting},{threshold:.05}).observe(carousel);
+}
+
+carStrip.innerHTML=PHOTOS.map((p,i)=>`<button type="button" data-car="${i}" aria-label="第 ${i+1} 张 ${p[1]}"><img src="${p[0]}" alt="" loading="lazy"></button>`).join('');
+function renderCar(){
+  const n=PHOTOS.length,cur=PHOTOS[carIdx];
+  const show=carLayer,hide=1-carLayer;
+  const img=carPhotos[show];
+  img.src=cur[0];img.alt=cur[1];
+  img.classList.remove('on');void img.offsetWidth;img.classList.add('on');
+  carPhotos[hide].classList.remove('on');
+  carLayer=hide;
+  carGroup.textContent=cur[2];
+  carCap.textContent=cur[1];
+  carCount.textContent=page(carIdx+1)+' / '+page(n);
+  carStrip.querySelectorAll('button').forEach((b,i)=>b.classList.toggle('on',i===carIdx));
+  const active=carStrip.querySelector('button.on');
+  if(active){
+    const target=active.offsetLeft-(carStrip.clientWidth-active.offsetWidth)/2;
+    carStrip.scrollTo({left:Math.max(0,target),behavior:'smooth'});
+  }
+}
+function carGo(n){carIdx=(carIdx+n+PHOTOS.length)%PHOTOS.length;carElapsed=0;renderCar()}
+function carTick(){
+  if(document.hidden||!carInView)return;
+  /* 减少动态效果偏好下不自动换图，手动切换与缩略图仍可用 */
+  if(!reduce&&!carPaused){
+    carElapsed+=100;
+    if(carElapsed>=CAR_MS)carGo(1);
+  }
+  carBar.style.transform='scaleX('+Math.min(carElapsed/CAR_MS,1).toFixed(4)+')';
+}
+document.getElementById('carPrev').addEventListener('click',()=>carGo(-1));
+document.getElementById('carNext').addEventListener('click',()=>carGo(1));
+carStrip.addEventListener('click',e=>{
+  const b=e.target.closest('[data-car]');if(b){carIdx=Number(b.dataset.car);carElapsed=0;renderCar()}
+});
+carPhotos.forEach(img=>img.addEventListener('click',()=>{
+  const cur=PHOTOS[carIdx];
+  openMedia('<img src="'+cur[0]+'" alt="'+cur[1]+'">',cur[2]+' · '+cur[1],cur[0]);
+}));
+carousel.addEventListener('mouseenter',()=>carPaused=true);
+carousel.addEventListener('mouseleave',()=>carPaused=false);
+carousel.addEventListener('focusin',()=>carPaused=true);
+carousel.addEventListener('focusout',()=>carPaused=false);
+renderCar();
+setInterval(carTick,100);
+
+/* ============ Reveal + nav ============ */
+const revealAll=()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+let revealWorked=false;
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{
+    /* 同一批进入视口的元素按 70ms 错落，避免整页同时浮起 */
+    es.filter(x=>x.isIntersecting).forEach((x,i)=>{
+      x.target.style.transitionDelay=reduce?'0ms':(Math.min(i,5)*70)+'ms';
+      x.target.classList.add('in');revealWorked=true;io.unobserve(x.target);
+    });
+  },{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  setTimeout(()=>{if(!revealWorked)revealAll()},1200);
+}else{revealAll()}
+window.addEventListener('load',()=>setTimeout(()=>{if(!revealWorked)revealAll()},600));
+const secs=[...document.querySelectorAll('main section[id]')];
+const navA=[...document.querySelectorAll('.nav-links a')];
+/* 导航高亮：缓存各板块位置，滚动时只在 rAF 里读一次，不再每次滚动都强制回流 */
+let secTops=[],spyQueued=false;
+const measureSecs=()=>{secTops=secs.map(s=>[s.id,s.offsetTop])};
+const spy=()=>{
+  spyQueued=false;
+  const y=window.scrollY+120;let cur=secTops[0]?.[0];
+  secTops.forEach(([id,top])=>{if(top<=y)cur=id});
+  navA.forEach(a=>a.classList.toggle('is-active',a.getAttribute('href')==='#'+cur));
+};
+measureSecs();
+window.addEventListener('resize',measureSecs);
+window.addEventListener('load',measureSecs);
+window.addEventListener('scroll',()=>{if(!spyQueued){spyQueued=true;requestAnimationFrame(spy)}},{passive:true});
+</script>
+</body>
+</html>

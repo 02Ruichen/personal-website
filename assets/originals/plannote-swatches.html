@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PlanNote · 风格打样</title>
+<style>
+  :root{
+    --bg:#F2EFEC; --card:#FDFCFB; --sidebar:#5C5462;
+    --text:#4A4248; --text-2:#8A8188; --muted:#A89FAA;
+    --accent:#A898B8; --accent-l:#EBE4F0; --success:#98A898;
+    --warning:#C4A888; --warning-l:#F0E8DC; --border:#E2DED8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei UI","Microsoft YaHei","Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.7; min-height:100vh;
+  }
+  /* 背景两团柔光：给“玻璃”一点可透的东西 */
+  .blob{position:fixed;border-radius:50%;filter:blur(70px);z-index:-1;opacity:.55;}
+  .blob-a{width:360px;height:360px;left:-80px;top:120px;background:#C9B8D6;}
+  .blob-b{width:300px;height:300px;right:-60px;top:420px;background:#E3C9C9;}
+
+  .wrap{max-width:900px;margin:0 auto;padding:52px 28px 64px;position:relative;z-index:1;}
+  .kicker{font-size:11.5px;letter-spacing:.2em;color:var(--accent);font-weight:700;text-transform:uppercase;}
+  h1{font-size:30px;font-weight:600;letter-spacing:-.01em;margin:12px 0 10px;}
+  .sub{color:var(--text-2);font-size:14.5px;max-width:640px;}
+
+  .sec-title{font-size:12px;letter-spacing:.08em;color:var(--text-2);font-weight:700;margin:38px 0 14px;}
+
+  /* 01 色板 */
+  .chips{display:flex;flex-wrap:wrap;gap:10px;}
+  .chip{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid rgba(226,222,216,.85);
+    border-radius:999px;padding:7px 14px 7px 9px;font-size:12.5px;color:var(--text);
+    box-shadow:0 1px 2px rgba(92,84,98,.04);}
+  .sw{width:18px;height:18px;border-radius:50%;background:var(--c);border:1px solid rgba(0,0,0,.06);flex:none;}
+
+  /* 02 / 03 两栏 */
+  .grid2{display:grid;grid-template-columns:1.12fr .88fr;gap:22px;align-items:start;}
+  @media(max-width:720px){.grid2{grid-template-columns:1fr;}}
+
+  /* 日计划卡片 */
+  .card{
+    background:var(--card);border-radius:18px;padding:22px;
+    border:1px solid rgba(226,222,216,.7);
+    box-shadow:0 10px 30px rgba(92,84,98,.08), 0 2px 8px rgba(92,84,98,.055);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(92,84,98,.11), 0 3px 10px rgba(92,84,98,.07);}
+  .card-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;}
+  .date{font-size:12px;color:var(--muted);letter-spacing:.05em;}
+  .day{font-size:20px;font-weight:600;letter-spacing:-.01em;margin-top:3px;}
+  .streak{font-size:12px;font-weight:600;color:#9C7F5E;background:var(--warning-l);
+    padding:6px 11px;border-radius:999px;white-space:nowrap;}
+
+  .tasks{list-style:none;display:flex;flex-direction:column;gap:9px;}
+  .task{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:12px;
+    background:#FBF9F7;border:1px solid rgba(226,222,216,.45);transition:background .15s,transform .15s;}
+  .task:hover{background:#F6F3F0;}
+  .check{width:20px;height:20px;border-radius:7px;border:1.5px solid #CBC4CE;flex:none;
+    display:grid;place-items:center;font-size:12px;color:#fff;transition:.15s;}
+  .task.done .check{background:var(--accent);border-color:var(--accent);}
+  .task-main{flex:1;min-width:0;}
+  .task-title{font-size:14px;}
+  .task.done .task-title{color:#ADA4AD;text-decoration:line-through;}
+  .task-meta{font-size:11.5px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:7px;}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--d);}
+  .stars{font-size:9px;color:var(--warning);letter-spacing:1.5px;}
+
+  .progress-wrap{margin-top:18px;}
+  .progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--text-2);margin-bottom:8px;}
+  .track{height:8px;border-radius:999px;background:#EDEAE5;overflow:hidden;}
+  .fill{height:100%;width:66%;border-radius:999px;background:linear-gradient(90deg,#B8A8C4,#A898B8);}
+
+  /* 玻璃面板 */
+  .glass{
+    position:relative;border-radius:18px;padding:18px;
+    background:rgba(253,252,251,.55);
+    -webkit-backdrop-filter:blur(18px) saturate(1.15);
+    backdrop-filter:blur(18px) saturate(1.15);
+    border:1px solid rgba(255,255,255,.65);
+    box-shadow:0 12px 36px rgba(92,84,98,.10), inset 0 1px 0 rgba(255,255,255,.7);
+  }
+  .brand{font-size:12.5px;font-weight:700;letter-spacing:.12em;color:var(--text);margin-bottom:14px;}
+  .nav{list-style:none;display:flex;flex-direction:column;gap:5px;}
+  .nav li{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:10px;
+    font-size:13.5px;color:#6E6575;transition:background .15s;cursor:default;}
+  .nav li:hover{background:rgba(168,152,184,.12);}
+  .nav li.active{background:var(--accent-l);color:#6B5B7B;font-weight:600;}
+  .nav .ico{width:18px;height:18px;border-radius:6px;background:rgba(168,152,184,.22);flex:none;}
+  .nav li.active .ico{background:var(--accent);}
+  .hint{font-size:12px;color:var(--muted);margin-top:12px;}
+
+  /* 04 字与控件 */
+  .type-row{display:flex;align-items:baseline;gap:22px;flex-wrap:wrap;margin-bottom:20px;}
+  .t-h{font-size:22px;font-weight:600;letter-spacing:-.01em;}
+  .t-b{font-size:14.5px;}
+  .t-c{font-size:12px;color:var(--muted);}
+  .controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .btn{border:none;border-radius:12px;padding:11px 18px;font-size:13.5px;font-weight:600;cursor:pointer;
+    font-family:inherit;transition:transform .18s,background .18s,box-shadow .18s;}
+  .btn.primary{background:var(--accent);color:#fff;box-shadow:0 6px 16px rgba(168,152,184,.35);}
+  .btn.primary:hover{background:#9C8BAD;transform:translateY(-1px);}
+  .btn.ghost{background:transparent;color:#6E6575;border:1px solid var(--border);}
+  .btn.ghost:hover{background:#F6F3F0;}
+  .tag{font-size:12px;padding:5px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;}
+  .tag .dot{width:7px;height:7px;}
+
+  .caption{margin-top:40px;padding-top:18px;border-top:1px solid rgba(226,222,216,.8);
+    font-size:12px;color:var(--muted);letter-spacing:.02em;}
+</style>
+</head>
+<body>
+  <div class="blob blob-a"></div>
+  <div class="blob blob-b"></div>
+
+  <main class="wrap">
+    <div class="kicker">PlanNote · 风格打样</div>
+    <h1>同一个温柔的你，换了身合身的衣服</h1>
+    <p class="sub">莫兰迪色一个不改，只把字、圆角、阴影和留白收紧。往下滚，感受"质地"的变化。</p>
+
+    <!-- 01 色板 -->
+    <div class="sec-title">01 · 色板（不新增颜色，只用得更有纪律）</div>
+    <div class="chips">
+      <span class="chip"><span class="sw" style="--c:#F2EFEC"></span>底色 F2EFEC</span>
+      <span class="chip"><span class="sw" style="--c:#FDFCFB"></span>卡片 FDFCFB</span>
+      <span class="chip"><span class="sw" style="--c:#5C5462"></span>侧栏 5C5462</span>
+      <span class="chip"><span class="sw" style="--c:#A898B8"></span>主紫 A898B8</span>
+      <span class="chip"><span class="sw" style="--c:#98A898"></span>灰绿 98A898</span>
+      <span class="chip"><span class="sw" style="--c:#B88C8C"></span>灰玫瑰 B88C8C</span>
+      <span class="chip"><span class="sw" style="--c:#C4A888"></span>暖棕 C4A888</span>
+    </div>
+
+    <!-- 02 / 03 -->
+    <div class="grid2" style="margin-top:8px;">
+      <div>
+        <div class="sec-title">02 · 一张真实的「日计划」卡片</div>
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <div class="date">11月12日 · 周三</div>
+              <div class="day">今日计划</div>
+            </div>
+            <div class="streak">🔥 连续 6 天</div>
+          </div>
+          <ul class="tasks">
+            <li class="task done">
+              <span class="check">✓</span>
+              <div class="task-main">
+                <div class="task-title">写周报初稿</div>
+                <div class="task-meta"><span class="dot" style="--d:#A898B8"></span>学习 · <span class="stars">★★★</span></div>
+              </div>
+            </li>
+            <li class="task done">
+              <span class="check">✓</span>
+              <div class="task-main">
+                <div class="task-title">整理面试作品集</div>
+                <div class="task-meta"><span class="dot" style="--d:#C49898"></span>工作 · <span class="stars">★★★★</span></div>
+              </div>
+            </li>
+            <li class="task">
+              <span class="check"></span>
+              <div class="task-main">
+                <div class="task-title">跑步 30 分钟</div>
+                <div class="task-meta"><span class="dot" style="--d:#98A898"></span>健康 · <span class="stars">★★</span></div>
+              </div>
+            </li>
+          </ul>
+          <div class="progress-wrap">
+            <div class="progress-label"><span>今日完成</span><span>2 / 3</span></div>
+            <div class="track"><div class="fill"></div></div>
+          </div>
+        </article>
+      </div>
+
+      <div>
+        <div class="sec-title">03 · 半透明玻璃（只浮在内容之上）</div>
+        <aside class="glass">
+          <div class="brand">PLANNOTE</div>
+          <ul class="nav">
+            <li class="active"><span class="ico"></span>日计划</li>
+            <li><span class="ico"></span>周 / 月视图</li>
+            <li><span class="ico"></span>统计面板</li>
+            <li><span class="ico"></span>AI 周报</li>
+          </ul>
+        </aside>
+        <p class="hint">背后有光斑时，玻璃才"透"得出层次——所以它只用在侧栏、弹窗这类浮层，数据列表仍是实底。</p>
+      </div>
+    </div>
+
+    <!-- 04 字与控件 -->
+    <div class="sec-title">04 · 字重对比与控件</div>
+    <div class="type-row">
+      <span class="t-h">标题 22 / 600</span>
+      <span class="t-b">正文 14.5 / 常规，行高 1.7</span>
+      <span class="t-c">辅助 12 / 弱化色</span>
+    </div>
+    <div class="controls">
+      <button class="btn primary">＋ 新建计划</button>
+      <button class="btn ghost">一键生成周报</button>
+      <span class="tag" style="background:#EBE4F0;color:#6B5B7B"><span class="dot" style="--d:#A898B8"></span>学习</span>
+      <span class="tag" style="background:#F2E8E8;color:#9C7474"><span class="dot" style="--d:#C49898"></span>工作</span>
+      <span class="tag" style="background:#E8EFE8;color:#748674"><span class="dot" style="--d:#98A898"></span>健康</span>
+    </div>
+
+    <div class="caption">看点：18px 圆角 · 暖灰阴影（不用纯黑）· 半透明玻璃只浮在内容上 · 强调色只占一点 · 字重有对比 · 大量留白</div>
+  </main>
+</body>
+</html>

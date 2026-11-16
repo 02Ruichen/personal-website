@@ -1,0 +1,295 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>专项制表技能包 · 总览</title><style>body{max-width:860px;margin:0 auto;padding:56px 28px 90px;font:16px/1.85 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:#2A2833;background:#FBFAFD}h1,h2,h3{line-height:1.35;margin:1.6em 0 .6em}h1{font-size:30px}h2{font-size:23px;border-bottom:1px solid #E7E3EE;padding-bottom:10px}h3{font-size:18px}p{margin:.7em 0}ul{padding-left:22px}li{margin:.35em 0}table{border-collapse:collapse;width:100%;margin:14px 0}td{border:1px solid #E7E3EE;padding:9px 12px;vertical-align:top}code{background:#F1EEF6;padding:2px 6px;border-radius:5px;font-size:13px}a{color:#C4708F}strong{color:#1F1D27}</style></head><body><h1>专项制表相关技能整理（总览）</h1>
+
+<p>&gt; 范围：自己做的技能里，与「名单 / 考勤表 / 津贴」这条线相关的 <strong>6 个</strong>（用户级：<code>C:\Users\shrl\.codex\skills</code>），</p>
+<p>&gt; 外加 <strong>3 个项目级自建技能</strong>（<code>D:\横琴深合\.codex\skills</code>，见第七节附录）。</p>
+<p>&gt; 与表格无关的自制技能（<code>ponytail</code>、<code>ui-ux-pro-max</code>、<code>photo-abstract-editorial</code>）不在此列。</p>
+<p>&gt; 本文件夹里的 01–06 是各技能说明（<code>SKILL.md</code>）的副本，<strong>按一个月的使用先后排序</strong>；真正跑任务的脚本还在 <code>.codex\skills</code> 原目录里（见第五节）。</p>
+<p>&gt; 整理日期：2026-09-14（第三次更新：文件夹由「考勤表相关技能」改名为「专项制表相关技能」；补齐薪资核算说明与项目级技能附录）</p>
+
+<p>---</p>
+
+<h2>一、一页速查（按使用顺序）</h2>
+
+<tr><td>顺序</td><td>技能（skill 名）</td><td>干什么</td><td>什么时候用</td><td>本文件夹文件</td></tr>
+<tr><td>01</td><td><code>intern-onboarding-checklist</code></td><td>生成入职资料核查表</td><td>「入职资料核查表」「一页纸逐人勾选」</td><td><code>01 入职资料核查表（intern-onboarding-checklist）.md</code></td></tr>
+<tr><td>02</td><td><code>bank-account-collection</code></td><td>生成银行账户信息收集表</td><td>「收集实习生银行卡信息」「出个收集表」</td><td><code>02 银行账户信息收集表（bank-account-collection）.md</code></td></tr>
+<tr><td>03</td><td><code>layered-folders</code></td><td>按名单批量建文件夹</td><td>「按公司/姓名建文件夹归档资料」</td><td><code>03 分层建立文件夹（layered-folders）.md</code></td></tr>
+<tr><td>04</td><td><code>attendance-table-builder</code></td><td>考勤表制作与逐月滚动</td><td>「按名单出各单位考勤表」「把上月表滚到下月，只换日期区间」</td><td><code>04 考勤表制作（attendance-table-builder）.md</code></td></tr>
+<tr><td>05</td><td><code>attendance-unregistered-leave</code></td><td>找出请假「未登记」的人与具体日期</td><td>「统计考勤表里未登记的请假」「做个未登记汇总表」</td><td><code>05 请假未登记统计（attendance-unregistered-leave）.md</code></td></tr>
+<tr><td>06</td><td><code>intern-salary-audit</code></td><td><strong>薪资核算</strong>：考勤 → 补贴明细 → 银行报盘</td><td>「核一下这个月津贴」「把缺勤填进明细、实发配到报盘」</td><td><code>06 薪资核算（实习生薪资核对与统计）.md</code></td></tr>
+
+<p>一句话记忆：<strong>名单进来 → 出三样表（核查表／收集表／考勤表）；考勤表收回来 → 出未登记情况 + 津贴核算。</strong></p>
+
+<p>---</p>
+
+<h2>二、串起来用（一个月的时间线）</h2>
+
+<p>```</p>
+<p>录取名单</p>
+<p>  ├─ 01 intern-onboarding-checklist  → 入职资料核查表（一页、纸质版/电子版勾选）</p>
+<p>  ├─ 02 bank-account-collection      → 银行账户信息收集表（银行下拉、账号留空）</p>
+<p>  ├─ 03 layered-folders              → 序号.公司\姓名 目录树（归档入职材料）</p>
+<p>  └─ 04 attendance-table-builder     → 各单位考勤表空表</p>
+<p>                                        ↓ 发给单位填写、盖章、签字</p>
+<p>                             05 attendance-unregistered-leave → 请假「未登记」情况汇总</p>
+<p>                                        ↓</p>
+<p>                             06 intern-salary-audit → 缺勤填入补贴明细 → 实发配到银行报盘 → 抽查核对</p>
+<p>```</p>
+
+<p>---</p>
+
+<h2>三、逐个技能</h2>
+
+<h3>01 <code>intern-onboarding-checklist</code> 入职资料核查表（也是通用「名单 + 待填列」生成器）</h3>
+
+<p><strong>结构</strong>：第 1 行合并标题；第 2 行表头 <code>序号 / 单位 / 岗位 / 姓名 / 邮箱 / 纸质版资料核查情况 / 电子版资料核查情况</code>；人员行（单位等同值列自动纵向合并）；表尾填写说明 + 核查人/核查日期；A4 竖向、锁 1 页。</p>
+
+<p>```bash</p>
+<p>python build_checklist.py --roster &quot;&lt;录取名单.xlsx&gt;&quot; --out &quot;入职资料核查表.xlsx&quot; \</p>
+<p>  --unit &quot;保利文化集团股份有限公司&quot; \</p>
+<p>  --title &quot;2026澳门青年·实习计划文化艺术专项入职资料核查表&quot;</p>
+<p>```</p>
+
+<p>常用参数：</p>
+
+<ul>
+<li><code>--cols</code>：改列，如 <code>--cols &quot;序号,单位,处室,岗位,姓名,邮箱&quot;</code>（要分处室的专项把处室加回来）。</li>
+<li><code>--checks</code> / <code>--no-checks</code>：改或去掉核查栏；只给一列时该列自动加宽。</li>
+<li><code>--dropdown &quot;列名=选项1,选项2&quot;</code>：加 Excel 下拉；<code>--fill &quot;列名=固定内容&quot;</code>：整列逐行填同一句话。两者可重复传。</li>
+<li><code>--unit</code> / <code>--dept</code>：名单里没有单位/处室列时的固定值；<code>--header-row</code>：表头定位错了手动指定；<code>--landscape</code>、<code>--row-height</code>：列多或要留手写空间时调。</li>
+</ul>
+
+<p><strong>硬规则</strong>：人员只来自名单，不自行增删；两列核查栏留空（那是现场勾的）；<strong>必须一页</strong>。</p>
+
+<p><strong>坑</strong>：名单常有两行表头（别把标题行当表头）；邮箱列太窄会折行；Excel「适应 1 页」只会缩小不会放大。</p>
+
+<h3>02 <code>bank-account-collection</code> 银行账户信息收集表</h3>
+
+<p><strong>用途</strong>：收实习生领津贴用的<strong>内地</strong>银行卡信息。表由 01 的同一个生成器出（同一脚本既出核查表也出收集表）。</p>
+
+<p><strong>成表规格（一列都不能少）</strong></p>
+
+<tr><td>列</td><td>内容</td></tr>
+<tr><td>序号</td><td>按名单顺序从 1 开始</td></tr>
+<tr><td>姓名</td><td>取名单「中文姓名」</td></tr>
+<tr><td>银行名称</td><td>下拉，<strong>只能选</strong>中国银行／中国建设银行</td></tr>
+<tr><td>账户名（通常为本人姓名）</td><td>留空待填</td></tr>
+<tr><td>银行卡开户行（格式：XX省XX市XX支行）</td><td>留空待填</td></tr>
+<tr><td>银行账号</td><td>留空待填</td></tr>
+<tr><td>温馨提示</td><td>每行同一段话（见下）</td></tr>
+
+<p>温馨提示原文（逐字照用，别改写）：</p>
+
+<p>&gt; 为确保您的津贴能够按时、准确发放，请您务必提供以下完整且准确的个人信息：请仔细核对每一项信息的准确性，任何错误或遗漏都可能导致津贴发放延迟。感谢您的理解与配合。</p>
+
+<p>```bash</p>
+<p>python &quot;C:/Users/shrl/.codex/skills/intern-onboarding-checklist/scripts/build_checklist.py&quot; \</p>
+<p>  --roster &quot;&lt;录取名单.xlsx&gt;&quot; --out &quot;&lt;年份+专项-银行账户信息收集表.xlsx&gt;&quot; \</p>
+<p>  --sheet &quot;银行账户信息收集&quot; --no-checks --landscape --row-height 34 --note &quot;&quot; \</p>
+<p>  --title &quot;2026澳门青年实习计划××专项实习生——银行账户信息收集表&quot; \</p>
+<p>  --cols &quot;序号,姓名,银行名称,账户名（通常为本人姓名）,银行卡开户行（格式：XX省XX市XX支行）,银行账号,温馨提示&quot; \</p>
+<p>  --dropdown &quot;银行名称=中国银行,中国建设银行&quot; \</p>
+<p>  --fill &quot;温馨提示=为确保您的津贴能够按时、准确发放，请您务必提供以下完整且准确的个人信息：请仔细核对每一项信息的准确性，任何错误或遗漏都可能导致津贴发放延迟。感谢您的理解与配合。&quot;</p>
+<p>```</p>
+
+<p>换专项只改 <code>--roster</code>、<code>--out</code>、<code>--title</code> 三处。</p>
+
+<p><strong>硬规则</strong>：只能两家银行（下拉里不放其它）；序号姓名必须来自名单，其余列留空；列多用 <code>--landscape</code>；名单之外的人先确认再加。</p>
+
+<h3>03 <code>layered-folders</code> 分层建立文件夹</h3>
+
+<p><strong>用途</strong>：把「名单 → 目录树」标准化。默认两层 <code>序号.公司\姓名</code>，序号是公司在名单里<strong>首次出现的顺序</strong>、两位补零（<code>01.</code>…<code>25.</code>），保证在资源管理器/WPS 里升序。</p>
+
+<p>```bash</p>
+<p>python scripts/make_folders.py --roster &quot;录取名单.xlsx&quot; --out &quot;入职资料整理&quot; --dry-run   # 先看清单</p>
+<p>python scripts/make_folders.py --roster &quot;录取名单.xlsx&quot; --out &quot;入职资料整理&quot;             # 确认后执行</p>
+<p>```</p>
+
+<p><code>--levels 公司,岗位,姓名</code> 要三层；<code>--no-number</code> 去掉公司序号前缀；<code>--number-people</code> 给人员文件夹也加全局序号；列名自动按表头认，认不出用 <code>--unit-col/--post-col/--name-col</code>。</p>
+
+<p><strong>硬规则</strong>：只新增，已存在跳过，绝不删除/移动/改名；顺序跟名单；序号补零；公司列只写第一行要向下填充；人员只来自名单；只往用户指定目录建（不往盘符根、桌面这类大范围路径建）。</p>
+
+<p><strong>做完必查</strong>：打印新建/跳过统计（公司数、人数与名单一致）→ 按名称升序检查序号连续 → 抽查两三条路径。</p>
+
+<h3>04 <code>attendance-table-builder</code> 考勤表制作</h3>
+
+<p><strong>用途</strong>：把「录取名单 → 各单位空表 → 逐月滚动」标准化。两种活：从名单建初始表；拿上月空表滚下月（只换日期区间）。</p>
+
+<p><strong>结构框架</strong>（所有单位一致，只有日期区间不同）</p>
+
+<tr><td>位置</td><td>内容</td></tr>
+<tr><td>第 1 行</td><td>标题，如 <code>2026年7月27日至8月21日澳门青年实习计划考勤情况统计表</code></td></tr>
+<tr><td>第 2 行</td><td><code>单位名称：×××</code>（左）＋<code>制表日期：2026年X月X日</code>（右）</td></tr>
+<tr><td>第 3–6 行</td><td>表头：序号／姓名／岗位／日期（含月份表头、日期数字、星期）；出勤天数、请假天数纵跨 3–6 行</td></tr>
+<tr><td>第 7 行起</td><td>人员行（周末列打「休」、浅绿底）</td></tr>
+<tr><td>表尾</td><td>考勤员（靠左）／审核员（靠右）、空行、<code>备注：</code>及 3 条说明</td></tr>
+
+<p><strong>命令</strong>（脚本 <code>scripts/attendance_tables.py</code>，只用标准库，直接改 xlsx 内部单元格、不动格式）</p>
+
+<p>```bash</p>
+<h1>第 0 步：先看表结构，别凭印象写死行列</h1>
+<p>python scripts/attendance_tables.py survey &quot;&lt;考勤表.xlsx&gt;&quot;</p>
+
+<h1>活 A：上月空表 → 下月空表（只换日期区间）</h1>
+<p>python scripts/attendance_tables.py next-month --template-dir &quot;&lt;上月空表文件夹&gt;&quot; --out &quot;&lt;本月空表文件夹&gt;&quot; \</p>
+<p>  --range &quot;格力电器=8.26-9.22&quot; --range &quot;中证鹏元=8.31-9.25&quot; --made-date 2026-09-10</p>
+
+<h1>活 B：从录取名单建各单位空表</h1>
+<p>python scripts/attendance_tables.py from-roster --roster &quot;&lt;录取名单.xlsx&gt;&quot; \</p>
+<p>  --template-dir &quot;&lt;空表模板文件夹&gt;&quot; --out &quot;&lt;输出文件夹&gt;&quot; --range &quot;格力电器=8.26-9.22&quot;</p>
+
+<h1>核对改动范围：应只有标题、制表日期、月份表头、日期行、星期行、人员行周末列</h1>
+<p>python scripts/attendance_tables.py diff &quot;&lt;上月表&gt;&quot; &quot;&lt;本月表&gt;&quot;</p>
+<p>```</p>
+
+<p><strong>三条硬规则</strong></p>
+
+<ul>
+<li>按单位分表：同单位的人在同一张表上，多家单位就多个 xlsx（一单位一个文件）。</li>
+<li>框架一致，只换日期：字体、行高、列宽、边框、合并一律保持原样。</li>
+<li>人员顺序：建表时 单位顺序 → 岗位顺序 → 名单顺序；滚动时以上月表顺序为准（单位可能自己调过）。</li>
+</ul>
+
+<p><strong>容易踩的坑</strong></p>
+
+<ul>
+<li>星期必须按真实公历写，模板里的历史错误别照抄（例：7 月 29 日标成「一」，实际是周三）。</li>
+<li>月份表头按真实月份分界；某个月只有 1–2 列时整行改短标签（<code>8月</code>），否则窄列里长标签会折行。</li>
+<li>周末列的位置由<strong>区间起始星期</strong>决定，区间一变，「休」落在哪些列要重算（人员行的「休」也要跟着挪）。</li>
+<li>不要用 openpyxl 另存这些表（会重排样式、丢页面设置）。</li>
+<li>输出放在当月目录下的「空表」子文件夹，不要散落在项目根目录。</li>
+</ul>
+
+<p><strong>做完必查</strong>：<code>diff</code> 比对改动范围 → 打开/渲染看一眼对齐 → 天数、人数、单位名称再核一遍。</p>
+
+<p>&gt; 明细规则见 <code>参考文档\04 考勤表表结构说明.md</code>。</p>
+
+<h3>05 <code>attendance-unregistered-leave</code> 请假未登记统计</h3>
+
+<p><strong>用途</strong>：从一批单位考勤表中找出「请假未登记」的人，并推算<strong>具体哪几天</strong>没登记，出一张汇总表。</p>
+
+<p><strong>第 0 步（必做）</strong>：先分析每个文件的实际框架，再动手。<strong>绝不写死行列号</strong>——备注列可能在 AG(33)、AI(35)、AO(41)……列错整套结果就错。</p>
+
+<p>自适应定位规则：</p>
+
+<ul>
+<li>表头行：前 10 行内找同时含「姓名」和「日期」的一行。</li>
+<li>月份行：表头行下一行；值是文本（<code>7月</code>）或日期序列号（<code>46235</code> → 2026 年 8 月）都见过，空列继承前一列。</li>
+<li>日期行：月份行下一行；有数值的连续列就是日期列（区间因单位而异）。</li>
+<li>姓名列：表头「姓名」所在列。</li>
+<li>出勤／请假列：优先按表头文字定位；没有表头就按「最后日期列 +1 = 出勤、+2 = 请假」推。</li>
+<li>登记情况备注列：<strong>按内容扫描</strong>，从日期列之后找第一个含「未登记／已登记／登记」的单元格。</li>
+<li>必须读完整张表的所有数据行（有人排到第 14 行）。</li>
+<li>文件既可能是 <code>.xlsx</code>，也可能是老式 <code>.xls</code>。</li>
+</ul>
+
+<p>```bash</p>
+<p>python scripts/extract_unregistered.py &quot;&lt;考勤表文件夹&gt;&quot;</p>
+<h1>输出：单位 | 姓名 | 未登记日期 | 类型 | 天数 | 备注，并标记是否需人工复核</h1>
+<p>```</p>
+
+<p><strong>判读要点</strong></p>
+
+<ul>
+<li><strong>未登记日期 ≠ 全部请假日期</strong>。<code>8.18-8.21未登记</code> 只对应 8/18–8/21；<code>除了8.21，剩下未登记</code> 则相反。</li>
+<li>备注只写「未登记」没写日期时<strong>不要猜</strong>：把该人请假日全部列出，标「请人工确认是否全部未登记」。</li>
+<li>单位名称以文件名和表内标题为准，同名单位只合并一次；不改动原始考勤表。</li>
+</ul>
+
+<p><strong>汇总表建议列</strong>：序号、单位、姓名、未登记日期、请假类型、未登记天数、请假天数、出勤天数、备注（日期写「8月18日、8月19日」这种中文写法）。</p>
+
+<p>&gt; 明细规则见 <code>参考文档\05 请假未登记判读规则.md</code>。</p>
+
+<h3>06 <code>intern-salary-audit</code> 薪资核算（实习生薪资核对与统计）</h3>
+
+<p><strong>用途</strong>：把「考勤表 → 补贴明细表 → 银行报盘表」这条每月流程跑完，只读不破坏原公式。（名字里写的是「薪资核对」，实际就是每月<strong>薪资核算</strong>这一块。）</p>
+
+<p><strong>计算规则</strong></p>
+
+<ul>
+<li>事假：整天扣 200，半天扣 100；病假：不扣（津贴补回）。</li>
+<li>满勤基数 base = 4000（20 天 × 200）。</li>
+<li><code>AF 应发</code> = 出勤天数 × 200 + 病假补偿（病假整天 +200、半天 +100）。</li>
+<li><code>缺勤天数</code> = (base − AF) ÷ 200（这样病假自然不计，事假、离职、出勤不足会计入）。</li>
+<li>符号：<code>√</code> 出勤、<code>休</code> 休息、<code>△</code> 病假、<code>▲</code> 事假、<code>X</code> 旷工、<code>﹡</code> 迟到早退、<code>0.5△</code>／<code>△半天</code> 半天病假。</li>
+</ul>
+
+<p>```bash</p>
+<p>python intern_salary_audit.py probe &lt;明细或报盘.xlsx/.xls&gt;          # 0) 先看列位置（换框架先跑）</p>
+<p>python intern_salary_audit.py check &lt;考勤表文件夹&gt;                    # 1) 核对每人 出勤/请假/病假/事假/AF应发/缺勤</p>
+<p>python intern_salary_audit.py fill-detail &lt;考勤表文件夹&gt; &lt;8月明细.xlsx&gt; --backup   # 2) 缺勤写进明细 H 列</p>
+<p>python intern_salary_audit.py fill-report &lt;8月明细.xlsx&gt; &lt;报盘表.xls或xlsx&gt; &lt;输出.xlsx&gt;  # 3) 实发匹配到报盘金额列</p>
+<p>python intern_salary_audit.py check-bank &lt;8月明细.xlsx&gt; &lt;报盘表&gt;      # 4) 银行账户核对</p>
+<p>python intern_salary_audit.py check-sample &lt;考勤表文件夹&gt; &lt;明细&gt; &lt;报盘&gt; --n 8   # 5) 随机抽查</p>
+<p>```</p>
+
+<p><strong>换框架只调参数，不改代码</strong>：<code>fill-detail</code> 的 <code>--sheet/--name-col/--unit-col/--absent-col/--start-row/--skip-units/--base</code>；<code>fill-report</code> 的 <code>--detail-amount-col/--report-name-col/--amount-col/--header-rows</code>；<code>check-bank</code> 的账号、跨行标识、行名列；<code>check-sample</code> 的 <code>--n/--seed</code>。</p>
+
+<p><strong>关键判定</strong></p>
+
+<ul>
+<li>半天：符号含 <code>0.5</code>／<code>半天</code>／<code>上午</code>／<code>下午</code>，或格为 <code>下</code>／<code>上</code>／<code>上午请假</code>，按 0.5 算。</li>
+<li>请假天数 AE = 事假 + 病假；缺勤天数只取事假部分。</li>
+<li>明细里没有考勤的人（产发局等）<strong>留空</strong>，不臆造金额。</li>
+<li>特殊补扣（如 AF 公式含 <code>-(200*1.5)</code>）会让缺勤天数含补扣折算，要在备注写明。</li>
+<li>报盘 <code>.xls</code>（旧版 OLE/BIFF8）用脚本内置解析器读，<strong>只读不改</strong>，输出 <code>.xlsx</code>。</li>
+<li>账户核对：报盘的账号要与明细一致，「跨行标识」与「银行类型」吻合（<strong>建设银行 → 跨行 0，其它 → 1</strong>）。</li>
+<li>旧版 <code>.xls</code> 报盘的金额列在底层可能是坏值/异常大数，<strong>不要直接读</strong>，要向用户要报盘截图或确认过的文件。</li>
+<li>最后一步 <code>check-sample</code>：抽 n 人核对 考勤 AF = 明细实发 = 报盘金额，全一致才算通过。</li>
+</ul>
+
+<p>&gt; 明细规则见 <code>参考文档\06 薪资判读规则.md</code>。</p>
+<p>&gt;</p>
+<p>&gt; 另外两类活也已写进这个技能（见技能文件末尾「相关流程」一节）：</p>
+<p>&gt; ① <strong>从零生成一张「薪资核算表」</strong>——把录取名单＋报名总表（回乡证号）＋银行账户信息＋考勤缺勤合并成一张核算表（执委会 <code>build_salary.py</code>、大湾区 <code>build_salary_gba.py</code>）；</p>
+<p>&gt; ② <strong>色块考勤表按颜色统计</strong>——湖南卫视那种用填充色而非符号的考勤表，浅蓝＝出勤、深蓝＝病假（照发）、浅橙＝事假（扣薪），输出出勤天数与缺勤天数（<code>统计出勤.py</code>）。</p>
+<p>&gt; 结论：<strong>不另建「薪资核算」技能</strong>，避免两套规则打架——薪资相关的入口就只有 06 这一个。</p>
+
+<p>---</p>
+
+<h2>四、公共约定</h2>
+
+<ul>
+<li><strong>跑脚本的 Python</strong>：用工作区依赖里的 Python（由 <code>load_workspace_dependencies</code> 给出路径），不要用系统 <code>python</code>（本机 PATH 里没有）。</li>
+<li><strong>输出位置</strong>：放在项目内的专门子文件夹（如当月目录的「空表」），不在项目根目录散落文件；临时脚本、预览图任务结束前清掉。</li>
+<li><strong>旧表只用脚本改单元格</strong>：不要用 openpyxl 另存改写既有考勤表（会重排样式、丢页面设置）。</li>
+<li><strong>忠实来源</strong>：人员只来自名单；名单之外的人（签到表、考勤表里多出来的人）先确认再加。</li>
+<li><strong>拿不准就问</strong>：备注不明确、日期跨月、缺列、异常标记（「已离职」「/」）等情况，先说明再判断，不臆断。</li>
+</ul>
+
+<p>---</p>
+
+<h2>五、技能原始位置（脚本在这里）</h2>
+
+<p>下表路径均相对 <code>C:\Users\shrl\.codex\skills\</code>；每个技能下还有一个 <code>agents\openai.yaml</code>，写的是技能在界面上的显示名和一句简介。</p>
+
+<tr><td>顺序</td><td>技能</td><td>SKILL.md</td><td>脚本</td><td>参考文档</td></tr>
+<tr><td>01</td><td>intern-onboarding-checklist</td><td><code>intern-onboarding-checklist\SKILL.md</code></td><td><code>scripts\build_checklist.py</code></td><td>—</td></tr>
+<tr><td>02</td><td>bank-account-collection</td><td><code>bank-account-collection\SKILL.md</code></td><td>共用 <code>intern-onboarding-checklist\scripts\build_checklist.py</code></td><td>—</td></tr>
+<tr><td>03</td><td>layered-folders</td><td><code>layered-folders\SKILL.md</code></td><td><code>scripts\make_folders.py</code></td><td>—</td></tr>
+<tr><td>04</td><td>attendance-table-builder</td><td><code>attendance-table-builder\SKILL.md</code></td><td><code>scripts\attendance_tables.py</code></td><td><code>references\table-structure.md</code></td></tr>
+<tr><td>05</td><td>attendance-unregistered-leave</td><td><code>attendance-unregistered-leave\SKILL.md</code></td><td><code>scripts\extract_unregistered.py</code></td><td><code>references\judgment-guide.md</code></td></tr>
+<tr><td>06</td><td>intern-salary-audit</td><td><code>intern-salary-audit\SKILL.md</code></td><td><code>scripts\intern_salary_audit.py</code></td><td><code>references\judgment-guide.md</code></td></tr>
+
+<p>---</p>
+
+<h2>六、踩过的特殊变体（保留经验）</h2>
+
+<ul>
+<li><strong>延期／补发同学考勤表（特例，8.22–9.11）</strong>：不按单位分表，改成<strong>一张总表</strong>，在「姓名」后加一列「单位」；日期区（21 天）右侧另加「补发」两列——<code>补发天数</code>＋<code>补发说明</code>（插在日期列与出勤/请假之间，出勤、请假列顺移）；表标题按用户指定另写（<code>2026执委会专项实习计划延期及补发同学考勤表</code>）。周末列按区间起始星期重算：8/22 起算，第 1、2、7、8、14、15 个日期列是双休。</li>
+<li><strong>月份表头</strong>：8 月 22–31 日、9 月 1–11 日各占 10／11 列，用长标签 <code>2026年8月</code>／<code>2026年9月</code>；某个月只占 1–2 列时才改短标签。</li>
+<li><strong>制表日期</strong>沿用模板的补零写法（模板写 <code>2026年07月25日</code>，就跟着补零）。</li>
+</ul>
+
+<p>---</p>
+
+<h2>七、附：项目级自建技能（横琴深合项目内置）</h2>
+
+<p>这三个技能放在 <strong>项目目录</strong>里（<code>D:\横琴深合\.codex\skills\</code>），只在「横琴深合」这个项目里生效，是给整个项目打底的通用技能，所以不占用上面 01–06 的顺序号，放在 <code>附 其他自建技能\</code> 子文件夹里：</p>
+
+<tr><td>附录文件</td><td>技能</td><td>干什么</td></tr>
+<tr><td><code>附 其他自建技能\附1 Excel 批量处理（excel-batch）.md</code></td><td><code>excel-batch</code></td><td>批量读、拆、去重、排序、填报、汇总 <code>.xlsx</code>；约定用内置 Python、必须设 <code>PYTHONIOENCODING=utf-8</code>（否则中文乱码）</td></tr>
+<tr><td><code>附 其他自建技能\附2 批量建文件夹（batch-folders）.md</code></td><td><code>batch-folders</code></td><td>按名单批量建目录（如 <code>&lt;公司名&gt;\&lt;公司名&gt;简历</code>）；只新增、先列清单再执行</td></tr>
+<tr><td><code>附 其他自建技能\附3 Word与PPT生成（office-docs）.md</code></td><td><code>office-docs</code></td><td>生成通知/公告、主持稿、新闻稿、证明、开营结营 PPT；含公文格式（方正小标宋 + 仿宋_GB2312）与渲染校验流程</td></tr>
+
+<p>另：<code>D:\Claude-for work\写新闻稿\深合人才\.claude\skills\news-docx</code>（新闻稿排版）也是自制技能，但属于另一个项目、与考勤表无关，本文件夹未收录。</p></body></html>

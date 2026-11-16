@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>万事屋 · 澳门物语 | 澳门创造营</title>
+<meta name="description" content="万事屋团队：《澳门物语》——星露谷物语风格的 AI 生成澳门文旅纪录片。一城烟火，像素新生。" />
+<style>
+/* ---------- 设计变量 ---------- */
+:root {
+  --wood-dark: #5d3a1a;
+  --wood: #8b5a2b;
+  --wood-light: #b87f45;
+  --parchment: #f5e6c8;
+  --parchment-dark: #e8d5a3;
+  --cream: #fffbea;
+  --grass: #6a8f3c;
+  --grass-light: #8fbf5a;
+  --grass-dark: #4e6b2a;
+  --sky: #a8ddf0;
+  --sky-deep: #7ec8e3;
+  --tomato: #c0392b;
+  --ink: #4a3220;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ---------- 像素字体（本地化，assets/fonts/zpix.ttf） ---------- */
+@font-face {
+  font-family: "Zpix";
+  src: url("assets/fonts/zpix.ttf") format("truetype");
+  font-display: swap;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  color: var(--ink);
+  line-height: 1.75;
+  background: linear-gradient(180deg, var(--sky) 0%, var(--sky-deep) 18%, #cfe8b8 46%, var(--grass-light) 78%, var(--grass) 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 手工噪点纹理（低 AI 味） */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3, .pixel-font {
+  font-family: "Zpix", "PingFang SC", "Microsoft YaHei", monospace;
+}
+
+img { max-width: 100%; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.hero-banner {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+  filter: brightness(0.94) saturate(1.05);
+}
+.hero-panel {
+  position: relative;
+  z-index: 2;
+  margin: 96px 20px;
+  max-width: 640px;
+  background: rgba(245, 230, 200, 0.92);
+  border: 4px solid var(--wood);
+  box-shadow: 0 0 0 4px var(--wood-dark), 0 16px 0 rgba(93, 58, 26, 0.28);
+  border-radius: 8px;
+  padding: 44px 40px 40px;
+}
+.hero-panel::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 2px dashed rgba(139, 90, 43, 0.45);
+  border-radius: 4px;
+  pointer-events: none;
+}
+.wood-sign {
+  display: inline-block;
+  background: linear-gradient(180deg, var(--wood-light) 0%, var(--wood) 55%, var(--wood-dark) 100%);
+  border: 4px solid var(--wood-dark);
+  border-radius: 6px;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.25), inset 0 0 0 3px rgba(255, 247, 224, 0.18);
+  padding: 14px 52px;
+  margin-bottom: 20px;
+}
+.wood-sign h1 {
+  font-size: clamp(44px, 8vw, 84px);
+  color: var(--cream);
+  text-shadow: 3px 3px 0 var(--wood-dark);
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+}
+.hero-subtitle { font-size: clamp(17px, 2.6vw, 22px); font-weight: 700; letter-spacing: 0.06em; }
+.hero-position { font-size: 15px; opacity: 0.9; margin-top: 6px; }
+.hero-slogan {
+  font-family: "Zpix", "Microsoft YaHei", monospace;
+  font-size: clamp(16px, 2.4vw, 20px);
+  color: var(--tomato);
+  margin: 14px 0 22px;
+  letter-spacing: 0.1em;
+}
+.pixel-btn {
+  display: inline-block;
+  font-family: "Zpix", "Microsoft YaHei", monospace;
+  font-size: 18px;
+  background: var(--grass);
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  padding: 12px 30px;
+  border: 3px solid var(--wood-dark);
+  border-radius: 4px;
+  box-shadow: 0 5px 0 var(--wood-dark);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.pixel-btn:hover { transform: translateY(-2px); box-shadow: 0 7px 0 var(--wood-dark); }
+.pixel-btn:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--wood-dark); }
+
+/* ---------- 游戏菜单栏（sticky 吸顶导航） ---------- */
+.game-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 14px;
+  padding: 10px 12px 14px;
+  background: linear-gradient(180deg, var(--wood) 0%, var(--wood-dark) 100%);
+  border-top: 3px solid var(--wood-dark);
+  border-bottom: 4px solid var(--wood-dark);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+}
+.nav-btn {
+  font-family: "Zpix", "Microsoft YaHei", monospace;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  color: var(--cream);
+  text-decoration: none;
+  background: linear-gradient(180deg, var(--wood-light) 0%, var(--wood) 60%, var(--wood-dark) 100%);
+  border: 3px solid var(--wood-dark);
+  border-radius: 4px;
+  padding: 6px 22px;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3), inset 0 0 0 2px rgba(255, 247, 224, 0.15);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+.nav-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.3), inset 0 0 0 2px rgba(255, 247, 224, 0.15);
+}
+.nav-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3), inset 0 0 0 2px rgba(255, 247, 224, 0.15);
+}
+
+/* ---------- 通用板块 ---------- */
+.section { max-width: 1060px; margin: 0 auto; padding: 84px 24px 20px; scroll-margin-top: 64px; }
+.section-title {
+  text-align: center;
+  font-size: clamp(30px, 5vw, 44px);
+  color: var(--wood-dark);
+  text-shadow: 2px 2px 0 rgba(255, 251, 234, 0.6);
+  letter-spacing: 0.1em;
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 128px;
+  height: 6px;
+  margin: 16px auto 0;
+  background-image: linear-gradient(90deg, var(--grass-dark) 50%, transparent 50%);
+  background-size: 16px 6px;
+}
+.section-sub { text-align: center; font-size: 14px; letter-spacing: 0.3em; opacity: 0.7; margin-top: 10px; }
+
+/* ---------- 村民档案卡（团队成员） ---------- */
+.card-grid { display: grid; gap: 30px; margin-top: 48px; }
+.members-grid { grid-template-columns: repeat(3, 1fr); }
+.villager-card {
+  position: relative;
+  background: var(--parchment);
+  border: 4px solid var(--wood);
+  border-radius: 6px;
+  box-shadow: 0 0 0 3px var(--wood-dark), 0 10px 0 rgba(93, 58, 26, 0.25);
+  padding: 42px 22px 28px;
+  text-align: center;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.villager-card::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 2px dashed rgba(139, 90, 43, 0.4);
+  border-radius: 3px;
+  pointer-events: none;
+}
+.villager-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 0 3px var(--wood-dark), 0 16px 0 rgba(93, 58, 26, 0.25);
+}
+.captain-badge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  background: var(--tomato);
+  color: var(--cream);
+  font-family: "Zpix", "Microsoft YaHei", monospace;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  padding: 4px 16px;
+  border: 3px solid var(--wood-dark);
+  border-radius: 4px;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.25);
+}
+.avatar {
+  width: 128px;
+  height: 128px;
+  object-fit: cover;
+  image-rendering: pixelated;
+  background: var(--parchment-dark);
+  border: 4px solid var(--wood);
+  border-radius: 6px;
+  margin-bottom: 14px;
+}
+.villager-card h3 { font-size: 26px; letter-spacing: 0.15em; }
+.villager-role { font-size: 13px; opacity: 0.75; margin-top: 2px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 16px 0 14px; }
+.tag {
+  background: var(--grass-light);
+  border: 2px solid var(--grass-dark);
+  color: #2f4a14;
+  font-size: 13px;
+  padding: 2px 10px;
+  border-radius: 3px;
+}
+.bio { font-size: 14px; line-height: 1.8; opacity: 0.88; text-align: left; }
+/* ---------- 干员档案资料表 ---------- */
+.op-profile {
+  margin-top: 14px;
+  padding-top: 8px;
+  border-top: 2px dashed rgba(93, 58, 26, 0.35);
+  text-align: left;
+}
+.profile-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 2;
+  border-bottom: 1px dashed rgba(93, 58, 26, 0.18);
+}
+.profile-row:last-child { border-bottom: none; }
+.profile-label {
+  flex: 0 0 3em;
+  color: var(--wood);
+  font-weight: 700;
+  letter-spacing: 0.3em;
+}
+.profile-value { color: #6b4f2a; }
+/* 干员台词金句条 */
+.op-quote {
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: rgba(106, 143, 60, 0.12);
+  border-left: 4px solid var(--grass);
+  color: var(--grass-dark);
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: left;
+}
+.villager-contact {
+  font-family: "Zpix", "Microsoft YaHei", monospace;
+  font-size: 14px;
+  color: var(--wood-dark);
+  letter-spacing: 0.05em;
+  margin-top: 12px;
+}
+
+/* ---------- 木牌面板（任务日志 / 布告栏） ---------- */
+.wood-panel {
+  position: relative;
+  background: var(--parchment);
+  border: 4px solid var(--wood);
+  border-radius: 6px;
+  box-shadow: 0 0 0 4px var(--wood-dark), 0 12px 0 rgba(93, 58, 26, 0.22);
+  padding: 38px 34px;
+}
+.wood-panel::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 2px dashed rgba(139, 90, 43, 0.4);
+  border-radius: 3px;
+  pointer-events: none;
+}
+.quest-log { margin-top: 48px; }
+.quest-title { font-size: clamp(26px, 4vw, 34px); color: var(--wood-dark); letter-spacing: 0.08em; }
+.one-liner { font-size: 16px; font-weight: 700; margin-top: 10px; }
+.quest-h {
+  font-family: "Zpix", "Microsoft YaHei", monospace;
+  font-size: 19px;
+  color: var(--grass-dark);
+  margin: 26px 0 12px;
+  letter-spacing: 0.08em;
+}
+.quest-h::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: var(--tomato);
+  border: 2px solid var(--wood-dark);
+  margin-right: 10px;
+}
+.feature-list { list-style: none; }
+.feature-list li {
+  background: rgba(255, 251, 234, 0.65);
+  border: 2px solid var(--parchment-dark);
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+.feature-list strong { color: var(--wood-dark); }
+.flow-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.flow-list li.step {
+  background: var(--wood);
+  color: var(--cream);
+  padding: 6px 14px;
+  border: 2px solid var(--wood-dark);
+  border-radius: 4px;
+}
+.flow-list li.arrow { color: var(--wood-dark); }
+.audience-path { font-size: 15px; }
+
+/* ---------- 对话气泡（痛点分析） ---------- */
+.pain-title {
+  text-align: center;
+  font-family: "Zpix", "Microsoft YaHei", monospace;
+  font-size: clamp(20px, 3.4vw, 26px);
+  color: var(--wood-dark);
+  margin: 56px 0 30px;
+  letter-spacing: 0.08em;
+}
+.bubble {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto 34px;
+  background: var(--cream);
+  border: 3px solid var(--wood);
+  border-radius: 10px;
+  padding: 16px 22px;
+  font-size: 15px;
+  box-shadow: 4px 4px 0 rgba(93, 58, 26, 0.3);
+}
+.bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 36px;
+  width: 18px;
+  height: 18px;
+  background: var(--cream);
+  border-right: 3px solid var(--wood);
+  border-bottom: 3px solid var(--wood);
+  transform: rotate(45deg);
+}
+.bubbles .bubble:nth-child(even)::after { left: auto; right: 36px; }
+.bubble strong { color: var(--tomato); }
+
+/* ---------- 布告栏（参赛目标） ---------- */
+.board-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 48px; }
+.board-col h3 {
+  font-size: 24px;
+  color: var(--wood-dark);
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.pin-list { list-style: none; }
+.pin-list li {
+  position: relative;
+  background: var(--cream);
+  border: 2px solid var(--parchment-dark);
+  border-radius: 4px;
+  padding: 12px 16px 12px 40px;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+.pin-list li::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 16px;
+  width: 10px;
+  height: 10px;
+  background: var(--tomato);
+  border: 2px solid var(--wood-dark);
+  border-radius: 2px;
+}
+
+/* ---------- 服务群体 ---------- */
+.audience-grid { grid-template-columns: repeat(3, 1fr); }
+.audience-card {
+  background: rgba(255, 251, 234, 0.9);
+  border: 3px solid var(--wood);
+  border-radius: 6px;
+  box-shadow: 0 6px 0 rgba(93, 58, 26, 0.22);
+  padding: 26px 22px;
+  text-align: center;
+}
+.audience-no {
+  display: inline-block;
+  font-family: "Zpix", "Microsoft YaHei", monospace;
+  background: var(--wood);
+  color: var(--cream);
+  border: 2px solid var(--wood-dark);
+  border-radius: 4px;
+  padding: 2px 10px;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+.audience-card h3 { font-size: 20px; color: var(--wood-dark); margin-bottom: 10px; letter-spacing: 0.05em; }
+.audience-card p { font-size: 14px; opacity: 0.9; }
+
+/* ---------- 页脚 ---------- */
+.footer {
+  margin-top: 90px;
+  background: linear-gradient(180deg, var(--wood) 0%, var(--wood-dark) 100%);
+  border-top: 4px solid var(--wood-dark);
+  text-align: center;
+  padding: 34px 20px 30px;
+  color: var(--cream);
+}
+.track-tag {
+  display: inline-block;
+  font-family: "Zpix", "Microsoft YaHei", monospace;
+  background: var(--tomato);
+  border: 2px solid var(--cream);
+  border-radius: 4px;
+  padding: 4px 14px;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+.footer-small { font-size: 13px; opacity: 0.8; margin-top: 6px; }
+
+/* ---------- 像素草丛分隔带（素材 assets/divider-grass.png，透明底无缝平铺） ---------- */
+.divider {
+  height: 48px;
+  background-image: url("assets/divider-grass.png");
+  background-repeat: repeat-x;
+  background-position: bottom center;
+  background-size: auto 48px;
+  image-rendering: pixelated;
+}
+
+/* ---------- 滚动出现动画 ---------- */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 900px) {
+  .divider { height: 36px; background-size: auto 36px; }
+  .game-nav { gap: 6px; padding: 8px 6px 11px; }
+  .nav-btn { font-size: 13px; letter-spacing: 0.02em; padding: 5px 10px; }
+  .members-grid, .audience-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+  .board-grid { grid-template-columns: 1fr; }
+  .hero-panel { padding: 34px 24px 30px; }
+  .wood-panel { padding: 30px 20px; }
+  .bubble { padding: 14px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= Hero ================= -->
+<header class="hero" id="top">
+  <img class="hero-banner" src="assets/hero-macau.png" alt="星露谷风格像素画：澳门天际线，大三巴与旅游塔" />
+  <div class="hero-panel">
+    <div class="wood-sign"><h1>万事屋</h1></div>
+    <p class="hero-subtitle">澳门物语 · AI 文旅纪录片</p>
+    <p class="hero-position">本作品记录/呈现的是澳门的世界遗产与市井烟火</p>
+    <p class="hero-slogan">「一城烟火，像素新生」</p>
+    <a class="pixel-btn" href="#members">开始游戏 ▶</a>
+  </div>
+</header>
+
+<!-- ================= 游戏菜单栏 ================= -->
+<nav class="game-nav" aria-label="页面导航">
+  <a class="nav-btn" href="#top">开始</a>
+  <a class="nav-btn" href="#members">村民</a>
+  <a class="nav-btn" href="#project">任务</a>
+  <a class="nav-btn" href="#goals">布告</a>
+  <a class="nav-btn" href="#audience">受众</a>
+</nav>
+
+<main>
+  <!-- ================= 团队成员 ================= -->
+  <section class="section" id="members">
+    <h2 class="section-title">团队成员</h2>
+    <p class="section-sub">村民档案 · VILLAGER FILES</p>
+    <div class="card-grid members-grid">
+      <article class="villager-card reveal">
+        <span class="captain-badge">★ 队长</span>
+        <img class="avatar" src="assets/avatar-mengmeng.png" alt="谭萌萌的星露谷风像素头像" />
+        <h3>谭萌萌</h3>
+        <p class="villager-role">高级精英干员 · 沃尔珀</p>
+        <div class="op-profile">
+          <div class="profile-row"><span class="profile-label">性别</span><span class="profile-value">女</span></div>
+          <div class="profile-row"><span class="profile-label">生日</span><span class="profile-value">9 月 5 日</span></div>
+          <div class="profile-row"><span class="profile-label">特长</span><span class="profile-value">头发</span></div>
+        </div>
+        <p class="bio">我是谭萌萌，姑且算是万事屋的队长！爱好广泛但缺少耐心，不过也要坚信三分钟的热情就会得到三分钟的收获，目前在团队的定位是：不做设计的剪辑不是好写手。</p>
+        <p class="op-quote">『我们就是远近闻名的万事屋！』</p>
+        <p class="villager-contact">手机：17765712636</p>
+      </article>
+      <article class="villager-card reveal">
+        <img class="avatar" src="assets/avatar-ruichen.png" alt="刘芮辰的星露谷风像素头像" />
+        <h3>刘芮辰</h3>
+        <p class="villager-role">高级精英干员 · 鲁珀</p>
+        <div class="op-profile">
+          <div class="profile-row"><span class="profile-label">性别</span><span class="profile-value">女</span></div>
+          <div class="profile-row"><span class="profile-label">生日</span><span class="profile-value">4 月 24 日</span></div>
+          <div class="profile-row"><span class="profile-label">特长</span><span class="profile-value">身高特长、爱吃饭、睡觉、鬼点子生成中</span></div>
+        </div>
+        <p class="bio">万事屋小队，鲁珀干员 Kianna 报道，每天脑海里都是各种各样的鬼点子所以放弃了睡觉时间勇闯 AI 大赛来了，最强卡点王 ddl 战神来了，唯一的目标是能按时提交（你加油吧），然后希望能做出来一些有趣的东西！</p>
+        <p class="op-quote">『已经在做了，请敬候佳音吧。』</p>
+      </article>
+      <article class="villager-card reveal">
+        <img class="avatar" src="assets/avatar-guanzheng.png" alt="刘官政的星露谷风像素头像" />
+        <h3>刘官政</h3>
+        <p class="villager-role">高级精英干员 · 菲林</p>
+        <div class="op-profile">
+          <div class="profile-row"><span class="profile-label">性别</span><span class="profile-value">男</span></div>
+          <div class="profile-row"><span class="profile-label">生日</span><span class="profile-value">7 月 17 日</span></div>
+          <div class="profile-row"><span class="profile-label">特长</span><span class="profile-value">打电动、研究新兴 AI 技术、对着电脑鼓捣一整天</span></div>
+        </div>
+        <p class="bio">万事屋小队菲林干员刘官政报道，平时喜欢宅在家里打电动，也爱研究各种新鲜的 AI 技术，经常从“简单试试”一路折腾到天亮。希望这次能用 AI 做出一些有趣的东西，前提是别在截止前还调参数。</p>
+        <p class="op-quote">『再等一下，最后一个参数调完就能跑了。』</p>
+      </article>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true"></div>
+  <!-- ================= 参赛项目 ================= -->
+  <section class="section" id="project">
+    <h2 class="section-title">参赛项目</h2>
+    <p class="section-sub">任务日志 · QUEST LOG</p>
+    <div class="wood-panel quest-log reveal">
+      <h3 class="quest-title">《澳门物语》</h3>
+      <p class="one-liner">一部以《星露谷物语》为基准、用 AI 视频生成技术制作的像素风澳门文旅纪录片。</p>
+
+      <h4 class="quest-h">创作灵感</h4>
+      <ul class="feature-list">
+        <li><strong>像素风正当红</strong>：当下像素风深受年轻人喜爱——拼豆的爆火，不仅是因为拼搭过程的解压，另一重大因素正是像素制品的独特风格本身足够吸引人。</li>
+        <li><strong>借势星露谷</strong>：《星露谷物语》作为一款爆火的像素风游戏，拥有广泛的玩家受众。以此为基准创作《澳门物语》，能够在社媒上快速吸引玩家的注意，让大家跟着视频来打卡澳门景点。</li>
+      </ul>
+
+      <h4 class="quest-h">视频主线 · 一日打卡行程</h4>
+      <ol class="flow-list">
+        <li class="step">大三巴</li>
+        <li class="arrow">→</li>
+        <li class="step">玫瑰圣母堂</li>
+        <li class="arrow">→</li>
+        <li class="step">新葡京</li>
+        <li class="arrow">→</li>
+        <li class="step">永利澳门 · 发财树</li>
+        <li class="arrow">→</li>
+        <li class="step">氹仔购物</li>
+        <li class="arrow">→</li>
+        <li class="step">演唱会</li>
+        <li class="arrow">→</li>
+        <li class="step">官也街美食</li>
+      </ol>
+      <p class="audience-path">跟随游戏人物一天的行程，玩转澳门。</p>
+
+      <h4 class="quest-h">三大特色</h4>
+      <ul class="feature-list">
+        <li><strong>星露谷风像素视觉</strong>：借势拼豆与《星露谷物语》的像素热潮，全部画面由 AI 生成并统一为治愈系像素风，让城市宣传自带游戏般的亲和力，在社媒上快速抓住年轻玩家的眼球。</li>
+        <li><strong>游戏人物打卡主线</strong>：跟随游戏人物的一日行程，沿画面顺序逐一打卡——从大三巴、玫瑰圣母堂，到新葡京、永利澳门发财树，再到氹仔购物、演唱会与官也街美食，像玩游戏一样游澳门。</li>
+        <li><strong>是宣传片也是攻略</strong>：主线涵盖衣食住行等不同方面，观众可以照着视频顺序逐一打卡美食、景点与购物，在趣味性的基础上放大宣传效果。</li>
+      </ul>
+
+      <h4 class="quest-h">创作流程</h4>
+      <ol class="flow-list">
+        <li class="step">脚本</li>
+        <li class="arrow">→</li>
+        <li class="step">分镜</li>
+        <li class="arrow">→</li>
+        <li class="step">AI 视频生成</li>
+        <li class="arrow">→</li>
+        <li class="step">人工精修</li>
+      </ol>
+
+      <h4 class="quest-h">预期效果</h4>
+      <p class="audience-path">希望通过视频吸引更多游客关注澳门，跟随视频的路线游玩，打卡美食、景点与购物——《澳门物语》既是一部宣传视频，也是一份可以照着玩的旅游攻略，在趣味性的基础上放大宣传效果。</p>
+    </div>
+
+    <h3 class="pain-title">—— 为什么做这件事？——</h3>
+    <div class="bubbles">
+      <div class="bubble reveal">
+        <p><strong>现状问题</strong>：定选题那周，我们把抖音和小红书上的澳门宣传视频翻了个遍。看完最大的感受是：拍得都不差，但长得太像了——航拍的大三巴、赌场的霓虹、烟花汇演，再配一段宏大的旁白。把片名遮住，你分不清这是哪一年的片子；换个城市的名字，似乎也照样能用。可澳门明明不是这样的城市：老街区的石板路、茶餐厅的烟火气、演唱会和官也街的热闹，这些年轻人真正喜欢的东西，在千篇一律的模板里，全被磨平了。</p>
+      </div>
+      <div class="bubble reveal">
+        <p><strong>影响范围</strong>：我们想争取的观众，其实就是我们自己这代人。这代人怎么决定去哪儿玩？刷到一条十几秒的视频，觉得有意思，就把这座城市加进了周末的行程。而且我们的审美是跟着游戏长大的：拼豆能火遍手工圈，《星露谷物语》卖了这么多年，还有人天天回农场——靠的就是像素那种有点笨拙、但特别真诚的魅力。所以问题很直接：不是澳门不好，是它的讲法和年轻人不在一个频道上。频道对不上，错过的就不只是几波游客，而是一代人对澳门的第一印象。</p>
+      </div>
+      <div class="bubble reveal">
+        <p><strong>现有方案不足</strong>：那按老办法多拍几条行不行？我们认真讨论过，答案是不太行。实拍当然精致，但一条片子从策划到出片要几个月，等它上线，热点早换了几轮，观众还是原来那批人。直接用 AI 生成呢？速度是快，可镜头之间风格打架、故事连不起来，观众看完只记住了「AI 感」三个字。折腾一圈我们明白了：缺的从来不是又一条宣传片，而是一种让人愿意点开、看完还能照着玩的内容。这就是《澳门物语》的起点——用星露谷的像素画风画澳门，用游戏人物的一天，把大三巴、氹仔和官也街串成一条路线，既是宣传片，也是攻略。（以上为团队调研观察）</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true"></div>
+  <!-- ================= 参赛目标 ================= -->
+  <section class="section" id="goals">
+    <h2 class="section-title">参赛目标</h2>
+    <p class="section-sub">布告栏 · BULLETIN BOARD</p>
+    <div class="board-grid">
+      <div class="wood-panel board-col reveal">
+        <h3>本季目标</h3>
+        <ul class="pin-list">
+          <li>完成《澳门物语》短片的制作，在过程中掌握 AI 生成视频的工作流，并积累 prompt 输出与剪辑的经验</li>
+          <li>尝试性在社媒发布作品，或尝试与文旅单位合作，希望作品能够作为文旅宣传片推广</li>
+        </ul>
+      </div>
+      <div class="wood-panel board-col reveal">
+        <h3>未来愿景</h3>
+        <ul class="pin-list">
+          <li>进一步积累经验，搭建完整的 AI 短剧生成工作流，打磨作品、提升效率</li>
+          <li>让工作流产品化，服务更多城市的文旅需求，同时自身也拥有变现的能力</li>
+          <li>以此项目为起点，探索创业的可能性</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true"></div>
+  <!-- ================= 服务群体 ================= -->
+  <section class="section" id="audience">
+    <h2 class="section-title">服务群体</h2>
+    <p class="section-sub">谁会喜欢这部作品 · FOR WHOM</p>
+    <div class="card-grid audience-grid">
+      <div class="audience-card reveal">
+        <span class="audience-no">01</span>
+        <h3>计划来澳的游客</h3>
+        <p>用一支纪录片提前遇见澳门的烟火与浪漫，照着像素地图规划下一趟旅程。</p>
+      </div>
+      <div class="audience-card reveal">
+        <span class="audience-no">02</span>
+        <h3>澳门本地居民</h3>
+        <p>在熟悉的街角发现新的可爱，让家乡被更多人温柔地看见。</p>
+      </div>
+      <div class="audience-card reveal">
+        <span class="audience-no">03</span>
+        <h3>文旅传播机构</h3>
+        <p>获得一套低成本、风格统一、年轻人爱看的城市宣传新范式。</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= 页脚 ================= -->
+<footer class="footer">
+  <span class="track-tag">创意引擎赛道</span>
+  <p>万事屋 · 澳门创造营 2026</p>
+  <p class="footer-small">一城烟火，像素新生 © 2026 万事屋团队</p>
+</footer>
+
+<script>
+(function () {
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
